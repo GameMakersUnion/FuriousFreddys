@@ -41,7 +41,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.01
-  van: {fileID: 11400698, guid: 59398c56361190649959926d53b0bc30, type: 2}
+  van: {fileID: 0}
 --- !u!212 &21297460
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -82,8 +82,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: van
       value: 
-      objectReference: {fileID: 11400698, guid: 59398c56361190649959926d53b0bc30,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: speed
       value: 0.01
