@@ -6,6 +6,7 @@ public class GameControllerScript : MonoBehaviour {
     public float gameTime;
     public Van van;
     public ZombieController zombieController;
+    public ZombieController smoker;
 
     private float endTime;
     private bool gameOver;
@@ -37,7 +38,14 @@ public class GameControllerScript : MonoBehaviour {
             float y = Random.Range(-5.0f, 5.0f);
 
             Vector3 spawnPos = vanPos - new Vector3(0 + x, 10 + y, 0);
+            int g = Random.Range(1, 10);
+            if (g == 7) {
+                float xx = Random.Range(-10.0f, 10.0f);
+                float yy = Random.Range(-5.0f, 5.0f);
+                Vector3 spawnPos2 = vanPos - new Vector3(0 + xx, 10 + yy, 0);
 
+                Instantiate(smoker, spawnPos2, Quaternion.identity);
+            }
             Instantiate(zombieController, spawnPos, Quaternion.identity);
         }
     }

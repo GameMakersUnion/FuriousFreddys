@@ -11,9 +11,10 @@ GameObject:
   - 212: {fileID: 21204626}
   - 50: {fileID: 5088182}
   - 114: {fileID: 11400698}
+  - 61: {fileID: 6165202}
   m_Layer: 0
   m_Name: Truck_working
-  m_TagString: Untagged
+  m_TagString: Van
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +39,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140396}
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 58.52
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -46,7 +47,21 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!61 &6165202
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140396}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 3.22, y: 4.06}
 --- !u!114 &11400698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -58,6 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaccee95cb01286409a7764d626bcf75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
   health: 0
 --- !u!212 &21204626
 SpriteRenderer:
@@ -95,7 +111,23 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Van
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: 3.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mass
+      value: 58.52
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 140396}
