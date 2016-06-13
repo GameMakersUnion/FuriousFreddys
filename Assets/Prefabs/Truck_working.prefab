@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11400698}
   m_Layer: 0
   m_Name: Truck_working
-  m_TagString: Untagged
+  m_TagString: Van
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaccee95cb01286409a7764d626bcf75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 45
 --- !u!212 &21204626
 SpriteRenderer:
   m_ObjectHideFlags: 1
