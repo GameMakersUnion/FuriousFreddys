@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.01
+  van: {fileID: 140396, guid: 59398c56361190649959926d53b0bc30, type: 2}
 --- !u!212 &21297460
 SpriteRenderer:
   m_ObjectHideFlags: 1
