@@ -30,7 +30,7 @@ public class Van : MonoBehaviour {
 
 
     }
-  public  Vector3 getPos()
+    public  Vector3 getPos()
     {
      
 

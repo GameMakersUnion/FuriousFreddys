@@ -61,9 +61,11 @@ GameObject:
   - 4: {fileID: 451618}
   - 212: {fileID: 21271186}
   - 114: {fileID: 11421592}
+  - 50: {fileID: 5012026}
+  - 61: {fileID: 6129418}
   m_Layer: 0
-  m_Name: TruckTemp
-  m_TagString: Untagged
+  m_Name: Vehicle
+  m_TagString: Van
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,6 +151,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 451618}
   m_RootOrder: 2
+--- !u!50 &5012026
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162482}
+  m_UseAutoMass: 0
+  m_Mass: 201.88
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!61 &6129418
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162482}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 2.64, y: 4.06}
 --- !u!114 &11421592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -233,7 +266,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1341976777
+  m_SortingLayerID: 1296096865
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a382982636c11974da15d41a80c38fe1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -263,7 +296,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1341976777
+  m_SortingLayerID: 1296096865
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 301bfc8f36b64894892a7f3610e51b9f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -293,7 +326,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1341976777
+  m_SortingLayerID: 1296096865
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2029c40f2772b8a439b0fe2ecd0630ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -323,7 +356,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -763638843
+  m_SortingLayerID: -1099212831
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5b2173a17c343ee4f98358e5c744533d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -353,7 +386,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1341976777
+  m_SortingLayerID: 1296096865
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d1bd210db13581743b44445d3725f050, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

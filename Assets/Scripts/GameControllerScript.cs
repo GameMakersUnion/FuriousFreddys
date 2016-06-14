@@ -4,19 +4,21 @@ using System.Collections;
 public class GameControllerScript : MonoBehaviour {
 
     public float gameTime;
-    public Van van;
     public ZombieController zombieController;
     public ZombieController smoker;
-
+    GameObject van;
     private float endTime;
     private bool gameOver;
 
 	// Use this for initialization
 	void Start () {
+        van = GameObject.FindWithTag("Van");
         endTime = Time.time + gameTime;
         gameOver = false;
         SpawnZombies();
-	}
+        
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
