@@ -9,7 +9,7 @@ public class ZombieController : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-        van = GameObject.FindGameObjectWithTag("Van");
+        van = GameObject.FindGameObjectWithTag("Vehicle");
 
 	}
 	

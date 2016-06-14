@@ -12,7 +12,7 @@ public class GameControllerScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        van = GameObject.FindWithTag("Van");
+        van = GameObject.FindWithTag("Vehicle");
         endTime = Time.time + gameTime;
         gameOver = false;
         SpawnZombies();
