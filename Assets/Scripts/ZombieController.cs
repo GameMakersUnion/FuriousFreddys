@@ -5,7 +5,7 @@ public class ZombieController : MonoBehaviour {
 
     Vector3 direction;
     public float speed;
-    public GameObject  van;
+   GameObject  van;
     
 	// Use this for initialization
 	void Start () {

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TruckControlScript : PlayerControlScript {
+public class VehicleControlScript : PlayerControlScript, IVehicleControlScript
+{
     
 	protected override void Start () {
         base.Start();

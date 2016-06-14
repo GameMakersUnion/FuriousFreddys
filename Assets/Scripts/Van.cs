@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Van : MonoBehaviour {
-
+    public float speed;
     public int health;
 
 	// Use this for initialization
@@ -13,13 +13,13 @@ public class Van : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyDown("a")) {
-            this.transform.position =  Vector3.Lerp(this.transform.position, new Vector3(this.transform.position.x -10 , this.transform.position.y, this.transform.position.z), 0.1f); 
+        if (Input.GetKey("a")) {
+            this.transform.position =  Vector3.Lerp(this.transform.position, new Vector3(this.transform.position.x -10 , this.transform.position.y, this.transform.position.z), speed); 
             print("A was pressed");
         }
-        if (Input.GetKeyDown("d"))
+        if (Input.GetKey("d"))
         {
-            this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(this.transform.position.x + 10, this.transform.position.y, this.transform.position.z), 0.1f);
+            this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(this.transform.position.x + 10, this.transform.position.y, this.transform.position.z), speed);
 
             print("d press");
         }
@@ -30,7 +30,7 @@ public class Van : MonoBehaviour {
 
 
     }
-  public  Vector3 getPos()
+    public  Vector3 getPos()
     {
      
 
