@@ -65,7 +65,7 @@ GameObject:
   - 61: {fileID: 6129418}
   m_Layer: 0
   m_Name: Vehicle
-  m_TagString: Van
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
