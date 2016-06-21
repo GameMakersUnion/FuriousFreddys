@@ -5,7 +5,7 @@ public class GameControllerScript : MonoBehaviour {
 
     public float gameTime;
     public ZombieController zombieController;
-    public ZombieController smoker;
+    public SmokerControlScript smoker;
     GameObject van;
     private float endTime;
     private bool gameOver;
@@ -25,7 +25,7 @@ public class GameControllerScript : MonoBehaviour {
 	    if (Time.time > endTime && !gameOver)
         {
             //game over, display text, zombies stop
-            Debug.Log("game over");
+            //Debug.Log("game over");
             gameOver = true;
         }
 	}
