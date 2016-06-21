@@ -22,7 +22,8 @@ public class GameControllerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Time.time > endTime && !gameOver)
+   
+        if (Time.time > endTime && !gameOver)
         {
             //game over, display text, zombies stop
             //Debug.Log("game over");

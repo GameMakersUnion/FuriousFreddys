@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿    using UnityEngine;
+    using System.Collections;
 
 public class SmokerControlScript : MasterZombieScript {
 
@@ -9,6 +9,12 @@ public class SmokerControlScript : MasterZombieScript {
 
 	// Update is called once per frame
 	void Update () {
-	
-	}
+
+        Vector3 start = this.transform.position;
+        Vector3 destin = VSR.bounds.ClosestPoint(start);
+        
+
+        
+
+    }
 }

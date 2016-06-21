@@ -10,7 +10,7 @@ public class ZombieController : MasterZombieScript {
     void Update () {
         
         Vector3 start = transform.position;
-        
+      
 
         Vector3 destin = VSR.bounds.ClosestPoint(start);
 
@@ -22,5 +22,12 @@ public class ZombieController : MasterZombieScript {
         else {
             ZSR.sprite = Oface;
         }
-	}
+
+
+        getZombieSprite();
+    }
+
+ 
+
+
 }
