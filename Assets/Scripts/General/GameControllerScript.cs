@@ -6,13 +6,17 @@ public class GameControllerScript : MonoBehaviour {
     public float gameTime;
     public ZombieController zombieController;
     public SmokerControlScript smoker;
+    //I fucked up big time, ill need to fix this shit later.
     GameObject van;
+    VehicleControlScript vehicle;
+    //end fuck up
     private float endTime;
     private bool gameOver;
-
+    public int ZombiesSpawned;
 	// Use this for initialization
 	void Start () {
         van = GameObject.FindWithTag("Vehicle");
+        vehicle = van.GetComponent<VehicleControlScript>();
         endTime = Time.time + gameTime;
         gameOver = false;
         SpawnZombies();
@@ -22,11 +26,9 @@ public class GameControllerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-   
-        if (Time.time > endTime && !gameOver)
+        if (vehicle.currentHealth()  == 0&&  !gameOver)
         {
-            //game over, display text, zombies stop
-            //Debug.Log("game over");
+            print("game over");
             gameOver = true;
         }
 	}
@@ -34,9 +36,9 @@ public class GameControllerScript : MonoBehaviour {
     void SpawnZombies()
     {
         Vector3 vanPos = van.transform.position;
-        Debug.Log(vanPos);
 
-        for (int i = 0; i < 10; i++) {
+
+        for (int i = 0; i < ZombiesSpawned; i++) {
             float x = Random.Range(-10.0f, 10.0f);
             float y = Random.Range(-5.0f, 5.0f);
 

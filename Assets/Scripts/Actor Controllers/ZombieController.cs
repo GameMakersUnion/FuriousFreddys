@@ -5,29 +5,50 @@ public class ZombieController : MasterZombieScript {
 
     Vector3 direction;
     public float speed;
+    
+    
+
 
     // Update is called once per frame
-    void Update () {
-        
-        Vector3 start = transform.position;
-      
+    public override void Update () {
+        base.Update();
 
-        Vector3 destin = VSR.bounds.ClosestPoint(start);
 
-        if (!VSR.bounds.Contains(ZSR.bounds.ClosestPoint(destin)))
-        {
-            ZSR.sprite = Face;
+        /*
+         * This shit is broken. 
+         * TODO : Delete this, create void onCollison(?)Enter(Collider2D Collider){} method
+         */
+    
+            if (!this.contact)
+            {
+            this.rb.velocity = Vector3.zero;
+            this.rb.angularVelocity = 0;
             transform.position = Vector3.Lerp(start, destin, speed);
+            
         }
-        else {
-            ZSR.sprite = Oface;
-        }
-
-
-        getZombieSprite();
+           
     }
 
- 
+    public override void OnCollisionExit2D(Collision2D col) {
+        if (col.gameObject.tag == "Vehicle")
+        {
+            base.OnCollisionExit2D(col);
+            //Debug.Log("Exit");
+            transform.position = Vector3.Lerp(start, destin, speed);
+            ZSR.sprite = Face;
+    
+        }
+    }
 
+    public override void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Vehicle")
+        {
+            this.rb.Sleep();
+            //Debug.Log("Contact");
+            base.OnCollisionEnter2D(col);
+            ZSR.sprite = Oface;
+        }
+    }
 
 }

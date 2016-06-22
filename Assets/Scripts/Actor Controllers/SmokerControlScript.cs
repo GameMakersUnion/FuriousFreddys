@@ -4,17 +4,32 @@
 public class SmokerControlScript : MasterZombieScript {
 
     public int tongueRange;
-    public float MoveSpeed;
+    public float speed;
 
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    public override void Update () {
+        base.Update();
 
-        Vector3 start = this.transform.position;
-        Vector3 destin = VSR.bounds.ClosestPoint(start);
-        
+        float distanceTo = Vector3.Distance(start, destin);
 
-        
+        if (distanceTo > tongueRange)
+        {
+            transform.position = Vector3.Lerp(start, destin, speed);
+
+        }
+        else {
+            //shoot the fucking tongue
+            transform.position = transform.position;
+
+        }
 
     }
+
+    void shootTongue() {
+
+
+
+    }
+
 }

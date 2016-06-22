@@ -2,25 +2,101 @@
 using System.Collections;
 
 public abstract class MasterZombieScript : MonoBehaviour {
-    GameObject vehicle;
-   protected SpriteRenderer ZSR;
- protected   SpriteRenderer VSR;
+    //I know i did it again... 
+    GameObject van;
+    protected VehicleControlScript vehicle;
+    protected SpriteRenderer ZSR;
+    protected SpriteRenderer VSR;
+    protected Collider2D vC;
+    protected Collider2D zC;
     public Sprite Oface;
     public Sprite Face;
+    protected Vector3 start;
+    protected Vector3 destin;
+    public int damage;
+   protected bool contact;
+    protected int counter;
+    protected Rigidbody2D rb;
     // Use this for initialization
-   public virtual void Start () {
-        vehicle = GameObject.FindGameObjectWithTag("Vehicle");
+    public virtual void Start() {
+        van = GameObject.FindGameObjectWithTag("Vehicle");
+        vehicle = van.GetComponent<VehicleControlScript>();
         ZSR = this.GetComponent<SpriteRenderer>();
-        VSR = vehicle.GetComponent<SpriteRenderer>();
+        VSR = van.GetComponent<SpriteRenderer>();
+        zC = this.GetComponent<Collider2D>();
+        vC = van.GetComponent<Collider2D>();
+        damage = 1;
+        this.contact = false;
+        counter = 10;
+        rb = this.GetComponent<Rigidbody2D>();
+    }
+
+    public virtual void Update() {
+        this.start = transform.position;
+        this.destin = VSR.bounds.ClosestPoint(start);
+        // Debug.Log(this.counter + " " + this.contact);
+    }
+
+
+
+
+
+    /*
+     * Intial contact of the zombie to the car, stops it from moving 
+     */
+    public  virtual void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Vehicle")
+        {
+            this.contact = true;
+
+            this.transform.position = this.transform.position;
+        }
+    }
+
+
+
+
+
+    /*
+     * Resets the zombie attack period to half
+     * enables the rigidbody on the zombies
+     */
+    public virtual void OnCollisionExit2D(Collision2D col) {
+        if (col.gameObject.tag == "Vehicle")
+        {
+            this.rb.WakeUp();
+            this.contact = false;
+           this.counter = 15;
+            
+        }
+    }
+
+
+
+
+
+    /*
+     *every 30 or so frames damage the car
+     * this gives the zombie an attack period of approx 30 frames
+     */
+    public virtual void OnCollisionStay2D(Collision2D col){
+        if (col.gameObject.tag == "Vehicle")
+        {
+            if (counter == 0)
+            {
+                this.counter = 30;
+                vehicle.updateHealth(damage);
+
+            }
+            else {
+                counter--;
+            }
+        }
+
 
     }
 
-    public SpriteRenderer getVehicleSprite() {
-        return this.VSR;
-    }
 
-    public SpriteRenderer getZombieSprite() {
-        return this.ZSR;
 
-    }
 }
