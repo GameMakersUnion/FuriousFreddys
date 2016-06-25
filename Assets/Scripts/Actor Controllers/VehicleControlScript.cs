@@ -11,6 +11,7 @@ public class VehicleControlScript : PlayerControlScript
         base.Start();
         health = 500;
         rb= this.GetComponent<Rigidbody2D>();
+        //print(this.GetComponent<Collider2D>().bounds.extents + transform.position + "v");
     }
 
     public override void Move(int direction)
@@ -38,13 +39,13 @@ public class VehicleControlScript : PlayerControlScript
     /*
      * @param the amount of health points that will be added or removed from the car
      */ 
-    public int updateHealth( int damage) {
+    public int updateHealth( int damage, string name) {
         
         health = currentHealth() - damage;
         if (health < 0) {
             health = 0;
         }
-        Debug.Log(health);
+        //Debug.Log(health);
         return health;
     }
 

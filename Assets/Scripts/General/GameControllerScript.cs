@@ -51,7 +51,8 @@ public class GameControllerScript : MonoBehaviour {
 
                 Instantiate(smoker, spawnPos2, Quaternion.identity);
             }
-            Instantiate(zombieController, spawnPos, Quaternion.identity);
+            ZombieController zombie = (ZombieController)Instantiate(zombieController, spawnPos, Quaternion.identity);
+            zombie.gameObject.name = "Zombie" + i;
         }
     }
 

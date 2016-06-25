@@ -28,6 +28,7 @@ public class SmokerControlScript : MasterZombieScript {
 
     void shootTongue() {
 
+           //it shoots the tongue?
 
 
     }
