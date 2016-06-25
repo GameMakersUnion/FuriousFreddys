@@ -110,6 +110,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -210,6 +211,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -240,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d2f688a2249844badb455005b12942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 0.01
+  scrollSpeed: 0.05
   roadSegmentPrefab: {fileID: 176878, guid: 631ebd142f72ec344abb9a8416a7b92b, type: 2}
 --- !u!4 &1581320261
 Transform:
@@ -251,6 +253,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
