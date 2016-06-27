@@ -20,11 +20,19 @@ public class Switcher : MonoBehaviour {
 
     }
 
-	void FixedUpdate () {
-        if (Input.GetKey(KeyCode.LeftArrow))
+    void FixedUpdate() {
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey("a"))
+        {
             Player.Move(-1);
-        if (Input.GetKey(KeyCode.RightArrow))
+        }
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey("d"))
+        {
             Player.Move(1);
+        }
+        else
+        {
+             Player.Move(0);
+        }
     }
 
     void CyclePlayers()
