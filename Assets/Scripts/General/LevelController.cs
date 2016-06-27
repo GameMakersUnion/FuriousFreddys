@@ -18,6 +18,7 @@ public class LevelController : MonoBehaviour {
     void Start () {
         //List to hold roadSegments
         roadSegments = new List<GameObject>();
+        rocks = new List<GameObject>();
 
         //SpriteRenderer of the roadSegmentPreFab
         srRoadSegment = roadSegmentPrefab.GetComponent<SpriteRenderer>();
@@ -78,20 +79,19 @@ public class LevelController : MonoBehaviour {
         }
 
         //Generate obstacles randomly
-        rocks = new List<GameObject>();
+       
         
         float obstacleGenChance = Random.Range(0.0f, 1.0f);
         if (obstacleGenChance > 0.99f)
         {
             GameObject rock1 = Instantiate(rockPrefab);
             rock1.transform.position = new Vector3(rock1.transform.position.x, Camera.main.orthographicSize * 2.0f, rock1.transform.position.z);
-            Debug.Log("Gen!");
             rocks.Add(rock1);
         }
         foreach (GameObject rock in rocks)
         {   
             rock.transform.position = new Vector3(rock.transform.position.x, rock.transform.position.y - scrollSpeed, rock.transform.position.z);
-            Debug.Log(rocks);
+            Debug.Log(rock.transform.position);
         }
 	}
 }
