@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11480150}
   - 114: {fileID: 11464150}
   m_Layer: 0
-  m_Name: Smoker
+  m_Name: Vaper
   m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,12 +72,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 142666}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc8b94cd53f70e74b99e89fcc5de77b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9eb5b8280b747094881f53d65b73df4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  van: {fileID: 0}
+  vehicle: {fileID: 0}
+  ZSR: {fileID: 0}
+  VSR: {fileID: 0}
+  vC: {fileID: 0}
+  zC: {fileID: 0}
   Oface: {fileID: 0}
   Face: {fileID: 21300000, guid: 5924101f916312f458c9b5d3bb257993, type: 3}
+  start: {x: 0, y: 0, z: 0}
+  destin: {x: 0, y: 0, z: 0}
   damage: 0
+  contact: 0
+  counter: 0
+  rb: {fileID: 0}
+  colcount: 0
   tongueRange: 10
   speed: 0.01
 --- !u!114 &11480150
@@ -88,9 +100,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 142666}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62efa4c749480964399f6aa52758c2f7, type: 3}
+  m_Script: {fileID: 11500000, guid: f21ca1e55d360304587f253f39f62099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hooked: 0
+  vehicle: {fileID: 0}
 --- !u!212 &21284562
 SpriteRenderer:
   m_ObjectHideFlags: 1

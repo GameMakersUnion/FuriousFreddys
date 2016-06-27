@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SmokerHookShot : MonoBehaviour {
+public class VaperHookShot : MonoBehaviour {
     bool hooked;
     GameObject vehicle;
     

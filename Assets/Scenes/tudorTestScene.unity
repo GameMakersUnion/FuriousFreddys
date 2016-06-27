@@ -199,7 +199,11 @@ MonoBehaviour:
   gameTime: 5
   zombieController: {fileID: 11435888, guid: 2c210016b3be61b4682ae85238ad351c, type: 2}
   smoker: {fileID: 11464150, guid: 4eac6302d98c30440941e2c44daaf11f, type: 2}
-  ZombiesSpawned: 8
+  van: {fileID: 0}
+  vehicle: {fileID: 0}
+  endTime: 0
+  gameOver: 0
+  ZombiesSpawned: 10
 --- !u!114 &836073245 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11451110, guid: 66d91597c9a80ae4d803752aa06d2347,
@@ -246,6 +250,8 @@ MonoBehaviour:
   - {fileID: 1619619674}
   - {fileID: 984287037}
   - {fileID: 468044156}
+  Player: {fileID: 0}
+  currPlayer: 0
 --- !u!4 &1186532653
 Transform:
   m_ObjectHideFlags: 0
@@ -413,11 +419,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5012026, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
       propertyPath: m_Constraints
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5012026, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
       propertyPath: m_Mass
-      value: 1000
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
