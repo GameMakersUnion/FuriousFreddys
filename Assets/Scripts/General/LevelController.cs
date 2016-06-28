@@ -11,8 +11,8 @@ public class LevelController : MonoBehaviour {
     public GameObject roadSegmentPrefab;    //The roadSegmentPrefab which the each segment is made from
     private SpriteRenderer srRoadSegment;      //The SpriteRenderer of the roadSegmentPrefab, used to get bounds
 
-    private List<GameObject> rocks;
-    public GameObject rockPrefab;
+    private List<GameObject> rocks;  //The list of GameObjects to hold the rockPrefabs
+    public GameObject rockPrefab;       //The rockPrefab
 
     // Use this for initialization
     void Start () {
@@ -52,11 +52,6 @@ public class LevelController : MonoBehaviour {
         roadSegments.Add(roadSegment4);
 
         Debug.Log(roadSegments);
-
-        //Add rocks to List
-       // rockPrefab = GameObject.FindWithTag("Rock");
-        
-        
     }
 	
 	// Update is called once per frame
