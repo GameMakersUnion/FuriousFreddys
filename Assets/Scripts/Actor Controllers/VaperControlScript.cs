@@ -2,7 +2,7 @@
     using System.Collections;
 
 public class VaperControlScript : MasterZombieScript {
-
+    VaperHookShot vaperHookShoot;
     public int tongueRange;
     public float speed;
     bool shooting;
@@ -38,8 +38,9 @@ public class VaperControlScript : MasterZombieScript {
     }
 
     void shootTongue(Vector3 s, Vector3 d ) {
-        //VaperHookShot hookShoot =  (GameObject) Instantiate()
-           //it shoots the tongue?
+        //it shoots the tongue?
+       // VaperHookShot hookShoot = (VaperHookShot)Instantiate(vaperHookShoot, s, Quaternion.identity);
+       // hookShoot.destination = d;
 
 
     }
