@@ -79,19 +79,22 @@ public class LevelController : MonoBehaviour {
         }
 
         //Generate obstacles randomly
-       
-        
-        float obstacleGenChance = Random.Range(0.0f, 1.0f);
-        if (obstacleGenChance > 0.99f)
+        float obstacleGenChance = Random.Range(0.0f, 1.0f);     //Rand number between 0.0 and 1.0
+
+        if (obstacleGenChance > 0.99f)      //If the Rand number is greater than 0.99
         {
             GameObject rock1 = Instantiate(rockPrefab);
-            rock1.transform.position = new Vector3(rock1.transform.position.x, Camera.main.orthographicSize * 2.0f, rock1.transform.position.z);
+            float randX = Random.Range(-5.0f, 5.0f);        //rand Xpos offset
+            Vector3 randScale = new Vector3(Random.Range(0.1f, 0.8f), Random.Range(0.1f, 0.8f), 1.0f);      //Rand scale
+
+            rock1.transform.localScale = randScale;
+            rock1.transform.position = new Vector3(rock1.transform.position.x + randX, Camera.main.orthographicSize * 2.0f, rock1.transform.position.z);
             rocks.Add(rock1);
         }
+        //Iterate through rocks and adjust the y position
         foreach (GameObject rock in rocks)
         {   
             rock.transform.position = new Vector3(rock.transform.position.x, rock.transform.position.y - scrollSpeed, rock.transform.position.z);
-            Debug.Log(rock.transform.position);
         }
 	}
 }

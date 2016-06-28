@@ -138,8 +138,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTime: 5
-  van: {fileID: 0}
   zombieController: {fileID: 11435888, guid: 2c210016b3be61b4682ae85238ad351c, type: 2}
+  vaperControlScript: {fileID: 0}
+  ZombiesSpawned: 0
 --- !u!114 &564181335 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11444380, guid: 66d91597c9a80ae4d803752aa06d2347,
@@ -362,7 +363,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 451618, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.06
+      value: -5.8
       objectReference: {fileID: 0}
     - target: {fileID: 451618, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
       propertyPath: m_LocalPosition.z
