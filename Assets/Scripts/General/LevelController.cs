@@ -93,8 +93,15 @@ public class LevelController : MonoBehaviour {
         }
         //Iterate through rocks and adjust the y position
         foreach (GameObject rock in rocks)
-        {   
-            rock.transform.position = new Vector3(rock.transform.position.x, rock.transform.position.y - scrollSpeed, rock.transform.position.z);
+        {
+            if (rock.transform.position.y <= -15.0f)
+            {
+                rock.SetActive(false);
+            }
+            else
+            {
+                rock.transform.position = new Vector3(rock.transform.position.x, rock.transform.position.y - scrollSpeed, rock.transform.position.z);
+            }
         }
 	}
 }
