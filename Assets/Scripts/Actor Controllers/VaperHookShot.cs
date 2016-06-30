@@ -6,7 +6,7 @@ using System.Collections;
 
 public class VaperHookShot : MonoBehaviour
 {
-    /*
+    
     GameObject van;
 
     bool hooked;
@@ -101,19 +101,19 @@ public class VaperHookShot : MonoBehaviour
         }
 
         // Attach the joints to the target object and parent it to this object	
-        CharacterJoint end = target.gameObject.AddComponent<CharacterJoint>();
-        end.connectedBody = joints[joints.Length - 1].transform.GetComponent<Rigidbody>()
+       HingeJoint2D end = target.gameObject.AddComponent<HingeJoint2D>();
+        end.connectedBody = joints[joints.Length - 1].transform.GetComponent<Rigidbody2D>()
             ;
-        end.swingAxis = swingAxis;
-        SoftJointLimit limit_setter = end.lowTwistLimit;
-        limit_setter.limit = lowTwistLimit;
-        end.lowTwistLimit = limit_setter;
-        limit_setter = end.highTwistLimit;
-        limit_setter.limit = highTwistLimit;
-        end.highTwistLimit = limit_setter;
-        limit_setter = end.swing1Limit;
-        limit_setter.limit = swing1Limit;
-        end.swing1Limit = limit_setter;
+      // CharacterJoint
+        //SoftJointLimit limit_setter = end.lowTwistLimit;
+        //limit_setter.limit = lowTwistLimit;
+        //end.lowTwistLimit = limit_setter;
+        //limit_setter = end.highTwistLimit;
+        //limit_setter.limit = highTwistLimit;
+        //end.highTwistLimit = limit_setter;
+        //limit_setter = end.swing1Limit;
+       // limit_setter.limit = swing1Limit;
+        //end.swing1Limit = limit_setter;
         target.parent = transform;
 
         // Rope = true, The rope now exists in the scene!
@@ -124,19 +124,22 @@ public class VaperHookShot : MonoBehaviour
     {
         joints[n] = new GameObject("Joint_" + n);
         joints[n].transform.parent = transform;
-        Rigidbody rigid = joints[n].AddComponent<Rigidbody>();
-        SphereCollider col = joints[n].AddComponent<SphereCollider>();
-        CharacterJoint ph = joints[n].AddComponent<CharacterJoint>();
-        ph.swingAxis = swingAxis;
-        SoftJointLimit limit_setter = ph.lowTwistLimit;
-        limit_setter.limit = lowTwistLimit;
-        ph.lowTwistLimit = limit_setter;
-        limit_setter = ph.highTwistLimit;
-        limit_setter.limit = highTwistLimit;
-        ph.highTwistLimit = limit_setter;
-        limit_setter = ph.swing1Limit;
-        limit_setter.limit = swing1Limit;
-        ph.swing1Limit = limit_setter;
+        Rigidbody2D rigid = joints[n].AddComponent<Rigidbody2D>();
+       // joints[n].GetComponent<Rigidbody2D>().gravityScale = 0;
+
+        CircleCollider2D col = joints[n].AddComponent<CircleCollider2D>();
+        HingeJoint2D ph = joints[n].AddComponent<HingeJoint2D>();
+        //
+        //ph.swingAxis = swingAxis;
+       // SoftJointLimit limit_setter = ph.lowTwistLimit;
+        //limit_setter.limit = lowTwistLimit;
+        //ph.lowTwistLimit = limit_setter;
+        //limit_setter = ph.highTwistLimit;
+        //limit_setter.limit = highTwistLimit;
+        //ph.highTwistLimit = limit_setter;
+        //limit_setter = ph.swing1Limit;
+        //limit_setter.limit = swing1Limit;
+        //ph.swing1Limit = limit_setter;
         //ph.breakForce = ropeBreakForce; <--------------- TODO
 
         joints[n].transform.position = segmentPos[n];
@@ -147,11 +150,11 @@ public class VaperHookShot : MonoBehaviour
 
         if (n == 1)
         {
-            ph.connectedBody = transform.GetComponent<Rigidbody>();
+            ph.connectedBody = transform.GetComponent<Rigidbody2D>();
         }
         else
         {
-            ph.connectedBody = joints[n - 1].GetComponent<Rigidbody>();
+            ph.connectedBody = joints[n - 1].GetComponent<Rigidbody2D>();
         }
 
     }
@@ -169,5 +172,5 @@ public class VaperHookShot : MonoBehaviour
         joints = new GameObject[0];
         segments = 0;
     }
-*/
+
 }
