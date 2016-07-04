@@ -26,7 +26,25 @@ public class VehicleControlScript : PlayerControlScript
     public void Update()
     {
         // this is broken car is supposed to realign itself and try to return to the upright position
-                       
+
+        //print(this.transform.rotation.eulerAngles.z);
+        Vector3 rotation = this.transform.rotation.eulerAngles;
+
+        if (rotation.z < 180)
+        {
+            transform.rotation = Quaternion.Euler((Vector3.Lerp(rotation, Vector3.zero, 0.05f)));
+        }
+        else {
+            transform.rotation = Quaternion.Euler((Vector3.Lerp(rotation, new Vector3(0, 0, 360), 0.05f)));
+
+        }
+
+
+        if (Mathf.Abs(rotation.z - 360) <  0.5 ||(rotation.z - 360) <  0.5 ) {
+            this.rb.angularVelocity = 0;
+
+        }
+
     }
     
     /**

@@ -5,7 +5,7 @@ public class GameControllerScript : MonoBehaviour {
 
     public float gameTime;
     public ZombieController zombieController;
-    public SmokerControlScript smoker;
+    public VaperControlScript vaperControlScript;
     //I fucked up big time, ill need to fix this shit later.
     GameObject van;
     VehicleControlScript vehicle;
@@ -49,7 +49,8 @@ public class GameControllerScript : MonoBehaviour {
                 float yy = Random.Range(-5.0f, 5.0f);
                 Vector3 spawnPos2 = vanPos - new Vector3(0 + xx, 10 + yy, 0);
 
-                Instantiate(smoker, spawnPos2, Quaternion.identity);
+               VaperControlScript vaper = (VaperControlScript) Instantiate(vaperControlScript, spawnPos2, Quaternion.identity);
+                vaper.gameObject.name = "Vaper" + i;
             }
             ZombieController zombie = (ZombieController)Instantiate(zombieController, spawnPos, Quaternion.identity);
             zombie.gameObject.name = "Zombie" + i;

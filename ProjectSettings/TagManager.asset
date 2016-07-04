@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Vehicle
   - Zombie
+  - Rock
   layers:
   - Default
   - TransparentFX

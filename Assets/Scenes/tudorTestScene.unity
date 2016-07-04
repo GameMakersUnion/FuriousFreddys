@@ -182,6 +182,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -198,8 +199,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameTime: 5
   zombieController: {fileID: 11435888, guid: 2c210016b3be61b4682ae85238ad351c, type: 2}
-  smoker: {fileID: 11464150, guid: 4eac6302d98c30440941e2c44daaf11f, type: 2}
-  ZombiesSpawned: 8
+  vaperControlScript: {fileID: 11480150, guid: 4eac6302d98c30440941e2c44daaf11f, type: 2}
+  ZombiesSpawned: 10
 --- !u!114 &836073245 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11451110, guid: 66d91597c9a80ae4d803752aa06d2347,
@@ -255,6 +256,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.93, y: 5.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -347,6 +349,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -394,30 +397,6 @@ Prefab:
     - target: {fileID: 451618, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6129418, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
-      propertyPath: m_Size.x
-      value: 2.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 6129418, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
-      propertyPath: m_Size.y
-      value: 4.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 6129418, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6129418, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
-      propertyPath: m_UsedByEffector
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5012026, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
-      propertyPath: m_Constraints
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5012026, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
-      propertyPath: m_Mass
-      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
