@@ -14,4 +14,4 @@ public abstract class PlayerControlScript : MonoBehaviour {
 
     public abstract void Move(int direction);
 
-}
+ }
