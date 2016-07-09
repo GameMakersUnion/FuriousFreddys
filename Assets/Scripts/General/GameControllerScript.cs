@@ -13,14 +13,16 @@ public class GameControllerScript : MonoBehaviour {
     private float endTime;
     private bool gameOver;
     public int ZombiesSpawned;
-	// Use this for initialization
-	void Start () {
+    GameObject Gnmies;
+    // Use this for initialization
+    void Start () {
         van = GameObject.FindWithTag("Vehicle");
         vehicle = van.GetComponent<VehicleControlScript>();
         endTime = Time.time + gameTime;
         gameOver = false;
+        Gnmies = new GameObject("NMIES");
         SpawnZombies();
-        
+
 
     }
 	
@@ -53,9 +55,11 @@ public class GameControllerScript : MonoBehaviour {
 
                VaperControlScript vaper = (VaperControlScript) Instantiate(vaperControlScript, spawnPos2, Quaternion.identity);
                 vaper.gameObject.name = "Vaper" + i;
+                vaper.transform.parent = Gnmies.transform;
             }
             ZombieController zombie = (ZombieController)Instantiate(zombieController, spawnPos, Quaternion.identity);
             zombie.gameObject.name = "Zombie" + i;
+            zombie.transform.parent = Gnmies.transform;
         }
     }
 
