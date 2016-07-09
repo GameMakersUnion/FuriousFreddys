@@ -3,13 +3,20 @@ using System.Collections;
 
 public class Switcher : MonoBehaviour {
 
-    public PlayerControlScript[] Players;
+    private PlayerControlScript[] Players;
 
     private PlayerControlScript Player;
     private int currPlayer;
 
 	void Start () {
         currPlayer = 0;
+        GameObject vehicle = GameObject.FindGameObjectWithTag("Vehicle");
+        PlayerControlScript[] gunnerArray = vehicle.GetComponent<FreddySpawnScript>().Freddies.ToArray();
+
+        Players = new PlayerControlScript[ 1 + gunnerArray.Length ];
+        Players[0] = vehicle.GetComponent<PlayerControlScript>();
+
+        gunnerArray.CopyTo(Players, 1);
         Player = Players[currPlayer];
 	}
 	

@@ -131,19 +131,19 @@ Prefab:
     - target: {fileID: 11406010, guid: 83bf54e3329c4a74bb44fa92350ae4d2, type: 2}
       propertyPath: Players.Array.data[1]
       value: 
-      objectReference: {fileID: 836073245}
+      objectReference: {fileID: 0}
     - target: {fileID: 11406010, guid: 83bf54e3329c4a74bb44fa92350ae4d2, type: 2}
       propertyPath: Players.Array.data[2]
       value: 
-      objectReference: {fileID: 1619619674}
+      objectReference: {fileID: 0}
     - target: {fileID: 11406010, guid: 83bf54e3329c4a74bb44fa92350ae4d2, type: 2}
       propertyPath: Players.Array.data[3]
       value: 
-      objectReference: {fileID: 984287037}
+      objectReference: {fileID: 0}
     - target: {fileID: 11406010, guid: 83bf54e3329c4a74bb44fa92350ae4d2, type: 2}
       propertyPath: Players.Array.data[4]
       value: 
-      objectReference: {fileID: 468044156}
+      objectReference: {fileID: 0}
     - target: {fileID: 113440, guid: 83bf54e3329c4a74bb44fa92350ae4d2, type: 2}
       propertyPath: m_Name
       value: Switcher
@@ -151,12 +151,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83bf54e3329c4a74bb44fa92350ae4d2, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &468044156 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11426860, guid: 66d91597c9a80ae4d803752aa06d2347,
-    type: 2}
-  m_PrefabInternal: {fileID: 1980080033}
-  m_Script: {fileID: 11500000, guid: f89955f60b4189b4fbe08b6435d3e1e1, type: 3}
 --- !u!1 &551175590
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +176,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -199,20 +192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameTime: 5
   zombieController: {fileID: 11435888, guid: 2c210016b3be61b4682ae85238ad351c, type: 2}
-  vaperControlScript: {fileID: 11480150, guid: 4eac6302d98c30440941e2c44daaf11f, type: 2}
-  ZombiesSpawned: 1
---- !u!114 &836073245 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11451110, guid: 66d91597c9a80ae4d803752aa06d2347,
-    type: 2}
-  m_PrefabInternal: {fileID: 1980080033}
-  m_Script: {fileID: 11500000, guid: f89955f60b4189b4fbe08b6435d3e1e1, type: 3}
---- !u!114 &984287037 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11444380, guid: 66d91597c9a80ae4d803752aa06d2347,
-    type: 2}
-  m_PrefabInternal: {fileID: 1980080033}
-  m_Script: {fileID: 11500000, guid: f89955f60b4189b4fbe08b6435d3e1e1, type: 3}
+  vaperControlScript: {fileID: 11480150, guid: 15409875022b5074992a0583a2169011, type: 2}
+  ZombiesSpawned: 10
 --- !u!1 &1186532651
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,12 +222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6df3ee5ac26fb649a19dd3d2dc0bba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Players:
-  - {fileID: 1258508766}
-  - {fileID: 836073245}
-  - {fileID: 1619619674}
-  - {fileID: 984287037}
-  - {fileID: 468044156}
 --- !u!4 &1186532653
 Transform:
   m_ObjectHideFlags: 0
@@ -256,7 +231,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.93, y: 5.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -349,16 +323,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &1619619674 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11464280, guid: 66d91597c9a80ae4d803752aa06d2347,
-    type: 2}
-  m_PrefabInternal: {fileID: 1980080033}
-  m_Script: {fileID: 11500000, guid: f89955f60b4189b4fbe08b6435d3e1e1, type: 3}
 --- !u!1001 &1980080033
 Prefab:
   m_ObjectHideFlags: 0
