@@ -43,11 +43,13 @@ public class GameControllerScript : MonoBehaviour {
             float y = Random.Range(-5.0f, 5.0f);
 
             Vector3 spawnPos = vanPos - new Vector3(0 + x, 10 + y, 0);
-            int g = Random.Range(1, 10);
+            //int g = Random.Range(1, 10);
+            int g = 7;
             if (g == 7) {
                 float xx = Random.Range(-10.0f, 10.0f);
                 float yy = Random.Range(-5.0f, 5.0f);
                 Vector3 spawnPos2 = vanPos - new Vector3(0 + xx, 10 + yy, 0);
+                //spawnPos2 = new Vector3(0, -2, 0);
 
                VaperControlScript vaper = (VaperControlScript) Instantiate(vaperControlScript, spawnPos2, Quaternion.identity);
                 vaper.gameObject.name = "Vaper" + i;
