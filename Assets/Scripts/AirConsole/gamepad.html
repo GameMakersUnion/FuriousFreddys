@@ -176,6 +176,29 @@
  
 </head>
 <body onload="window.app = new App()">
+    <!-- Driver Screen  -->
+    <div style="display:none">
+        <strong>Driver Screen</strong>
+        <button class="button" ontouchstart="window.app.sendMessageToScreen('left')" ontouchend="window.app.sendMessageToScreen('stop')"> Turn Left</button>
+        <button class="button" ontouchstart="window.app.sendMessageToScreen('right')" ontouchend="window.app.sendMessageToScreen('stop')">Turn Right</button>
+    </div>
+
+    <!-- Shooter Screen  -->
+    <div style="display:none>
+        <strong>Shooter Screen</strong>
+        <button class="button" ontouchstart="window.app.sendMessageToScreen('left')" ontouchend="window.app.sendMessageToScreen('stop')"> Turn Left</button>
+        <button class="button" ontouchstart="window.app.sendMessageToScreen('right')" ontouchend="window.app.sendMessageToScreen('stop')">Turn Right</button>
+    </div>
+
+    <!-- Support Screen  -->
+    <div style="display:none>
+        <strong>Support Screen</strong>
+    </div>
+
+    <!-- Store Screen  -->
+    <div>
+        <strong>Store Screen</strong>
+    </div>
 
     <div style="margin-top:50px">
         <div style="float:left">
