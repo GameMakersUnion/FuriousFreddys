@@ -4,7 +4,9 @@ using System.Collections.Generic;
 
 public class LevelController : MonoBehaviour {
 
+    public bool MoveRoad;
 
+    public float ScrollSpeed { get { return scrollSpeed; } } //Limited accessibility deliberately
     private float scrollSpeed = 0.2f;  //The speed to scroll the roadSegments at
 
     private List<GameObject> roadSegments;  //The list of GameObjects to hold the roadSegmentPrefabs
@@ -16,6 +18,35 @@ public class LevelController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        if (MoveRoad)
+        {
+            createRoadSegments();
+        }
+    }
+	
+	// Update is called once per frame
+	void Update () {
+
+        if (MoveRoad){
+            if (roadSegments == null)
+            {
+                createRoadSegments();
+            }
+
+            //Iterate through roadSegments and adjust the y position by newYPos
+            moveRoadSegments();
+
+            //Generate obstacles randomly
+            generateRock();
+
+            //Iterate through rocks and adjust the y position
+            moveRocks();
+
+        }
+	}
+
+    void createRoadSegments()
+    {
         //List to hold roadSegments
         roadSegments = new List<GameObject>();
         rocks = new List<GameObject>();
@@ -33,7 +64,7 @@ public class LevelController : MonoBehaviour {
 
         //Add first segment
         GameObject roadSegment1 = Instantiate(roadSegmentPrefab);
-        roadSegment1.transform.position = new Vector3(roadSegment1.transform.position.x, roadSegment1.transform.position.y , roadSegment1.transform.position.z);
+        roadSegment1.transform.position = new Vector3(roadSegment1.transform.position.x, roadSegment1.transform.position.y, roadSegment1.transform.position.z);
         roadSegments.Add(roadSegment1);
 
         //Add second segment and offset by size of previous segment
@@ -53,18 +84,6 @@ public class LevelController : MonoBehaviour {
 
         Debug.Log(roadSegments);
     }
-	
-	// Update is called once per frame
-	void Update () {
-        //Iterate through roadSegments and adjust the y position by newYPos
-        moveRoadSegments();
-       
-        //Generate obstacles randomly
-        generateRock();
-
-        //Iterate through rocks and adjust the y position
-        moveRocks();
-	}
 
     void generateRock()
     {
