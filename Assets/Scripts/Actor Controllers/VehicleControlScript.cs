@@ -44,7 +44,9 @@ public class VehicleControlScript : PlayerControlScript
             this.rb.angularVelocity = 0;
 
         }
-
+        transform.rotation = Quaternion.EulerRotation(0, 0, 5f);
+        Vector2 blah = Velocity;
+        print(blah);
     }
     
     /**
@@ -67,7 +69,47 @@ public class VehicleControlScript : PlayerControlScript
         return health;
     }
 
+    public Vector2 Velocity
+    {
+        get
+        {
+            Vector2 foundVelocity = FindVelocity();
+            return foundVelocity;
+        }
+    }
+
+    private Vector2 FindVelocity(){
+
+        LevelController lc = SetAndGetLevelController();
+        float yAngle = transform.eulerAngles.z;
+        float ySpeed = lc.ScrollSpeed;
+        float xSize = UseTrigonometryGetSideSineLaw(yAngle, ySpeed);
+
+        float xAngle = 90 - yAngle;
+        float ySize = UseTrigonometryGetSideSineLaw(xAngle, xSize);
+
+        Vector2 velocity = new Vector2(xSize, ySize);
+        return velocity;
+
+    }
+
+    private float UseTrigonometryGetSideSineLaw(float angleA, float sideA)
+    {
+        //requires 90° triangle 
+        float angleB = 90 - angleA; 
+        float sideB = sideA * Mathf.Sin( angleA ) / Mathf.Sin( angleB );
+        //print(Mathf.RoundToInt(angleA) + "," + Mathf.RoundToInt(angleB) + "," + Mathf.RoundToInt(sideA), + ",..."+ Mathf.RoundToInt(sideB));
+        return sideB;
+    }
 
 
-
+    LevelController levelController;  //yucky side effect state
+    private LevelController SetAndGetLevelController()
+    {
+        if (levelController == null)
+        {
+            levelController = GameObject.Find("LevelController").GetComponent<LevelController>();
+        }
+        return levelController;
+    }
 }

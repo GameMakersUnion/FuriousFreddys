@@ -7,7 +7,7 @@ public class LevelController : MonoBehaviour {
     public bool MoveRoad;
 
     public float ScrollSpeed { get { return scrollSpeed; } } //Limited accessibility deliberately
-    private float scrollSpeed = 0.2f;  //The speed to scroll the roadSegments at
+    private float scrollSpeed = 2f;  //The speed to scroll the roadSegments at
 
     private List<GameObject> roadSegments;  //The list of GameObjects to hold the roadSegmentPrefabs
     public GameObject roadSegmentPrefab;    //The roadSegmentPrefab which the each segment is made from
