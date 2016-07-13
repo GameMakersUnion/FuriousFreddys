@@ -19,22 +19,30 @@ public class GamepadMessage : MonoBehaviour {
         //We cannot assume that the first controller's device ID is '1', because device 1 
         //might have left and now the first controller in the list has a different ID.
         //Never hardcode device IDs!
-        int idOfFirstController = AirConsole.instance.GetControllerDeviceIds()[0];
+        int idOfFirstController = AirConsole.instance.GetControllerDeviceIds()[player];
 
-        AirConsole.instance.Message(idOfFirstController, "Hey there, first controller!");
+        AirConsole.instance.Message(idOfFirstController, message);
 
         //Log to on-screen Console
         //logWindow.text = logWindow.text.Insert(0, "Sent a message to first Controller \n \n");
     }
-
+    //
     public void SendMessageToControllerToPlayerOne(string message)
     {
-
-        int idOfFirstController = AirConsole.instance.GetControllerDeviceIds()[0];
-
-        AirConsole.instance.Message(idOfFirstController, message);
+        SendMessageToController(message,0);
     }
-
+    public void SendMessageToControllerToPlayerTwo(string message)
+    {
+        SendMessageToController(message, 1);
+    }
+    public void SendMessageToControllerToPlayerThree(string message)
+    {
+        SendMessageToController(message, 2);
+    }
+    public void SendMessageToControllerToPlayerFour(string message)
+    {
+        SendMessageToController(message, 3);
+    }
     // Update is called once per frame
     void Update () {
 	

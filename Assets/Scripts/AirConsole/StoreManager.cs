@@ -41,6 +41,8 @@ public class StoreManager : MonoBehaviour
         {
             button.interactable = true;
         }
+        //When ready make sure everyone is on store screen
+        BroadcastMessageToAllDevices("screen-store");
     }
 
     void OnMessage(int from, JToken data)
@@ -155,9 +157,9 @@ public class StoreManager : MonoBehaviour
         logWindow.text = logWindow.text.Insert(0, "Sent a message to first Controller \n \n");
     }
 
-    public void BroadcastMessageToAllDevices()
+    public void BroadcastMessageToAllDevices(string message="")
     {
-        AirConsole.instance.Broadcast("Hey everyone!");
+        AirConsole.instance.Broadcast(message);
         logWindow.text = logWindow.text.Insert(0, "Broadcast a message. \n \n");
     }
 
