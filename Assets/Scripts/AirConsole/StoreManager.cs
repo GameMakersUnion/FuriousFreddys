@@ -30,6 +30,7 @@ public class StoreManager : MonoBehaviour
         logWindow.text = "Connecting... \n \n";
     }
 
+
     void OnReady(string code)
     {
         //Log to on-screen Console
