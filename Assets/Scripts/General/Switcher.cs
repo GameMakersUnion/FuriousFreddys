@@ -36,10 +36,7 @@ public class Switcher : MonoBehaviour {
         {
             Player.Move(1);
         }
-        else
-        {
-             Player.Move(0);
-        }
+
     }
 
     void CyclePlayers()

@@ -5,7 +5,8 @@ public class VehicleControlScript : PlayerControlScript
 {
     public int health;
     Rigidbody2D rb;
-
+    bool moveLeft=false;
+    bool moveRight = false;
 
     protected override void Start () {
         base.Start();
@@ -23,8 +24,40 @@ public class VehicleControlScript : PlayerControlScript
         rb.velocity = new Vector3(moveFactor * direction * Time.deltaTime, 0, 0);
 
     }
+    public void MoveLeftUp()
+    {
+        moveLeft = false;
+
+    }
+    public void MoveLeftDown()
+    {
+        moveLeft = true;
+
+    }
+    public void MoveRightUp()
+    {
+        moveRight = false;
+
+    }
+    public void MoveRightDown()
+    {
+        moveRight = true;
+  
+    }
     public void Update()
     {
+        if (moveLeft){
+            Move(-1);
+            
+        }else
+        if (moveRight){
+            Move(1);
+
+        }else
+        {
+            //Move(0);
+        }
+
         // this is broken car is supposed to realign itself and try to return to the upright position
 
         //print(this.transform.rotation.eulerAngles.z);
