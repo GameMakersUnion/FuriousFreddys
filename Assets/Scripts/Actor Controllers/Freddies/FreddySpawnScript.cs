@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class FreddySpawnScript : MonoBehaviour {
 
     private List<GunnerControlScript> freddies_ = new List<GunnerControlScript>();
+
     private int numPlayers_, maxPlayers = 4;
 
     public List<GunnerControlScript> Freddies
@@ -18,7 +19,6 @@ public class FreddySpawnScript : MonoBehaviour {
         }
     }
 
-
     [ExposeProperty]
     public int NumPlayers
     {
@@ -30,7 +30,6 @@ public class FreddySpawnScript : MonoBehaviour {
         }
     }
 
-    // Use this for initialization
     void Awake()
     {
         NumPlayers = 4;
@@ -41,12 +40,6 @@ public class FreddySpawnScript : MonoBehaviour {
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void InstantiatePlayer(int playerNum)
     {
         Vector3 position = Vector3.zero;
@@ -54,6 +47,7 @@ public class FreddySpawnScript : MonoBehaviour {
 
         switch (playerNum)
         {
+            
             case 1:
                 position = new Vector3(-0.4f, -1.5f, 0);
                 freddy = Resources.Load<GunnerControlScript>("Prefabs/FredRed");
@@ -81,6 +75,10 @@ public class FreddySpawnScript : MonoBehaviour {
             GunnerControlScript freddySpawn = Instantiate(freddy, position * transform.localScale.x + vehiclePos, Quaternion.identity) as GunnerControlScript;
             freddySpawn.transform.parent = transform;
             freddies_.Add(freddySpawn);
+        }
+        else
+        {
+            Debug.Log("Freddy failed to spawn.");
         }
     }
 

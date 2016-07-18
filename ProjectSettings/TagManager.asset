@@ -7,6 +7,8 @@ TagManager:
   - Vehicle
   - Zombie
   - Rock
+  - Bullet
+  - Freddy
   layers:
   - Default
   - TransparentFX
@@ -49,4 +51,10 @@ TagManager:
     locked: 0
   - name: Freddies
     uniqueID: 1296096865
+    locked: 0
+  - name: Weapons
+    uniqueID: 1661145877
+    locked: 0
+  - name: Bullets
+    uniqueID: 2547518111
     locked: 0

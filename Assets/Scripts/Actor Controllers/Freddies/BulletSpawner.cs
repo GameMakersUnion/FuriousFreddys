@@ -3,16 +3,17 @@
 public class BulletSpawner : MonoBehaviour
 {
 
-    protected Transform tf;
+    private Transform tf;
 
-	protected virtual void Start ()
+    void Start()
     {
-        tf = GetComponent<Transform>();
-	}
+        tf = transform;
+    }
 
     public virtual void Spawn(GameObject Projectile, GameObject MuzzleFlash)
     {
-        Instantiate(MuzzleFlash, tf.position, tf.rotation);
+        if (MuzzleFlash != null)
+            Instantiate(MuzzleFlash, tf.localPosition, tf.localRotation);
         Instantiate(Projectile, tf.position, tf.rotation);
     }
 

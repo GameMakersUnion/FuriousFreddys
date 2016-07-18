@@ -13,7 +13,7 @@ public class WeaponController : MonoBehaviour
 	void Start ()
     {
         nextFire = 0;
-	}
+    }
 
     public void Fire()
     {
