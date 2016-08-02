@@ -80,7 +80,8 @@ public class VehicleControlScript : PlayerControlScript
         return health;
     }
 
-
+    //PURELY for debugging purposes. Vehicle doesn't shoot anything. -TZ
+    public override void Shoot() {}
 
 
 }

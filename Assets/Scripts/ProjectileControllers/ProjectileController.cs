@@ -8,7 +8,11 @@ public class ProjectileController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll) {
         if (!coll.gameObject.CompareTag("Vehicle"))
-		    Destroy (gameObject);
+        {
+            //call take dmg method in zombie controller
+            Destroy(gameObject);
+        }
+
 	}
 
 }

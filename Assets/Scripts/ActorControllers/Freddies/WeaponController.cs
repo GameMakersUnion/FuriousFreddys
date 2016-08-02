@@ -3,17 +3,18 @@
 public class WeaponController : MonoBehaviour
 {
 
-    public float fireRate;
+    private float nextFire;
+
+    public int magSize;
+    public float fireRate, reloadTime;
     public Vector3 pos; //the position of the weapon that looks the most 'proper'
     public GameObject Projectile, MuzzleFlash;
     public BulletSpawner Spawner;
-
-    private float nextFire;
     
 	void Start ()
     {
         nextFire = 0;
-	}
+    }
 
     public void Fire()
     {

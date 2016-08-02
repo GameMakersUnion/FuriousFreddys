@@ -9,11 +9,13 @@ public class Switcher : MonoBehaviour {
     private int currPlayer;
 
 	void Start () {
+        
+
         currPlayer = 0;
         GameObject vehicle = GameObject.FindGameObjectWithTag("Vehicle");
         PlayerControlScript[] gunnerArray = vehicle.GetComponent<FreddySpawnScript>().Freddies.ToArray();
 
-        Players = new PlayerControlScript[ 1 + gunnerArray.Length ];
+        Players = new PlayerControlScript[1 + gunnerArray.Length];
         Players[0] = vehicle.GetComponent<PlayerControlScript>();
 
         gunnerArray.CopyTo(Players, 1);
@@ -24,7 +26,8 @@ public class Switcher : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Q))
             CyclePlayers();
-
+        if (Input.GetKeyDown(KeyCode.Space))
+            Player.Shoot();
     }
 
     void FixedUpdate() {
@@ -38,7 +41,7 @@ public class Switcher : MonoBehaviour {
         }
         else
         {
-             Player.Move(0);
+            Player.Move(0);
         }
     }
 
