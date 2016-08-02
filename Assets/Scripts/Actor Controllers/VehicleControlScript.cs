@@ -5,22 +5,33 @@ public class VehicleControlScript : PlayerControlScript
 {
     public int health;
     Rigidbody2D rb;
-
+    int movedir;
 
     protected override void Start () {
         base.Start();
         health = 500;
         rb= this.GetComponent<Rigidbody2D>();
+        movedir = 0;
         //print(this.GetComponent<Collider2D>().bounds.extents + transform.position + "v");
+
     }
 
     public override void Move(int direction)
     {
         //shift left or right
 
-        //tf.Translate(moveFactor * direction * Time.deltaTime, 0, 0);
-        
-        rb.velocity = new Vector3(moveFactor * direction * Time.deltaTime, 0, 0);
+    //    tf.Translate(moveFactor * direction * Time.deltaTime, 0, 0);
+
+       // rb.velocity = new Vector3(moveFactor * direction * Time.deltaTime, 0, 0);
+
+        if (direction == 0)
+        {
+  
+        }
+        else {
+ rb.AddForce (new Vector2( moveFactor*10000 * direction * Time.deltaTime, 0));
+            
+        }
 
     }
     public void Update()
@@ -33,16 +44,18 @@ public class VehicleControlScript : PlayerControlScript
         if (rotation.z < 180)
         {
             transform.rotation = Quaternion.Euler((Vector3.Lerp(rotation, Vector3.zero, 0.05f)));
+            //Mathf.LerpAngle(Quaternion.Euler(rotation), Vector3.zero, 0.05f));
+           // rb.AddTorque(moveFactor*10 );
         }
         else {
             transform.rotation = Quaternion.Euler((Vector3.Lerp(rotation, new Vector3(0, 0, 360), 0.05f)));
-
+           // rb.AddTorque(-moveFactor*10 );
         }
 
 
         if (Mathf.Abs(rotation.z - 360) <  0.5 ||(rotation.z - 360) <  0.5 ) {
             this.rb.angularVelocity = 0;
-
+          
         }
 
     }

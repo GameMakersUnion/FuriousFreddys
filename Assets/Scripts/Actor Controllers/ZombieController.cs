@@ -8,6 +8,12 @@ public class ZombieController : MasterZombieScript
     public float speed;
     
 
+     public override void Start() {
+        base.Start();
+        transform.position = Vector3.Lerp(start, destin, speed);
+
+    }
+
     // Update is called once per frame
     public override void Update()
     {
@@ -23,7 +29,8 @@ public class ZombieController : MasterZombieScript
         {
             // this.rb.velocity = Vector3.zero;
             this.rb.angularVelocity = 0;
-            transform.position = Vector3.Lerp(start, destin, speed);
+            //transform.Translate(Vector3.Lerp(start, destin, speed));
+           transform.position = Vector3.Lerp(start, destin, speed);
             //print(transform.position);
 
         }
@@ -34,7 +41,9 @@ public class ZombieController : MasterZombieScript
         if (col.gameObject.tag == "Vehicle")
         {
             base.OnCollisionExit2D(col);
-            transform.position = Vector3.Lerp(start, destin, speed);
+           transform.position = Vector3.Lerp(start, destin, speed);
+            //transform.Translate(Vector3.Lerp(start, destin, speed));
+
             this.colcount = 10;
             //print("exiting" + this.name);
 
@@ -47,6 +56,8 @@ public class ZombieController : MasterZombieScript
     {
         if (col.gameObject.tag == "Vehicle")
         {
+            //transform.position(transform.)
+            //transform.Translate(transform.position);
             //this.rb.Sleep();
             base.OnCollisionEnter2D(col);
             ZSR.sprite = Oface;

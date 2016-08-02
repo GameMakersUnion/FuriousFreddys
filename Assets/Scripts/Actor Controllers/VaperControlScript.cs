@@ -64,7 +64,7 @@ public class VaperControlScript : MasterZombieScript {
         //it shoots the tongue?
         this.shooting = true;
         hookShoot.BuildRope();
-        print(this.gameObject.name + " i shoot tongue");
+        //print(this.gameObject.name + " i shoot tongue");
        hookShoot.destination = d;
 
 
@@ -74,7 +74,7 @@ public class VaperControlScript : MasterZombieScript {
         hookShoot.DestroyRope();
         this.rb.velocity = Vector2.zero;
         this.shooting = false;
-        print(this.gameObject.name + " tongue broke");
+        //print(this.gameObject.name + " tongue broke");
 
     }
 
