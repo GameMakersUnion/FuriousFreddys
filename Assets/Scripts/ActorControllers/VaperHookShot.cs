@@ -15,7 +15,7 @@ public class VaperHookShot : MonoBehaviour
            Transform target;
     public float resolution = 0.5F;                           //  Sets the amount of joints there are in the rope (1 = 1 joint for every 1 unit)
     public float ropeDrag = 0.1F;                                //  Sets each joints Drag
-    public float ropeMass = 0.1F;                           //  Sets each joints Mass
+    public float ropeMass =5;                           //  Sets each joints Mass
     public float ropeColRadius = 0.5F;                  //  Sets the radius of the collider in the SphereCollider component
                                                         //public float ropeBreakForce = 25.0F;					 //-------------- TODO (Hopefully will break the rope in half...
     private Vector3[] segmentPos;           //  DONT MESS!	This is for the Line Renderer's Reference and to set up the positions of the gameObjects
@@ -30,10 +30,11 @@ public class VaperHookShot : MonoBehaviour
     public float highTwistLimit = 100.0F;                   //  The upper limit around the primary axis of the character joint.
     public float swing1Limit = 20.0F;
     void Awake() {
-
+        
+        ropeMass = 10;
         line = gameObject.GetComponent<LineRenderer>();
         van = GameObject.FindGameObjectWithTag("Vehicle");
-        print(van.GetComponents<Rigidbody2D>());
+       // print(van.GetComponents<Rigidbody2D>());
         target = van.GetComponent<Transform>();
     
         vrb = GetComponentInParent<Rigidbody2D>();
@@ -134,8 +135,7 @@ public class VaperHookShot : MonoBehaviour
         joints[n] = new GameObject("Joint_" + n);
         joints[n].transform.parent = transform;
         Rigidbody2D rigid = joints[n].AddComponent<Rigidbody2D>();
-       // joints[n].GetComponent<Rigidbody2D>().gravityScale = 0;
-
+        // joints[n].GetComponent<Rigidbody2D>().gravityScale = 0;
         CircleCollider2D col = joints[n].AddComponent<CircleCollider2D>();
         HingeJoint2D ph = joints[n].AddComponent<HingeJoint2D>();
         //
@@ -155,6 +155,8 @@ public class VaperHookShot : MonoBehaviour
 
         rigid.drag = ropeDrag;
         rigid.mass = ropeMass;
+
+      // print( joints[n].GetComponent<Rigidbody2D>().mass + " " + rigid.mass + " " + ropeMass);
         col.radius = ropeColRadius;
 
         if (n == 1)
@@ -172,7 +174,7 @@ public class VaperHookShot : MonoBehaviour
     {
         // Stop Rendering Rope then Destroy all of its components
         rope = false;
-        for (int dj = 0; dj < joints.Length - 1; dj++)
+        for (int dj = 0; dj < joints.Length; dj++)
         {
             Destroy(joints[dj]);
         }

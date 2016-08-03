@@ -49,7 +49,7 @@ public class Switcher : MonoBehaviour {
     {
         if (++currPlayer >= Players.Length)
             currPlayer = 0;
-        Debug.Log(currPlayer);
+       // Debug.Log(currPlayer);
         Player = Players[currPlayer];
     }
 

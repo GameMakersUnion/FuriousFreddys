@@ -30,7 +30,7 @@ public class GameControllerScript : MonoBehaviour {
 	void Update () {
         if (vehicle.currentHealth()  == 0&&  !gameOver)
         {
-            print("game over");
+           // print("game over");
             gameOver = true;
         }
 	}

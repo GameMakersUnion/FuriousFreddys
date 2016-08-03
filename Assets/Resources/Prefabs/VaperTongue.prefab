@@ -39,7 +39,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101060}
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -59,11 +59,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb5b8280b747094881f53d65b73df4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  van: {fileID: 0}
+  smoker: {fileID: 0}
+  hooked: 0
   destination: {x: 0, y: 0, z: 0}
+  vrb: {fileID: 0}
+  target: {fileID: 0}
   resolution: 2
   ropeDrag: 0.1
   ropeMass: 10
   ropeColRadius: 0.05
+  segmentPos: []
+  joints: []
+  line: {fileID: 0}
+  segments: 0
+  rope: 0
   swingAxis: {x: 1, y: 0, z: 0}
   lowTwistLimit: -100
   highTwistLimit: 107.84
