@@ -82,7 +82,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ecc5c33c9b65e544b1781d4cedd79d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.5
+  magSize: 0
+  fireRate: 0.1
+  reloadTime: 0
   pos: {x: 0.37, y: 0.27, z: 0}
   Projectile: {fileID: 184428, guid: b121c826ae67ab5489b0295af173fd10, type: 2}
   MuzzleFlash: {fileID: 0}

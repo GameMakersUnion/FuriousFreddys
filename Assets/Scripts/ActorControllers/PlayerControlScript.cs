@@ -1,18 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class PlayerControlScript : MonoBehaviour {
+public abstract class PlayerControlScript : EntityControlScript {
 
-    public float moveFactor;
+    public override int Health
+    {
+        get { return -1; }
+        set {}
+    }
 
     protected Transform tf;
 
-    protected virtual void Start()
+    protected override void Start()
     {
         tf = GetComponent<Transform>();
     }
 
-    public abstract void Move(int direction);
-    public abstract void Shoot();
+    
+    public abstract void PerformAction();
 
  }

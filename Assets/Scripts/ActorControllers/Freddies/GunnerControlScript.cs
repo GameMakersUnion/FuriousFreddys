@@ -14,6 +14,7 @@ public class GunnerControlScript : PlayerControlScript {
     protected override void Start ()
     {
         base.Start();
+        moveFactor = 200;
         CurrWeapon = (GameObject)Instantiate(CurrWeaponScript.gameObject, Vector3.zero, tf.rotation);
         CurrWeapon.transform.parent = gameObject.transform;
         CurrWeapon.transform.localPosition = CurrWeaponScript.pos;
@@ -27,10 +28,15 @@ public class GunnerControlScript : PlayerControlScript {
 
     public override void Move(int direction)
     {
-        tf.Rotate(0, 0, moveFactor * -direction); //rotate left or right
+        tf.Rotate(0, 0, moveFactor * -direction * Time.deltaTime); //rotate left or right
     }
 
-    public override void Shoot()
+    public override void PerformAction()
+    {
+        Shoot();
+    }
+
+    private void Shoot()
     {
         CurrWeapon.GetComponent<WeaponController>().Fire(); //fire projectile
         /*

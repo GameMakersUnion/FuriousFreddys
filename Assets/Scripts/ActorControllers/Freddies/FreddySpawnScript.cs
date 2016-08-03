@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 public class FreddySpawnScript : MonoBehaviour {
 
-    private List<GunnerControlScript> freddies_ = new List<GunnerControlScript>();
+    private List<PlayerControlScript> freddies_ = new List<PlayerControlScript>();
 
-    private int numPlayers_, maxPlayers = 4;
+    private int numPlayers_, maxPlayers = 5;
 
-    public List<GunnerControlScript> Freddies
+    public List<PlayerControlScript> Freddies
     {
         get
         {
@@ -32,7 +32,7 @@ public class FreddySpawnScript : MonoBehaviour {
 
     void Awake()
     {
-        NumPlayers = 4;
+        NumPlayers = 2;
         for (int i = 1; i <= numPlayers_; i++)
         {
             InstantiatePlayer(i);
@@ -43,14 +43,14 @@ public class FreddySpawnScript : MonoBehaviour {
     void InstantiatePlayer(int playerNum)
     {
         Vector3 position = Vector3.zero;
-        GunnerControlScript freddy = null;
+        PlayerControlScript freddy = null;
 
         switch (playerNum)
         {
             
             case 1:
-                position = new Vector3(-0.4f, -1.5f, 0);
-                freddy = Resources.Load<GunnerControlScript>("Prefabs/FredRed");
+                position = new Vector3(-0.65f, 1.35f, 0);
+                freddy = Resources.Load<DriverControlScript>("Prefabs/FredOrange");
                 break;
             case 2:
                 position = new Vector3(0.4f, -1.5f, 0);
@@ -64,6 +64,10 @@ public class FreddySpawnScript : MonoBehaviour {
                 position = new Vector3(0.8f, -0.8f, 0);
                 freddy = Resources.Load<GunnerControlScript>("Prefabs/FredGreen");
                 break;
+            case 5:
+                position = new Vector3(-0.4f, -1.5f, 0);
+                freddy = Resources.Load<GunnerControlScript>("Prefabs/FredRed");
+                break;
             default:
                 Debug.LogWarning("Unable to spawn player " + playerNum);
                 break;
@@ -72,7 +76,7 @@ public class FreddySpawnScript : MonoBehaviour {
         if (freddy != null)
         {
             Vector3 vehiclePos = this.transform.position;
-            GunnerControlScript freddySpawn = Instantiate(freddy, position * transform.localScale.x + vehiclePos, Quaternion.identity) as GunnerControlScript;
+            PlayerControlScript freddySpawn = Instantiate(freddy, position * transform.localScale.x + vehiclePos, Quaternion.identity) as PlayerControlScript;
             freddySpawn.transform.parent = transform;
             freddies_.Add(freddySpawn);
         }

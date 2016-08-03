@@ -1,15 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class VehicleControlScript : PlayerControlScript
+public class VehicleControlScript : EntityControlScript
 {
-    public int health;
+    //public int health;
     Rigidbody2D rb;
 
+    public override int Health
+    {
+        get { return health; }
+        set { health = value; }
+    }
 
     protected override void Start () {
         base.Start();
         health = 500;
+        moveFactor = 750;
         rb= this.GetComponent<Rigidbody2D>();
         //print(this.GetComponent<Collider2D>().bounds.extents + transform.position + "v");
     }
@@ -66,9 +72,5 @@ public class VehicleControlScript : PlayerControlScript
         //Debug.Log(health);
         return health;
     }
-
-    //PURELY for debugging purposes. Vehicle doesn't shoot anything. -TZ
-    public override void Shoot() {}
-
 
 }
