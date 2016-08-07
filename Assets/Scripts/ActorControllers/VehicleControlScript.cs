@@ -17,6 +17,7 @@ public class VehicleControlScript : EntityControlScript
         health = 500;
         moveFactor = 750;
         rb= this.GetComponent<Rigidbody2D>();
+        gameObject.AddComponent<Sectioner>();
         //print(this.GetComponent<Collider2D>().bounds.extents + transform.position + "v");
     }
 
