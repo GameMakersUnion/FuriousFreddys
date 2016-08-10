@@ -10,7 +10,7 @@ public class ZombieController : MasterZombieScript
 
      public override void Start() {
         base.Start();
-        transform.position = Vector3.Lerp(start, destin, speed);
+        //transform.position = Vector3.Lerp(start, destin, speed);
 
     }
 

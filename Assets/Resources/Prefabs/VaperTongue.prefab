@@ -11,7 +11,7 @@ GameObject:
   - 120: {fileID: 12044824}
   - 114: {fileID: 11404950}
   - 50: {fileID: 5048142}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: VaperTongue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,21 +59,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb5b8280b747094881f53d65b73df4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  van: {fileID: 0}
-  smoker: {fileID: 0}
-  hooked: 0
   destination: {x: 0, y: 0, z: 0}
-  vrb: {fileID: 0}
-  target: {fileID: 0}
   resolution: 2
   ropeDrag: 0.1
   ropeMass: 10
   ropeColRadius: 0.05
-  segmentPos: []
-  joints: []
-  line: {fileID: 0}
-  segments: 0
-  rope: 0
   swingAxis: {x: 1, y: 0, z: 0}
   lowTwistLimit: -100
   highTwistLimit: 107.84

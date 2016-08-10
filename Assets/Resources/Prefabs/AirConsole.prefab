@@ -41,7 +41,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   browserStartMode: 0
-  controllerHtml: {fileID: 4900000, guid: 7a2728626f35dbe42b2a86dd29415e98, type: 3}
+  controllerHtml: {fileID: 4900000, guid: ca1927dd42a559848a0029d2859ba111, type: 3}
   autoScaleCanvas: 1
 --- !u!1001 &100100000
 Prefab:

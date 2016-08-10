@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 450368}
   - 212: {fileID: 21204858}
   - 114: {fileID: 11499042}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FredGreen
   m_TagString: Freddy
   m_Icon: {fileID: 0}
@@ -41,7 +41,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89955f60b4189b4fbe08b6435d3e1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveFactor: 5
   CurrWeaponScript: {fileID: 11497108, guid: 95d2bd3e898a3514cb82802254406714, type: 2}
 --- !u!212 &21204858
 SpriteRenderer:

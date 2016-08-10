@@ -15,6 +15,7 @@ public abstract class MasterZombieScript : MonoBehaviour
     protected Vector3 start;
     protected Vector3 destin;
     public int damage;
+    public int health;
     protected bool contact;
     protected int counter;
     protected Rigidbody2D rb;
@@ -70,7 +71,15 @@ public abstract class MasterZombieScript : MonoBehaviour
         }
     }
 
+    public virtual void updateHealth(int change)
+    {
+        this.health += change;
 
+        if (this.health <= 0) {
+            Destroy(this.gameObject);
+
+        } 
+    }
 
 
 
