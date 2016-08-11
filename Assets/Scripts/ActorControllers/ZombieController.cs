@@ -3,14 +3,14 @@ using System.Collections;
 
 public class ZombieController : MasterZombieScript
 {
-
+    
     Vector3 direction;
     public float speed;
     
 
      public override void Start() {
         base.Start();
-        transform.position = Vector3.Lerp(start, destin, speed);
+        //transform.position = Vector3.Lerp(start, destin, speed);
 
     }
 

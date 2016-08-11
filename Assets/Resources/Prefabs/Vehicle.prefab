@@ -13,7 +13,7 @@ GameObject:
   - 61: {fileID: 6129418}
   - 114: {fileID: 11421592}
   - 114: {fileID: 11413698}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Vehicle
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
@@ -86,8 +86,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32905366dcb53c4fbcd02a65f645687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveFactor: 1000
-  health: 500
 --- !u!212 &21271186
 SpriteRenderer:
   m_ObjectHideFlags: 1
