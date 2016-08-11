@@ -22,7 +22,7 @@ public class FreddyFuckerController : MasterZombieScript {
 
 
 
-        if (!jumping && distanceTo > jumpMinRange)
+        if (!jumping && distanceTo < jumpMinRange)
         {
              print("Im supposed to be doing shit");
             this.transform.position = Vector3.Lerp(start, destin, speed);
@@ -31,9 +31,11 @@ public class FreddyFuckerController : MasterZombieScript {
         else
         {
             //shoot the fucking tongue
-            transform.position = transform.position;
             if (!jumping)
             {
+               
+                //transform.position = transform.position;
+                jumping = true;
                 //jumping = true;
                jump(start, destin, this.gameObject);
 
@@ -43,8 +45,10 @@ public class FreddyFuckerController : MasterZombieScript {
         }
         if (jumping && distanceTo > jumpMaxRange)
         {
-           // breakTongue();
-
+            rb.velocity = Vector2.zero;
+            transform.position = transform.position;
+            // breakTongue();
+            jumping = false;
         }
 
 
@@ -55,7 +59,7 @@ public class FreddyFuckerController : MasterZombieScript {
     public void jump(Vector3 start, Vector3 destin, GameObject ob) {
 
         print("JUMPED");
-        ob.GetComponent<Rigidbody2D>().AddForce(100.0F* (destin - start));
+        ob.GetComponent<Rigidbody2D>().AddForce(1000.0F* (destin - start));
 
     }
 

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ZombieController : MasterZombieScript
 {
-
+    
     Vector3 direction;
     public float speed;
     
