@@ -39,8 +39,7 @@ public class Gridilizer : MonoBehaviour
 
             foreach (Sprite sprite in album_sprites)
             {
-                Sprite tile = GenerateNewTile(sprite);
-                tiles.Add(tile);
+                tiles.Add(sprite);
             }
 
         }
@@ -81,13 +80,6 @@ public class Gridilizer : MonoBehaviour
         textureSet.Apply();
         return textureSet;
 
-    }
-
-    public Sprite GenerateNewTile(Sprite sprite)
-    {
-        Texture2D tx = GetTextureFrom(sprite);
-        sprite = GetSpriteFrom(tx);
-        return sprite;
     }
 
     Sprite GetSpriteFrom(Texture2D texture)
