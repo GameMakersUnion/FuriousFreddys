@@ -7,9 +7,11 @@ using System.Linq;
 public class Gridilizer : MonoBehaviour
 {
 
+    public bool useGrid; 
     public Sprite[] sections;
     SpriteRenderer sr;
     GameObject[,] grid;
+    
 
     void Start()
     {
@@ -26,7 +28,7 @@ public class Gridilizer : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D col)
     {
-        if (col.gameObject == this.gameObject || col.gameObject.tag == "Cell") return;
+        if (col.gameObject == this.gameObject || col.gameObject.tag == "Cell" ) return;
 
         foreach (ContactPoint2D contact in col.contacts)
         {
@@ -39,6 +41,8 @@ public class Gridilizer : MonoBehaviour
 
     void UtilSpawnMarkerAt(ContactPoint2D contact)
     {
+        if (contact.collider.GetComponent<HingeJoint2D>() != null || contact.collider.GetComponent<MasterZombieScript>() != null) return;
+
         print(contact.collider.name + " hit " + contact.otherCollider.name + " at " + contact.point);
         GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         marker.name = "Marker_" + contact.point;
@@ -73,7 +77,7 @@ public class Gridilizer : MonoBehaviour
 
     void AssignGridTo(Sprite tileset)
     {
-        if (sections.Length <= 0) return;
+        if (sections.Length <= 0 || !useGrid) return;
         List<Sprite> tiles = new List<Sprite>();
 
         foreach (Sprite section in sections)

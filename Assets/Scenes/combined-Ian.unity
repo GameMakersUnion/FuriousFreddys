@@ -85,23 +85,6 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &133336567 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 162482, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
-  m_PrefabInternal: {fileID: 1600972130}
---- !u!114 &133336573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 133336567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b23576b953f71fb40a9112df9844865a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sections:
-  - {fileID: 21300000, guid: b36bfe326054c2f40a34f3e882f63d7a, type: 3}
 --- !u!114 &1197597264 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11421592, guid: 66d91597c9a80ae4d803752aa06d2347,
@@ -294,37 +277,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 451618, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 451618, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
+    - target: {fileID: 11490848, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
+      propertyPath: useGrid
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 21271186, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
-      propertyPath: m_SortingLayerID
-      value: -1099212831
-      objectReference: {fileID: 0}
-    - target: {fileID: 21287594, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
-      propertyPath: m_SortingLayerID
-      value: 1296096865
-      objectReference: {fileID: 0}
-    - target: {fileID: 21264836, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
-      propertyPath: m_SortingLayerID
-      value: 1296096865
-      objectReference: {fileID: 0}
-    - target: {fileID: 21236104, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
-      propertyPath: m_SortingLayerID
-      value: 1296096865
-      objectReference: {fileID: 0}
-    - target: {fileID: 21202488, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
-      propertyPath: m_SortingLayerID
-      value: 1296096865
-      objectReference: {fileID: 0}
-    - target: {fileID: 21271186, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 4e556610eeffc854f85626f1f3f48b0a,
-        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
   m_IsPrefabParent: 0
@@ -369,7 +327,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11433722, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}
       propertyPath: ZombiesSpawned
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}

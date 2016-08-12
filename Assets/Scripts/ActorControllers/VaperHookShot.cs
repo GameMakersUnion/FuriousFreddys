@@ -42,8 +42,6 @@ public class VaperHookShot : MonoBehaviour
         //BuildRope();
         //DestroyRope();
     }
- 
-
 
     void Update()
     {
