@@ -102,50 +102,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sections:
   - {fileID: 21300000, guid: b36bfe326054c2f40a34f3e882f63d7a, type: 3}
---- !u!1 &551175590
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 551175591}
-  - 114: {fileID: 551175592}
-  m_Layer: 0
-  m_Name: GameController
-  m_TagString: GameController
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &551175591
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 551175590}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
---- !u!114 &551175592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 551175590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3978b78dcdbbdf4685499a57bbb9206, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameTime: 5
-  zombieController: {fileID: 11435888, guid: 2c210016b3be61b4682ae85238ad351c, type: 2}
-  vaperControlScript: {fileID: 0}
-  ZombiesSpawned: 0
 --- !u!114 &1197597264 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11421592, guid: 66d91597c9a80ae4d803752aa06d2347,
@@ -371,6 +327,52 @@ Prefab:
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1676136225
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 497548, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 497548, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 497548, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 497548, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 497548, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 497548, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 497548, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 497548, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433722, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}
+      propertyPath: ZombiesSpawned
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1901610767
 Prefab:

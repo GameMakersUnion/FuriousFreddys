@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 432018}
   - 212: {fileID: 21221510}
   - 50: {fileID: 5003616}
-  - 61: {fileID: 6173920}
+  - 114: {fileID: 11445412}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Rock
@@ -48,20 +48,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &6173920
-BoxCollider2D:
+--- !u!114 &11445412
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165790}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 9, y: 8.17}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce5ddc2ad71a6964f8680bd4d565a874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21221510
 SpriteRenderer:
   m_ObjectHideFlags: 1

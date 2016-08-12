@@ -9,6 +9,7 @@ TagManager:
   - Rock
   - Bullet
   - Freddy
+  - Cell
   layers:
   - Default
   - TransparentFX

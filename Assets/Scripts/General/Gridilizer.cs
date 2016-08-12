@@ -9,21 +9,67 @@ public class Gridilizer : MonoBehaviour
 
     public Sprite[] sections;
     SpriteRenderer sr;
+    GameObject[,] grid;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        grid = new GameObject[4,6];
         AssignGridTo(sr.sprite);
-        //ShowGrid();
-        //sr = GetSpriteDetails();
-
+        
     }
 
     void Update()
     {
+        DetectDamageToGrid();
+    }
+
+    void OnCollisionStay2D(Collision2D col)
+    {
+        if (col.gameObject == this.gameObject || col.gameObject.tag == "Cell") return;
+
+        foreach (ContactPoint2D contact in col.contacts)
+        {
+            UtilSpawnMarkerAt(contact);
+            SpriteRenderer sr = contact.otherCollider.gameObject.GetComponent<SpriteRenderer>();
+            StartCoroutine(FlashSprite(sr));
+
+        }
+    }
+
+    void UtilSpawnMarkerAt(ContactPoint2D contact)
+    {
+        print(contact.collider.name + " hit " + contact.otherCollider.name + " at " + contact.point);
+        GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        marker.name = "Marker_" + contact.point;
+        marker.transform.position = contact.point * 1000;
+        marker.transform.position /= 1000;
+        marker.transform.localScale = new Vector3(0.1f, 1, 1);
+        GameObject marker2 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        marker2.transform.position = contact.point * 1000;
+        marker2.transform.position /= 1000;
+        marker2.transform.localScale = new Vector3(1, 0.1f, 1);
+        marker2.transform.parent = marker.transform;
+        StartCoroutine(DelayedBreak(marker));
+    }
+
+    IEnumerator DelayedBreak(GameObject go)
+    {
+        yield return new WaitForSeconds(0.2f);
+        Destroy(go);
+    }
+
+    IEnumerator FlashSprite(SpriteRenderer sr)
+    {
+        sr.material.color = Color.blue;
+        yield return new WaitForSeconds(0.2f);
+        sr.material.color = Color.white;
+    }
+
+    void DetectDamageToGrid()
+    {
 
     }
-    
 
     void AssignGridTo(Sprite tileset)
     {
@@ -43,73 +89,49 @@ public class Gridilizer : MonoBehaviour
             }
 
         }
-        Texture2D tx = BuildTileset(tileset, tiles);
-        sr.sprite = GetSpriteFrom(tx);
+
+        SpawnGrid(tileset, tiles);
+        ApplyPhysicsFromParentToChildren();
+        //DisablePhysicsOnParent();
+        SetGridHitPoints();
     }
-
-
-    Texture2D BuildTileset(Sprite tileset, List<Sprite> tiles)
+        
+    //spawn new grid of gameobjects, each having a single sprite
+    void SpawnGrid(Sprite tileset, List<Sprite> tiles)
     {
-        Texture2D textureSet = GetTextureFrom(tileset);
+        Vector2 sizeSet = GetDimensionInPX(tileset);
+        Vector2 size = GetDimensionInPX(tiles[0]);
 
-        GetComponent<SpriteRenderer>().material.mainTexture = textureSet;
+        GameObject grid = new GameObject("Grid");
+        grid.transform.position = this.transform.position;
+        grid.transform.parent = this.transform;
 
-        Vector2 size = GetDimensionInPX(tileset);
         int count = 0;
-        for (int j = 0; j < 6; j++)
+        for (int y = 0; y < this.grid.GetLength(1); y++)
         {
-            for (int i = 0; i < 4; i++)
+            for (int x = 0; x < this.grid.GetLength(0); x++)
             {
-                Texture2D texture = GetTextureFrom(tiles[count]);
-                print(count + ", " + tiles[count].name);
+                //SpawnCell();
+                //SetCellStuff();??
+                string cellName = transform.name + "Cell_" + count + "_[" + x + "," + y + "]";
+                GameObject cell = new GameObject(cellName);
+                Vector3 cellPosition = new Vector3(-sizeSet.x/2 + x * size.x + size.x/2, sizeSet.y/2 - (y * size.y + size.y/2), 0);
+                cellPosition *= transform.localScale.x;
+                cell.transform.position = transform.position + cellPosition;
+                cell.transform.localScale = transform.localScale;
+                //string str = cellName + ": " + cell.transform.position * 1000 ;
+                cell.transform.parent = grid.transform;
+                cell.tag = "Cell";
+                this.grid[x, y] = cell;
+                SpriteRenderer sr = cell.AddComponent<SpriteRenderer>();
+                sr.sprite = tiles[count];
+                sr.sortingLayerName = this.sr.sortingLayerName;
+                sr.sortingOrder += 1;
+                //str +=  ", bounds: Center:" + sr.bounds.center * 1000 + ", Extents: " + sr.bounds.extents * 1000 ;
+                //print(str);
                 count++;
-
-                for (int y = 0; y < texture.height; y++)
-                {
-                    for (int x = 0; x < texture.width; x++)
-                    {
-                        Color color = texture.GetPixel(x, y);
-                        int xx = (x + i * texture.width);
-                        int yy = textureSet.height - texture.height + y - j * texture.height;
-                        textureSet.SetPixel(xx, yy, color);
-                    }
-                }
             }
         }
-
-        textureSet.Apply();
-        return textureSet;
-
-    }
-
-    Sprite GetSpriteFrom(Texture2D texture)
-    {
-        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0), 100.0f);
-        return sprite;
-    }
-
-    Texture2D GetTextureFrom(Sprite sprite)
-    {
-        SetTextureImporterFormat(sprite.texture, true);
-
-        var croppedTexture = new Texture2D((int)sprite.rect.width, (int)sprite.rect.height);
-        var pixels = sprite.texture.GetPixels((int)sprite.textureRect.x,
-                                                (int)sprite.textureRect.y,
-                                                (int)sprite.textureRect.width,
-                                                (int)sprite.textureRect.height);
-        croppedTexture.SetPixels(pixels);
-        croppedTexture.Apply();
-        return croppedTexture;
-    }
-
-    private Vector2 GetDimensionInPX(GameObject obj)
-    {
-        Vector2 dimension;
-
-        dimension.x = obj.GetComponent<SpriteRenderer>().sprite.bounds.size.x;
-        dimension.y = obj.GetComponent<SpriteRenderer>().sprite.bounds.size.y;
-
-        return dimension;
     }
 
     private Vector2 GetDimensionInPX(Sprite sprite)
@@ -122,85 +144,70 @@ public class Gridilizer : MonoBehaviour
         return dimension;
     }
 
-
-    void asdf()
+    void ApplyPhysicsFromParentToChildren()
     {
+        //Collider2D col = this.GetComponent<BoxCollider2D>();
 
-        Texture2D old = sr.sprite.texture;
-        Texture2D left = new Texture2D((int)(old.width), old.height, old.format, false);
-        Color[] colors = old.GetPixels(0, 0, (int)(old.width), old.height);
-        left.SetPixels(colors);
-        left.Apply();
-        Sprite sprite = Sprite.Create(left,
-               new Rect(0, 0, left.width, left.height),
-               new Vector2(0.5f, 0.5f),
-               40);
-        Debug.Log("Old Bounds: " + sr.sprite.bounds + " Rect: " + sr.sprite.rect + " TexRect: " + sr.sprite.textureRect);
-        Debug.Log("Bounds: " + sprite.bounds + " Rect: " + sprite.rect + " TexRect: " + sprite.textureRect);
-        sr.sprite = sprite;
-
-    }
-
-
-
-
-
-
-
-    public static void SetTextureImporterFormat(Texture2D texture, bool isReadable)
-    {
-        if (null == texture) return;
-
-        string assetPath = AssetDatabase.GetAssetPath(texture);
-        var tImporter = AssetImporter.GetAtPath(assetPath) as TextureImporter;
-        if (tImporter != null)
+        foreach (GameObject child in grid)
         {
-            tImporter.textureType = TextureImporterType.Advanced;
-
-            tImporter.isReadable = isReadable;
-
-            AssetDatabase.ImportAsset(assetPath);
-            AssetDatabase.Refresh();
+            child.AddComponent<BoxCollider2D>(); //TODO: generlize
+            //Rigidbody2D rb = child.AddComponent<Rigidbody2D>();
+            //rb.isKinematic = true;
+            //rb.gravityScale = parentRb.gravityScale;
         }
     }
 
+    void DisablePhysicsOnParent()
+    {
+        List<Collider2D> comps = GetComponents<Collider2D>().ToList();
+        foreach (Collider2D comp in comps)
+        {
+            comp.isTrigger = true;
+        }
+    }
+
+    void EnablePhysicsOnChildren()
+    {
+
+    }
 
 
 
+    void SetGridHitPoints()
+    {
+        int health = this.GetComponent<VehicleControlScript>().health;
+        foreach (GameObject go in grid)
+        {
+            //go.health = health / 24;
+        }
+    }
 }
 
-
-/**
- * Runs automatically. 
- */
-public class TexturePostProcessor : AssetPostprocessor
+public static class Utils
 {
-
-    void OnPreprocessTexturee()
+    /// call with grid.FindInDimensions(col.gameObject)
+    public static bool FindInDimensions(this object[,] target, object searchTerm)
     {
+        var rowLowerLimit = target.GetLowerBound(0);
+        var rowUpperLimit = target.GetUpperBound(0);
 
+        var colLowerLimit = target.GetLowerBound(1);
+        var colUpperLimit = target.GetUpperBound(1);
+
+        for (int row = rowLowerLimit; row < rowUpperLimit; row++)
         {
-            TextureImporter importer = assetImporter as TextureImporter;
-            importer.textureType = TextureImporterType.Advanced;
-            importer.textureFormat = TextureImporterFormat.AutomaticTruecolor;
-            importer.isReadable = true;
-            importer.filterMode = FilterMode.Point;
-            importer.npotScale = TextureImporterNPOTScale.None;
-
-            Object asset = AssetDatabase.LoadAssetAtPath(importer.assetPath, typeof(Texture2D));
-            if (asset)
+            for (int col = colLowerLimit; col < colUpperLimit; col++)
             {
-                EditorUtility.SetDirty(asset);
-            }
-            else
-            {
-                importer.textureType = TextureImporterType.Advanced;
+                // you could do the search here...
+                if (target[row,col] == searchTerm) 
+                    return true;
             }
         }
 
+        return false;
     }
-}
 
+}
 
 public class StringUtilsExt
 {
