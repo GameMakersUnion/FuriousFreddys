@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class Rock : MonoBehaviour {
+public class RockRandomCollider : MonoBehaviour {
 
     enum cols { BOX, CIRCLE, POLYGON };
 

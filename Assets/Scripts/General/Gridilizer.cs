@@ -10,19 +10,18 @@ public class Gridilizer : MonoBehaviour
     public bool useGrid; 
     public Sprite[] sections;
     SpriteRenderer sr;
-    GameObject[,] grid;
-    
+    GameObject[,] grid; //depreciated... i can refactor below to avoid using this now.
+    GameObject gridBucket;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        grid = new GameObject[4,6];
-        AssignGridTo(sr.sprite);
-        
+        gridBucket = AssignGridTo(sr.sprite);
     }
 
     void Update()
     {
+        ToggleGrid();
         DetectDamageToGrid();
     }
 
@@ -75,9 +74,9 @@ public class Gridilizer : MonoBehaviour
 
     }
 
-    void AssignGridTo(Sprite tileset)
+    GameObject AssignGridTo(Sprite tileset)
     {
-        if (sections.Length <= 0 || !useGrid) return;
+        if (sections.Length <= 0 || !useGrid) return null;
         List<Sprite> tiles = new List<Sprite>();
 
         foreach (Sprite section in sections)
@@ -85,7 +84,7 @@ public class Gridilizer : MonoBehaviour
             string path = AssetDatabase.GetAssetPath(section);
             path = StringUtilsExt.SubstringBetween(path, "Resources" + "/", ".");
             Sprite[] album_sprites = Resources.LoadAll<Sprite>(path);
-            if (album_sprites.Length == 0) return;
+            if (album_sprites.Length == 0) return null; //TODO:Consider CleanCode... which is worse, returning null to handle externally, VS, well, whatever alternatives come to mind.
 
             foreach (Sprite sprite in album_sprites)
             {
@@ -94,14 +93,24 @@ public class Gridilizer : MonoBehaviour
 
         }
 
-        SpawnGrid(tileset, tiles);
+        GameObject gridContainer = SpawnGrid(tileset, tiles);
         ApplyPhysicsFromParentToChildren();
         //DisablePhysicsOnParent();
         SetGridHitPoints();
+        return gridContainer;
     }
-        
+
+    void ToggleGrid()
+    {
+        //is this the most efficent way or cleanest way to write this??? I'm not sure. 
+        if (!useGrid && (gridBucket != null))
+            Destroy(gridBucket);
+        else if (useGrid && (gridBucket == null))
+            gridBucket = AssignGridTo(sr.sprite);
+    }
+
     //spawn new grid of gameobjects, each having a single sprite
-    void SpawnGrid(Sprite tileset, List<Sprite> tiles)
+    GameObject SpawnGrid(Sprite tileset, List<Sprite> tiles)
     {
         Vector2 sizeSet = GetDimensionInPX(tileset);
         Vector2 size = GetDimensionInPX(tiles[0]);
@@ -111,6 +120,7 @@ public class Gridilizer : MonoBehaviour
         grid.transform.parent = this.transform;
 
         int count = 0;
+        this.grid = new GameObject[4, 6];
         for (int y = 0; y < this.grid.GetLength(1); y++)
         {
             for (int x = 0; x < this.grid.GetLength(0); x++)
@@ -136,6 +146,7 @@ public class Gridilizer : MonoBehaviour
                 count++;
             }
         }
+        return grid;
     }
 
     private Vector2 GetDimensionInPX(Sprite sprite)
