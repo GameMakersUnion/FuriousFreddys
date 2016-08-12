@@ -21,7 +21,7 @@ public class Gridilizer : MonoBehaviour
 
     void Update()
     {
-        ToggleGrid();
+        ToggleGridOnOrOff();
         DetectDamageToGrid();
     }
 
@@ -62,6 +62,7 @@ public class Gridilizer : MonoBehaviour
         Destroy(go);
     }
 
+    //does not protect against toggling off mid-collision (when reference to sr is destroyed)
     IEnumerator FlashSprite(SpriteRenderer sr)
     {
         sr.material.color = Color.blue;
@@ -100,7 +101,9 @@ public class Gridilizer : MonoBehaviour
         return gridContainer;
     }
 
-    void ToggleGrid()
+    //for performance reasons and better debugging, this can be toggled from the inspector. 
+    //not it is not supported to toggle off mid-collision
+    void ToggleGridOnOrOff()
     {
         //is this the most efficent way or cleanest way to write this??? I'm not sure. 
         if (!useGrid && (gridBucket != null))
@@ -120,33 +123,34 @@ public class Gridilizer : MonoBehaviour
         grid.transform.parent = this.transform;
 
         int count = 0;
-        this.grid = new GameObject[4, 6];
+        this.grid = new GameObject[4, 6]; //TODO: still magic, TBD...
         for (int y = 0; y < this.grid.GetLength(1); y++)
         {
             for (int x = 0; x < this.grid.GetLength(0); x++)
             {
-                //SpawnCell();
-                //SetCellStuff();??
                 string cellName = transform.name + "Cell_" + count + "_[" + x + "," + y + "]";
-                GameObject cell = new GameObject(cellName);
+                GameObject cell = SpawnCell(cellName);
                 Vector3 cellPosition = new Vector3(-sizeSet.x/2 + x * size.x + size.x/2, sizeSet.y/2 - (y * size.y + size.y/2), 0);
-                cellPosition *= transform.localScale.x;
-                cell.transform.position = transform.position + cellPosition;
-                cell.transform.localScale = transform.localScale;
-                //string str = cellName + ": " + cell.transform.position * 1000 ;
+                cell.transform.position = transform.position + (cellPosition * transform.localScale.x);
                 cell.transform.parent = grid.transform;
-                cell.tag = "Cell";
                 this.grid[x, y] = cell;
                 SpriteRenderer sr = cell.AddComponent<SpriteRenderer>();
                 sr.sprite = tiles[count];
                 sr.sortingLayerName = this.sr.sortingLayerName;
                 sr.sortingOrder += 1;
-                //str +=  ", bounds: Center:" + sr.bounds.center * 1000 + ", Extents: " + sr.bounds.extents * 1000 ;
-                //print(str);
                 count++;
             }
         }
         return grid;
+    }
+
+    GameObject SpawnCell(string cellName)
+    {
+        GameObject cell = new GameObject(cellName);
+        cell.transform.localScale = transform.localScale;
+        //string str = cellName + ": " + cell.transform.position * 1000 ;
+        cell.tag = "Cell";
+        return cell;
     }
 
     private Vector2 GetDimensionInPX(Sprite sprite)
