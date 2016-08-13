@@ -3,6 +3,9 @@ using System.Collections;
 
 public class GameControllerScript : MonoBehaviour {
 
+    [Tooltip("For debugging, takes performance hit")]
+    public bool printDebugInfo;
+
     public float gameTime;
     public ZombieController zombieController;
     public VaperControlScript vaperControlScript;

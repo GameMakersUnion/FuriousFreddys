@@ -20,12 +20,14 @@ public abstract class MasterZombieScript : MonoBehaviour
     protected int counter;
     protected Rigidbody2D rb;
     protected int colcount;
+
     // Use this for initialization
     public virtual void Start()
     {
         van = GameObject.FindGameObjectWithTag("Vehicle");
         vehicle = van.GetComponent<VehicleControlScript>();
         ZSR = this.GetComponent<SpriteRenderer>();
+        ZSR.sortingLayerName = "Zombies";
         VSR = van.GetComponent<SpriteRenderer>();
         zC = this.GetComponent<Collider2D>();
         vC = van.GetComponent<Collider2D>();
@@ -131,6 +133,18 @@ public abstract class MasterZombieScript : MonoBehaviour
         }
     }
 
+    /**
+     * We don't need to see debug print lines every frame all the time.
+     * Toggle on/off by selecting "ZombieController" in hierarchy and setting checkmark in inspector on the "GameControllerScript" component
+     */
+    public void print(object obj)
+    {
+        GameControllerScript script = SingletonGodController.instance.gameControllerScript;
 
+        if (script != null && script.printDebugInfo)
+        {
+            MonoBehaviour.print(obj);
+        }
+    }
 
 }

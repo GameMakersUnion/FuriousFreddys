@@ -40,6 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3978b78dcdbbdf4685499a57bbb9206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  printDebugInfo: 0
   gameTime: 5
   zombieController: {fileID: 11435888, guid: 2c210016b3be61b4682ae85238ad351c, type: 2}
   vaperControlScript: {fileID: 11480150, guid: 15409875022b5074992a0583a2169011, type: 2}

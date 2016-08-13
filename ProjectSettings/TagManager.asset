@@ -65,3 +65,6 @@ TagManager:
   - name: Zombie
     uniqueID: 591054591
     locked: 0
+  - name: Zombies
+    uniqueID: 2336224909
+    locked: 0

@@ -41,6 +41,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveRoad: 1
+  ShowRoad: 1
   roadSegmentPrefab: {fileID: 176878, guid: 631ebd142f72ec344abb9a8416a7b92b, type: 2}
   rockPrefab: {fileID: 165790, guid: e6c420568cdd61f4582b7850e5b1bfec, type: 2}
 --- !u!1001 &100100000
