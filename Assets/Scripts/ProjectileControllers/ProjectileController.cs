@@ -21,10 +21,10 @@ public class ProjectileController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "Enemy")
+        if (coll.gameObject.tag == "Zombie")
         {
             //call take dmg method in zombie controller
-
+            coll.GetComponent<MasterZombieScript>().updateHealth(-damage);
             Destroy(gameObject);
         }
 
