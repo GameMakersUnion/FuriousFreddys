@@ -170,7 +170,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 404600, guid: 0c4b8ccf9e28d6a40a3e33f279b745bb, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11453318, guid: 0c4b8ccf9e28d6a40a3e33f279b745bb, type: 2}
       propertyPath: Players.Array.data[0]
@@ -289,6 +289,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11490848, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
+      propertyPath: gridLayersAttached.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 451618, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
       propertyPath: m_LocalPosition.x
       value: -1.47
@@ -323,6 +327,29 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11490848, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
       propertyPath: useGrid
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012026, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
+      propertyPath: m_Constraints
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11490848, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
+      propertyPath: gridLayersAttached.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 80fedc1b6b20f90439b738b9af029bba,
+        type: 3}
+    - target: {fileID: 11490848, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
+      propertyPath: gridLayersAttached.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 56060c1448dd6aa4e8c5a53196da56f2,
+        type: 3}
+    - target: {fileID: 11490848, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
+      propertyPath: gridLayersAttached.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: b36bfe326054c2f40a34f3e882f63d7a,
+        type: 3}
+    - target: {fileID: 11490848, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
+      propertyPath: flashCollidingSprite
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -365,7 +392,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 497548, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11433722, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}
       propertyPath: ZombiesSpawned
@@ -423,7 +450,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 489630, guid: 454a2d2483c18d8479576d8f9dd3d59c, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 454a2d2483c18d8479576d8f9dd3d59c, type: 2}
