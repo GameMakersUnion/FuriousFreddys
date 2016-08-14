@@ -65,17 +65,13 @@ public class Gridilizer : MonoBehaviour
             UtilSpawnMarkerAt(contact);
             SpriteRenderer sr = contact.otherCollider.gameObject.GetComponent<SpriteRenderer>();
             StartCoroutine(FlashSprite(sr));
-
-            Sprite sprite = sr.sprite;
-            TestNext(ref sprite);
-            sr.sprite = sprite;
-
+            TestNext(sr);
         }
     }
 
-    void TestNext(ref Sprite sprite)
+    void TestNext(SpriteRenderer sr)
     {
-        SetCellToNextLayer(ref sprite);
+        SetCellToNextLayer(sr);
     }
 
     void UtilSpawnMarkerAt(ContactPoint2D contact)
@@ -205,15 +201,16 @@ public class Gridilizer : MonoBehaviour
     }
 
     //loops
-    public void SetCellToNextLayer(ref Sprite sprite)
+    public void SetCellToNextLayer(SpriteRenderer sr)
     {
+        Sprite sprite = sr.sprite;
         Vector2? cellNullable = GetCellLayerAndIndexOf(sprite);
         if (cellNullable == null) return;
         Vector2 cellCoalesced = new Vector2(cellNullable.GetValueOrDefault().x, cellNullable.GetValueOrDefault().y);
         int layerLevelIndexNext = ((int)cellCoalesced.x + 1) % gridCellsInLayers.Count;
         int cellIndex = (int)cellCoalesced.y;
         Sprite cellNextLayer = gridCellsInLayers[layerLevelIndexNext][cellIndex];
-        sprite = cellNextLayer;
+        sr.sprite = cellNextLayer;
     }
 
     //loops

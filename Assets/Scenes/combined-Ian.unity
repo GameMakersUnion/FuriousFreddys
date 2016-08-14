@@ -295,11 +295,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 451618, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.47
+      value: -0.13
       objectReference: {fileID: 0}
     - target: {fileID: 451618, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -5.08
+      value: -0.12
       objectReference: {fileID: 0}
     - target: {fileID: 451618, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
       propertyPath: m_LocalPosition.z
@@ -396,7 +396,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11433722, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}
       propertyPath: ZombiesSpawned
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 169786, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}
       propertyPath: m_IsActive
@@ -451,6 +451,10 @@ Prefab:
     - target: {fileID: 489630, guid: 454a2d2483c18d8479576d8f9dd3d59c, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11411320, guid: 454a2d2483c18d8479576d8f9dd3d59c, type: 2}
+      propertyPath: ShowRoad
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 454a2d2483c18d8479576d8f9dd3d59c, type: 2}
