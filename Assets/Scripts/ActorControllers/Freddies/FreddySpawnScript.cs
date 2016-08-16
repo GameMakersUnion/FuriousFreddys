@@ -32,7 +32,7 @@ public class FreddySpawnScript : MonoBehaviour {
 
     void Awake()
     {
-        NumPlayers = 2;
+        NumPlayers = 5;
         for (int i = 1; i <= numPlayers_; i++)
         {
             InstantiatePlayer(i);

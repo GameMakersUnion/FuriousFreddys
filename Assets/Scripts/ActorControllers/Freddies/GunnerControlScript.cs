@@ -15,7 +15,8 @@ public class GunnerControlScript : PlayerControlScript {
     {
         base.Start();
         moveFactor = 200;
-        CurrWeapon = (GameObject)Instantiate(CurrWeaponScript.gameObject, Vector3.zero, tf.rotation);
+        Quaternion rot = Quaternion.Euler(0, 0, tf.rotation.eulerAngles.z + 180);
+        CurrWeapon = (GameObject)Instantiate(CurrWeaponScript.gameObject, Vector3.zero, rot);
         CurrWeapon.transform.parent = gameObject.transform;
         CurrWeapon.transform.localPosition = CurrWeaponScript.pos;
         //Debug.Log("Gunner's parent is: " + transform.parent);
@@ -28,8 +29,16 @@ public class GunnerControlScript : PlayerControlScript {
 
     public override void Move(int direction)
     {
-        tf.Rotate(0, 0, moveFactor * -direction * Time.deltaTime); //rotate left or right
+
+        CurrWeapon.transform.RotateAround
+            (
+            tf.position,
+            Vector3.forward,
+            moveFactor * direction * Time.deltaTime
+            );
     }
+
+
 
     public override void PerformAction()
     {

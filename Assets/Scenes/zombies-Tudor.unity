@@ -194,7 +194,8 @@ MonoBehaviour:
   gameTime: 5
   zombieController: {fileID: 11435888, guid: 2c210016b3be61b4682ae85238ad351c, type: 2}
   vaperControlScript: {fileID: 11480150, guid: 15409875022b5074992a0583a2169011, type: 2}
-  ZombiesSpawned: 5
+  FFController: {fileID: 11455962, guid: 2c0d447c2a190dc43a9b02f755bb318c, type: 2}
+  ZombiesSpawned: 2
 --- !u!1 &1186532651
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +343,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 451618, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 451618, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
       propertyPath: m_LocalPosition.z
@@ -368,9 +369,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 5012026, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
-      propertyPath: m_LinearDrag
-      value: 10
+    - target: {fileID: 6129418, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
+      propertyPath: m_Size.x
+      value: 2.46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}

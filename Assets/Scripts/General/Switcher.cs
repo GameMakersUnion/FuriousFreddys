@@ -20,7 +20,7 @@ public class Switcher : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Q))
             CyclePlayers();
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
             Player.PerformAction();
     }
 
@@ -33,10 +33,12 @@ public class Switcher : MonoBehaviour {
         {
             Player.Move(1);
         }
+        /*
         else
         {
             Player.Move(0);
         }
+        */
     }
 
     //something to start the game with
