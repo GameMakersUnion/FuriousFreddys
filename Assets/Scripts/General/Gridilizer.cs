@@ -31,10 +31,12 @@ public class Gridilizer : MonoBehaviour
     [Tooltip("Attach your sprite sheets here. Ensure is sliced in Unity with Sprite Editor.")]
     public Sprite[] gridLayersAttached;
 
-    private List<List<Sprite>> gridCellsInLayers = new List<List<Sprite>>();
+    public List<List<Sprite>> gridCellsInLayers = new List<List<Sprite>>();
 
     SpriteRenderer sr;
     GameObject gridBucket;
+
+    public My2DArray myArray;
 
     public const int columns = 4;
     public const int rows = 6;
@@ -167,6 +169,7 @@ public class Gridilizer : MonoBehaviour
     public void SetCellToLayerPrevious(SpriteRenderer sr)
     {
         SetCellToLayerByDelta(sr, -1);
+        
     }
 
     //maxes at "top" which is index 0
@@ -232,8 +235,10 @@ public class Gridilizer : MonoBehaviour
     //this vector2 nullable representation is bit odd to store (layerIndex, sprite1Dindex) in, but it works 
     public Vector2? GetCellLayerAndIndexOf(Sprite sprite)
     {
-        Vector2? where = GridUtils.FindInDimensions(gridCellsInLayers, sprite);
+        Vector2? where = gridCellsInLayers.FindInDimensions(sprite);
+        
         return where;
+
     }
 
     public int GetCellLayer(SpriteRenderer sr)
@@ -431,7 +436,7 @@ public static class GridUtils
 {
     /// call with grid.FindInDimensions(col.gameObject)
     /// tried to cast unsuccessfully List<List<Sprite>> to List<List<object>>, had to settle for explicit. 
-    public static Vector2? FindInDimensions(this List<List<Sprite>> target, Sprite searchTerm)
+    public static Vector2? FindInDimensions<T>(this List<List<T>> target, T searchTerm)
     {
         //count all the elements in this as if it was a single List<T> in the fastest way?
         //int result = target.SelectMany(list => list).Distinct().Count();
@@ -444,7 +449,7 @@ public static class GridUtils
             for (int inner = 0; inner < innerLimit; inner++)
             {
                 // you could do the search here...
-                if (target[outer][inner] == searchTerm)
+                if (target[outer][inner].Equals(searchTerm))
                 {
                     Vector2? where = new Vector2(outer, inner);
                     return where;
@@ -455,7 +460,7 @@ public static class GridUtils
         return null;
     }
 
-    public static int GetIndexAs1Dfrom2D(Vector2 arrayPosition)
+    public static int GetIndexAsD1from2D(Vector2 arrayPosition)
     {
         //check possibily floats are actually integers
         Vector2 flooredInput = new Vector2(Mathf.Floor(arrayPosition.x), Mathf.Floor(arrayPosition.y));
@@ -507,6 +512,17 @@ public static class Utils
     public static T FindComponentOn<T>(string nameGameObject) where T : Component
     {
         GameObject find = GameObject.Find(nameGameObject);
+        T findComponent = null;
+        if (find != null)
+        {
+            findComponent = find.GetComponent<T>();
+        }
+        return findComponent;
+    }
+
+    public static T FindComponentTagged<T>(string tagOfGameObject) where T : Component
+    {
+        GameObject find = GameObject.FindGameObjectWithTag(tagOfGameObject);
         T findComponent = null;
         if (find != null)
         {

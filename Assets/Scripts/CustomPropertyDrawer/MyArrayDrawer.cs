@@ -1,9 +1,8 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-// IngredientDrawer
-[CustomPropertyDrawer(typeof(Ingredient))]
-public class IngredientDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(My2DArray))]
+public class MyArrayDrawer : PropertyDrawer
 {
 
     // Draw the property inside the given rect
@@ -21,16 +20,14 @@ public class IngredientDrawer : PropertyDrawer
         EditorGUI.indentLevel = 0;
 
         // Calculate rects
-        var amountRect = new Rect(position.x, position.y, 30, position.height);
-        var unitRect = new Rect(position.x + 35, position.y, 50, position.height);
-        var nameRect = new Rect(position.x + 90, position.y, position.width - 90, position.height);
+        //var amountRect = new Rect(position.x, position.y, 30, position.height);
+        //var unitRect = new Rect(position.x + 35, position.y, 50, position.height);
+        var theArrayRect = new Rect(position.x , position.y, position.width - 90, position.height);
 
         //SingletonGodController.instance.vehicleControlScript.GetComponent<Gridilizer>().;
 
-        // Draw fields - passs GUIContent.none to each so they are drawn without labels
-        EditorGUI.PropertyField(amountRect, property.FindPropertyRelative("amount"), GUIContent.none);
-        EditorGUI.PropertyField(unitRect, property.FindPropertyRelative("unit"), GUIContent.none);
-        EditorGUI.PropertyField(nameRect, property.FindPropertyRelative("name"), GUIContent.none);
+        // Draw fields - pass GUIContent.none to each so they are drawn without labels
+        //EditorGUI.PropertyField(theArrayRect, property.FindPropertyRelative("theArray"), GUIContent.none);
 
         // Set indent back to what it was
         EditorGUI.indentLevel = indent;
