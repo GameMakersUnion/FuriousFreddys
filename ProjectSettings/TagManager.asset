@@ -22,7 +22,7 @@ TagManager:
   - Freddy
   - Zombies
   - Vehicle
-  - 
+  - VaperTongue
   - 
   - 
   - 
@@ -52,9 +52,15 @@ TagManager:
   - name: Freddies
     uniqueID: 1296096865
     locked: 0
+  - name: FreddyFucker
+    uniqueID: 1462585621
+    locked: 0
   - name: Weapons
     uniqueID: 1661145877
     locked: 0
   - name: Bullets
     uniqueID: 2547518111
+    locked: 0
+  - name: Zombie
+    uniqueID: 591054591
     locked: 0

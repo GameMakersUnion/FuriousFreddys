@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 433272}
   - 212: {fileID: 21298364}
   - 114: {fileID: 11497108}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TempWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 431482}
   - 114: {fileID: 11443352}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TempSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}

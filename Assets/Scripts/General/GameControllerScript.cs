@@ -66,7 +66,7 @@ public class GameControllerScript : MonoBehaviour {
             ZombieController zombie = (ZombieController)Instantiate(zombieController, spawnPos, Quaternion.identity);
             zombie.gameObject.name = "Zombie" + i;
             zombie.transform.parent = Gnmies.transform;
-            print(spawnPos + " " + i);
+            //print(spawnPos + " " + i);
             print(zombie.transform.position +  " " + i);
         }
     }
