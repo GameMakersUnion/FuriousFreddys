@@ -133,6 +133,7 @@ public class VaperHookShot : MonoBehaviour
     void AddJointPhysics(int n)
     {
         joints[n] = new GameObject("Joint_" + n);
+        joints[n].layer = 12;
         joints[n].transform.parent = transform;
         Rigidbody2D rigid = joints[n].AddComponent<Rigidbody2D>();
         // joints[n].GetComponent<Rigidbody2D>().gravityScale = 0;
@@ -178,10 +179,15 @@ public class VaperHookShot : MonoBehaviour
         {
             Destroy(joints[dj]);
         }
-
+        Destroy(GameObject.Find("Vehicle").GetComponent<HingeJoint2D>());
         segmentPos = new Vector3[0];
         joints = new GameObject[0];
         segments = 0;
     }
+
+    
+
+
+
 
 }

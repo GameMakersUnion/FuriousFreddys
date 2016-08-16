@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class LevelController : MonoBehaviour {
 
     public bool MoveRoad;
+    public bool ShowRoad;
 
     public float ScrollSpeed { get { return scrollSpeed; } } //Limited accessibility deliberately
     private float scrollSpeed = 0.2f;  //The speed to scroll the roadSegments at
@@ -23,11 +24,11 @@ public class LevelController : MonoBehaviour {
             createRoadSegments();
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-        if (MoveRoad){
+    // Update is called once per frame
+    void Update() {
+
+        if (MoveRoad) {
             if (roadSegments == null)
             {
                 createRoadSegments();
@@ -43,7 +44,12 @@ public class LevelController : MonoBehaviour {
             moveRocks();
 
         }
-	}
+
+        //Hide or Show Road
+        if (ShowRoad != roadSegments[0].GetComponent<SpriteRenderer>().enabled)
+            setRoadSegementsVisibility(ShowRoad);
+
+    }
 
     void createRoadSegments()
     {
@@ -131,6 +137,14 @@ public class LevelController : MonoBehaviour {
                 newYPos = road.transform.position.y - scrollSpeed;      //newYPos is set to scrollSpeed lower than road's current Y position
             }
             road.transform.position = new Vector3(road.transform.position.x, newYPos, road.transform.position.z);   //Set road's position to newYPos
+        }
+    }
+
+    void setRoadSegementsVisibility(bool state)
+    {
+        foreach (GameObject road in roadSegments)
+        {
+            road.GetComponent<SpriteRenderer>().enabled = state;
         }
     }
 }

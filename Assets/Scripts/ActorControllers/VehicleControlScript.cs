@@ -17,7 +17,6 @@ public class VehicleControlScript : EntityControlScript
         health = 500;
         moveFactor = 750;
         rb= this.GetComponent<Rigidbody2D>();
-        //print(this.GetComponent<Collider2D>().bounds.extents + transform.position + "v");
     }
 
     public override void Move(int direction)

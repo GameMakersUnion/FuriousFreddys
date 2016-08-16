@@ -50,23 +50,23 @@ public class FreddySpawnScript : MonoBehaviour {
             
             case 1:
                 position = new Vector3(-0.65f, 1.35f, 0);
-                freddy = Resources.Load<DriverControlScript>("Prefabs/FredOrange");
+                freddy = Resources.Load<DriverControlScript>("FredOrange");
                 break;
             case 2:
                 position = new Vector3(0.4f, -1.5f, 0);
-                freddy = Resources.Load<GunnerControlScript>("Prefabs/FredYellow");
+                freddy = Resources.Load<GunnerControlScript>("FredYellow");
                 break;
             case 3:
                 position = new Vector3(-0.8f, -0.8f, 0);
-                freddy = Resources.Load<GunnerControlScript>("Prefabs/FredBlue");
+                freddy = Resources.Load<GunnerControlScript>("FredBlue");
                 break;
             case 4:
                 position = new Vector3(0.8f, -0.8f, 0);
-                freddy = Resources.Load<GunnerControlScript>("Prefabs/FredGreen");
+                freddy = Resources.Load<GunnerControlScript>("FredGreen");
                 break;
             case 5:
                 position = new Vector3(-0.4f, -1.5f, 0);
-                freddy = Resources.Load<GunnerControlScript>("Prefabs/FredRed");
+                freddy = Resources.Load<GunnerControlScript>("FredRed");
                 break;
             default:
                 Debug.LogWarning("Unable to spawn player " + playerNum);

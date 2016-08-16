@@ -9,6 +9,7 @@ TagManager:
   - Rock
   - Bullet
   - Freddy
+  - Cell
   layers:
   - Default
   - TransparentFX
@@ -22,8 +23,8 @@ TagManager:
   - Freddy
   - Zombies
   - Vehicle
-  - 
-  - 
+  - VaperTongue
+  - FreddyFucker2
   - 
   - 
   - 
@@ -52,9 +53,18 @@ TagManager:
   - name: Freddies
     uniqueID: 1296096865
     locked: 0
+  - name: FreddyFucker
+    uniqueID: 1462585621
+    locked: 0
   - name: Weapons
     uniqueID: 1661145877
     locked: 0
   - name: Bullets
     uniqueID: 2547518111
+    locked: 0
+  - name: Zombie
+    uniqueID: 591054591
+    locked: 0
+  - name: Zombies
+    uniqueID: 2336224909
     locked: 0
