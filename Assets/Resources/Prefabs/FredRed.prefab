@@ -11,6 +11,8 @@ GameObject:
   - 212: {fileID: 21298202}
   - 114: {fileID: 11411712}
   - 58: {fileID: 58000014241447780}
+  - 58: {fileID: 58000011634540586}
+  - 58: {fileID: 58000012402541618}
   m_Layer: 9
   m_Name: FredRed
   m_TagString: Freddy
@@ -87,6 +89,34 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 141568}
   m_IsPrefabParent: 1
+--- !u!58 &58000011634540586
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141568}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!58 &58000012402541618
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141568}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.46
 --- !u!58 &58000014241447780
 CircleCollider2D:
   m_ObjectHideFlags: 1

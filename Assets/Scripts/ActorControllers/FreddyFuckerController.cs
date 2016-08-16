@@ -24,7 +24,7 @@ public class FreddyFuckerController : MasterZombieScript {
 
         if (!attached)
         {
-            if (!jumping && distanceTo > jumpMinRange)
+            if (!jumping && distanceTo < jumpMinRange)
             {
                // print("Im supposed to be doing shit");
                 this.transform.position = Vector3.Lerp(start, destin, speed);
