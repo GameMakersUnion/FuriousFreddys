@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 // Controller for normal bullet-type projectiles
 public class ProjectileController : MonoBehaviour {

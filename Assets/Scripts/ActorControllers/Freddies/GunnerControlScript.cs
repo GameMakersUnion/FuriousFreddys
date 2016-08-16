@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 
 /*
  * The movement/shooting controls in this script are called from the switcher for now,
@@ -7,9 +9,12 @@
  */
 public class GunnerControlScript : PlayerControlScript {
 
-    public WeaponController CurrWeaponScript; //TEMPLATE. Only used for instantiation of weapon.
+    public WeaponController CurrWeaponScript; //Prefab for weap to be instantiated from
 
-    private GameObject CurrWeapon; //Use this for shooting etc.
+    private int ammo; //what can be fired before reloading
+    private float nextFire;
+    private bool isReloading;
+    private GameObject CurrWeapon; //THIS is used for shooting
 
     protected override void Start ()
     {
@@ -19,17 +24,14 @@ public class GunnerControlScript : PlayerControlScript {
         CurrWeapon = (GameObject)Instantiate(CurrWeaponScript.gameObject, Vector3.zero, rot);
         CurrWeapon.transform.parent = gameObject.transform;
         CurrWeapon.transform.localPosition = CurrWeaponScript.pos;
+        ammo = CurrWeaponScript.magSize;
+        nextFire = 0;
+        isReloading = false;
         //Debug.Log("Gunner's parent is: " + transform.parent);
-    }
-
-    void Update()
-    {
-        
     }
 
     public override void Move(int direction)
     {
-
         CurrWeapon.transform.RotateAround
             (
             tf.position,
@@ -38,8 +40,6 @@ public class GunnerControlScript : PlayerControlScript {
             );
     }
 
-
-
     public override void PerformAction()
     {
         Shoot();
@@ -47,13 +47,27 @@ public class GunnerControlScript : PlayerControlScript {
 
     private void Shoot()
     {
-        CurrWeapon.GetComponent<WeaponController>().Fire(); //fire projectile
-        /*
-        Debug.Log("CurrWeaponScript (template) name is: " + CurrWeaponScript.gameObject);
-        Debug.Log("CurrWeapon (actual) name is: " + CurrWeapon);
-        Debug.Log("Gunner's position is: " + transform.position);
-        Debug.Log("Gunner's rotation is: " + transform.rotation.eulerAngles);
-        */
+        if (!isReloading && Time.time > nextFire)
+        {
+            CurrWeapon.GetComponent<WeaponController>().Fire();
+            nextFire = Time.time + CurrWeaponScript.fireRate;
+            ammo--;
+            Debug.Log("Ammo is " + ammo);
+            if (ammo <= 0)
+            {
+                StartCoroutine(Reload());
+            }
+        }
+    }
+
+    private IEnumerator Reload()
+    {
+        Debug.Log("Starting reloading");
+        isReloading = true;
+        yield return new WaitForSecondsRealtime(CurrWeaponScript.reloadTime);
+        ammo = CurrWeaponScript.magSize;
+        isReloading = false;
+        Debug.Log("Finished reloading");
     }
 
 }
