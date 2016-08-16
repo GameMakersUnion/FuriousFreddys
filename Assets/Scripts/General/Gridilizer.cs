@@ -199,7 +199,8 @@ public class Gridilizer : MonoBehaviour
         Vector2? cellNullable = GetCellLayerAndIndexOf(sprite);
         if (cellNullable == null)
         {
-            throw new System.ArgumentException("Sprite " + sprite.name + " was not found in loaded layers of cells.");
+            return;
+            //throw new System.ArgumentException("Sprite " + sprite.name + " was not found in loaded layers of cells.");
         }
         Vector2 cellCoalesced = new Vector2(cellNullable.GetValueOrDefault().x, cellNullable.GetValueOrDefault().y);
         int layerLevelIndexNext = ((int)cellCoalesced.x + direction) % gridCellsInLayers.Count;
@@ -423,7 +424,7 @@ public class Gridilizer : MonoBehaviour
         GameObject children = this.gridBucket;
         if (children == null) return;
 
-        int health = this.GetComponent<VehicleControlScript>().health;
+        //int health = this.GetComponent<VehicleControlScript>().health;
         foreach (Transform child in children.transform)
         {
             //child.gameObject.health = health / 24;

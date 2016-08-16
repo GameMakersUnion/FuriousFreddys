@@ -44,6 +44,7 @@ MonoBehaviour:
   gameTime: 5
   zombieController: {fileID: 11435888, guid: 2c210016b3be61b4682ae85238ad351c, type: 2}
   vaperControlScript: {fileID: 11480150, guid: 15409875022b5074992a0583a2169011, type: 2}
+  FFController: {fileID: 11455962, guid: 2c0d447c2a190dc43a9b02f755bb318c, type: 2}
   ZombiesSpawned: 10
 --- !u!1001 &100100000
 Prefab:

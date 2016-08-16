@@ -13,6 +13,7 @@ GameObject:
   - 61: {fileID: 6129418}
   - 114: {fileID: 11421592}
   - 114: {fileID: 11413698}
+  - 114: {fileID: 114000011503218976}
   m_Layer: 11
   m_Name: Vehicle
   m_TagString: Vehicle
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -63,7 +64,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 2.65, y: 4.08}
+  m_Size: {x: 2.46, y: 4.08}
 --- !u!114 &11413698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,7 +116,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1099212831
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5b2173a17c343ee4f98358e5c744533d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e556610eeffc854f85626f1f3f48b0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -130,3 +131,22 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 162482}
   m_IsPrefabParent: 1
+--- !u!114 &114000011503218976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23576b953f71fb40a9112df9844865a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useGrid: 1
+  flashCollidingSprite: 1
+  showCollisionMarkers: 0
+  printCollisionInfo: 0
+  gridLayersAttached:
+  - {fileID: 21300000, guid: 80fedc1b6b20f90439b738b9af029bba, type: 3}
+  - {fileID: 21300000, guid: 56060c1448dd6aa4e8c5a53196da56f2, type: 3}
+  - {fileID: 21300000, guid: b36bfe326054c2f40a34f3e882f63d7a, type: 3}
