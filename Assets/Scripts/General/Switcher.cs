@@ -32,12 +32,6 @@ public class Switcher : MonoBehaviour {
         {
             Player.Move(1);
         }
-        /*
-        else
-        {
-            Player.Move(0);
-        }
-        */
     }
 
     //something to start the game with

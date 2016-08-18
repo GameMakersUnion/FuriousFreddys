@@ -7,7 +7,8 @@ using UnityEngine;
  * but will be called in their own update functions by controllers once the game
  * reaches that state.
  */
-public class GunnerControlScript : PlayerControlScript {
+public class GunnerControlScript : PlayerControlScript
+{
 
     public WeaponController CurrWeaponScript; //Prefab for weap to be instantiated from
 
@@ -16,7 +17,7 @@ public class GunnerControlScript : PlayerControlScript {
     private bool isReloading;
     private GameObject CurrWeapon; //THIS is used for shooting
 
-    protected override void Start ()
+    protected override void Start()
     {
         base.Start();
         moveFactor = 200;
@@ -47,17 +48,21 @@ public class GunnerControlScript : PlayerControlScript {
 
     private void Shoot()
     {
-        if (!isReloading && Time.time > nextFire)
+        if (Time.time > nextFire)
         {
-            CurrWeapon.GetComponent<WeaponController>().Fire();
-            nextFire = Time.time + CurrWeaponScript.fireRate;
-            ammo--;
-            Debug.Log("Ammo is " + ammo);
-            if (ammo <= 0)
-            {
+            if (!isReloading && ammo <= 0)
                 StartCoroutine(Reload());
+
+            if (!isReloading)
+            {
+                CurrWeapon.GetComponent<WeaponController>().Fire();
+                nextFire = Time.time + CurrWeaponScript.fireRate;
+                ammo--;
+                Debug.Log("Ammo is " + ammo);
             }
+
         }
+
     }
 
     private IEnumerator Reload()
