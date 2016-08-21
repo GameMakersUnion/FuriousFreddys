@@ -1,39 +1,44 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TongueJoint : MonoBehaviour, DamageVisitable, DamageVisitor {
+public class TongueJoint : EntityControlScript {
 
-	int damage = 1;
-	int health = 1;
+	int damage;
+
+	public override int Health
+	{
+		get { return health; }
+		set { health = value; }
+	}
+
+	void Start()
+	{
+		damage = 1;
+		health = 1;
+	}
 
 	void Update()
 	{
-		CheckHealth();
+		CheckDies();
 	}
 
-	public virtual void AcceptDamageFrom(DamageVisitor damager)
+	public override void AcceptDamageFrom(DamageVisitor damager)
 	{
 		int damageAmount = damager.CauseDamageTo(this);
 		health -= damageAmount;
 	}
 
-	public virtual int CauseDamageTo(DamageVisitable visitable)
+	public override int CauseDamageTo(DamageVisitable visitable)
 	{
 		return damage;
 	}
 
-	//protected abstract void OnCollisionEnter2D(Collision2D col);
-
-	//protected abstract void OnCollisionExit2D(Collision2D col);
-
-
-	void CheckHealth()
+	protected override void Die()
 	{
 		transform.parent.gameObject.GetComponent<VaperHookShot>().DestroyRope();
-
 	}
 
-	void OnCollisionEnter2D(Collision2D col)
+	protected override void OnCollisionEnter2D(Collision2D col)
 	{
 		if (!col.gameObject.GetComponent<ProjectileController>()) return;
 
@@ -42,4 +47,15 @@ public class TongueJoint : MonoBehaviour, DamageVisitable, DamageVisitor {
 
 		damagable.AcceptDamageFrom(damager);
 	}
+
+	protected override void OnCollisionExit2D(Collision2D col)
+	{
+
+	}
+
+	public override void Move(int direction)
+	{
+		
+	}
+
 }

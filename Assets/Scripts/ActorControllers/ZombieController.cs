@@ -75,8 +75,12 @@ public class ZombieController : MasterZombieScript
 
 
 
+		ReceiveDamage(col);
 
+    }
 
+	void ReceiveDamage(Collision2D col)
+	{
 		if (!col.gameObject.GetComponent<ProjectileController>()) return;
 
 		if (isColliding.Contains(col.gameObject)) return;
@@ -86,13 +90,14 @@ public class ZombieController : MasterZombieScript
 		DamageVisitable damagable = gameObject.GetComponent<DamageVisitable>();
 		damagable.AcceptDamageFrom(damager);
 
-    }
-
-	public override int CauseDamageTo(DamageVisitable damagable)
-	{
-		//i don't agree this "damage" variable should have public access, there's no reason this for that and invites confusion, ugly coupling, etc.
-		//we should only access "damage" through specific interfaces such as this "CauseDamageTo" method, so the access scope of damage should be private or protected
-		return damage;
 	}
+
+	//redundant method call
+	//public override int CauseDamageTo(DamageVisitable damagable)
+	//{
+	//	//i don't agree this "damage" variable should have public access, there's no reason this for that and invites confusion, ugly coupling, etc.
+	//	//we should only access "damage" through specific interfaces such as this "CauseDamageTo" method, so the access scope of damage should be private or protected
+	//	return damage;
+	//}
 
 }

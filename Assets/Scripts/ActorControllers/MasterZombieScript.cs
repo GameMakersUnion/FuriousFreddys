@@ -20,7 +20,7 @@ public abstract class MasterZombieScript : EntityControlScript
     protected int counter;
     protected Rigidbody2D rb;
     protected int colcount;
-
+	private bool hitHappenedRecently;
 
 	//TODO: this is temporary. Ian will remove. Will phase this out, once done encapsulating it elsewhere
 	public override int Health
@@ -46,6 +46,7 @@ public abstract class MasterZombieScript : EntityControlScript
         counter = 10;
         colcount = 10;
         rb = this.GetComponent<Rigidbody2D>();
+		hitHappenedRecently = false;
 
     }
 
@@ -54,39 +55,45 @@ public abstract class MasterZombieScript : EntityControlScript
         this.start = transform.position;
         this.destin = VSR.bounds.ClosestPoint(start);
 
-
-
-        // Debug.Log(this.counter + " " + this.contact);
-        //print("staying");
-        if (this.contact)
-        {
-            if (counter == 0)
-            {
-                this.counter = 30;
-
-				//replaced with visitor pattern instead, inherited from entity
-				//invoked in the OnCollisionEnter instead
-				//vehicle.updateHealth(damage, this.name);
-            }
-            else
-            {
-                counter--;
-            }
-        }
-        else
-        {
-            if (colcount == 0)
-            {
-                ZSR.sprite = Face;
-            }
-            else
-            {
-                colcount--;
-            }
-        }
-
+		ApplyCooldown();
+		RevertFace();
 		CheckDies();
     }
+
+	void ApplyCooldown()
+	{
+		if (hitHappenedRecently)
+		{
+			//begin cooldown counter
+			if (this.counter == 0)
+			{
+				//reset cooldown
+				hitHappenedRecently = false;
+				this.counter = 30;
+				print("COOLDOWN RESET");
+			}
+			else
+			{
+				this.counter--;
+				//print("COOLDOWNWARD @ " + counter);
+			}
+		}
+	}
+
+	void RevertFace()
+	{
+		if (!this.contact)
+		{
+			if (colcount == 0)
+			{
+				ZSR.sprite = Face;
+			}
+			else
+			{
+				colcount--;
+			}
+		}
+	}
 
 
 	public override void Move(int direction)
@@ -127,8 +134,12 @@ public abstract class MasterZombieScript : EntityControlScript
 
 
 
+		ReceiveDamage(col);
 
+    }
 
+	void ReceiveDamage(Collision2D col)
+	{
 		if (!col.gameObject.GetComponent<ProjectileController>()) return;
 
 		DamageVisitor damager = col.gameObject.GetComponent<DamageVisitor>();
@@ -136,11 +147,7 @@ public abstract class MasterZombieScript : EntityControlScript
 
 		damagable.AcceptDamageFrom(damager);
 
-    }
-
-
-
-
+	}
 
     /*
      * Resets the zombie attack period to half
@@ -193,8 +200,12 @@ public abstract class MasterZombieScript : EntityControlScript
 		health -= damageAmount;
 	}
 
+	// i hate muddying this simple pure "CauseDamageTo" with this unclean conditional, it violates clean code conventions... i have no better choice at the moment... 
+	// it's more like "AttemptCauseDamageNow"
 	public override int CauseDamageTo(DamageVisitable damagable)
 	{
+		int damage = (hitHappenedRecently) ? 0 : this.damage;	
+		if (!hitHappenedRecently) hitHappenedRecently = true;
 		return damage;
 	}
 

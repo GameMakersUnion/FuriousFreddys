@@ -43,7 +43,7 @@ public abstract class EntityControlScript : MonoBehaviour, DamageVisitable, Dama
 		return health <= 0;
 	}
 
-	protected void Die()
+	protected virtual void Die()
 	{
 		Destroy(gameObject);
 	}

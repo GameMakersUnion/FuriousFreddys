@@ -78,6 +78,7 @@ public class VehicleControlScript : EntityControlScript
 
 	protected override void OnCollisionEnter2D(Collision2D col)
 	{
+		if (col.gameObject.GetComponent<TongueJoint>()) return;
 		if (col.gameObject.GetComponent<ProjectileController>()) return;
 
 		if (isColliding.Contains(col.gameObject)) return;
@@ -106,7 +107,7 @@ public class VehicleControlScript : EntityControlScript
 	{
 		int damageAmount = damager.CauseDamageTo(this);
 		health -= damageAmount;
-		ReportHealth();
+		if (damageAmount != 0) ReportHealth();
 	}
 
 	public override int CauseDamageTo(DamageVisitable damagable)
