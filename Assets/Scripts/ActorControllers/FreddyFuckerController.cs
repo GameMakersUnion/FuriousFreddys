@@ -110,5 +110,14 @@ public class FreddyFuckerController : MasterZombieScript {
         
     }
 
+	protected override void OnCollisionEnter2D(Collision2D col)
+	{
+
+	}
+
+	protected override void OnCollisionExit2D(Collision2D col)
+	{
+		
+	}
 
 }

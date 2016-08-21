@@ -74,4 +74,17 @@ public class GameControllerScript : MonoBehaviour {
         }
     }
 
+	/**
+	 * We don't need to see debug print lines every frame all the time.
+	 * Toggle on/off by selecting "ZombieController" in hierarchy and setting checkmark in inspector on the "GameControllerScript" component
+	 */
+	public void print(object obj)
+	{
+		GameControllerScript script = SingletonGodController.instance.gameControllerScript;
+
+		if (script != null && script.printDebugInfo)
+		{
+			MonoBehaviour.print(obj);
+		}
+	}
 }

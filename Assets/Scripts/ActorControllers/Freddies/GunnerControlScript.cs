@@ -75,4 +75,9 @@ public class GunnerControlScript : PlayerControlScript
         Debug.Log("Finished reloading");
     }
 
+	public override int CauseDamageTo(DamageVisitable damagable)
+	{
+		return 0;
+	}
+
 }

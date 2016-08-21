@@ -25,6 +25,9 @@ public class DriverControlScript : PlayerControlScript {
         //powerup or buff or w/e
     }
 
-    
+	public override int CauseDamageTo(DamageVisitable damagable)
+	{
+		return 0;
+	}
 
 }

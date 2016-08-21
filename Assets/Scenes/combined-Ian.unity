@@ -370,7 +370,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11433722, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}
       propertyPath: ZombiesSpawned
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 169786, guid: e595afb5347c3ad4b8f4d3528e3b3056, type: 2}
       propertyPath: m_IsActive

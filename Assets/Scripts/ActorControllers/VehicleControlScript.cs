@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class VehicleControlScript : EntityControlScript
 {
-    //public int health;
-    Rigidbody2D rb;
+
+	// required to limit multiple executions for a single OnCollisionEnter2D to once per instance
+	private List<GameObject> isColliding = new List<GameObject>();
+	
+	Rigidbody2D rb;
 
     public override int Health
     {
@@ -14,7 +18,7 @@ public class VehicleControlScript : EntityControlScript
 
     protected override void Start () {
         base.Start();
-        health = 500;
+        health = 5000;
         moveFactor = 750;
         rb= this.GetComponent<Rigidbody2D>();
     }
@@ -71,5 +75,43 @@ public class VehicleControlScript : EntityControlScript
         //Debug.Log(health);
         return health;
     }
+
+	protected override void OnCollisionEnter2D(Collision2D col)
+	{
+		if (col.gameObject.GetComponent<ProjectileController>()) return;
+
+		if (isColliding.Contains(col.gameObject)) return;
+		isColliding.Add(col.gameObject);
+
+		//laggy
+		//print("V OnCollisionEnter executing... col.gameObject.name: " + col.gameObject.name + ", this.gameObject.name: " + this.gameObject.name);
+
+		DamageVisitor damager = col.gameObject.GetComponent<DamageVisitor>();
+		DamageVisitable damagable = gameObject.GetComponent<DamageVisitable>();
+		if (damager == null)
+		{
+			Debug.LogWarning("Non-damager " + col.gameObject.name + " collided with damageable " + gameObject.name + ", please implement DamageVisitor method on it, or exclude from check on this damagable. ");
+			return;
+		}
+
+		damagable.AcceptDamageFrom(damager);
+	}
+
+	protected override void OnCollisionExit2D(Collision2D col)
+	{
+		isColliding.Remove(col.gameObject);
+	}
+
+	public override void AcceptDamageFrom(DamageVisitor damager)
+	{
+		int damageAmount = damager.CauseDamageTo(this);
+		health -= damageAmount;
+		ReportHealth();
+	}
+
+	public override int CauseDamageTo(DamageVisitable damagable)
+	{
+		return 0;
+	}
 
 }
