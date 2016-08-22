@@ -6,7 +6,10 @@ public class ZombWaveController : MonoBehaviour {
      * Factors of level difficulty:
      * number of zombies
      * speed of zombs
-     * 
+     * types of zombs
+     * zomb health
+     * zomb damage
+     * how often waves spawn
      * 
      */
 
