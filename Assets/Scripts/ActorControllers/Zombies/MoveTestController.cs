@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class MoveTestController : MonoBehaviour {
+public class MoveTestController : MonoBehaviour
+{
 
     public float minSpeed, maxSpeed, speedChangeRate;
 
@@ -20,6 +21,11 @@ public class MoveTestController : MonoBehaviour {
     {
         tf.position = Vector2.MoveTowards(tf.position, target.transform.position, speed * Time.deltaTime);
         if (Time.time > nextSpeedChange) changeSpeed();
+    }
+
+    void OnTriggerEnter2D()
+    {
+
     }
 
     private void changeSpeed()
