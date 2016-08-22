@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class MasterZombieScript : MonoBehaviour
+public abstract class MasterZombieScript : EntityControlScript
 {
     //I know i did it again... 
     GameObject van;
@@ -15,11 +15,20 @@ public abstract class MasterZombieScript : MonoBehaviour
     protected Vector3 start;
     protected Vector3 destin;
     public int damage;
-    public int health;
+    //public int health;
     protected bool contact;
     protected int counter;
     protected Rigidbody2D rb;
     protected int colcount;
+	private bool hitHappenedRecently;
+
+	//TODO: this is temporary. Ian will remove. Will phase this out, once done encapsulating it elsewhere
+	public override int Health
+	{
+		get { return health; }
+		set { health = value; }
+	}
+
 
     // Use this for initialization
     public virtual void Start()
@@ -31,11 +40,13 @@ public abstract class MasterZombieScript : MonoBehaviour
         VSR = van.GetComponent<SpriteRenderer>();
         zC = this.GetComponent<Collider2D>();
         vC = van.GetComponent<Collider2D>();
-        damage = 1;
+        damage = 5;
+		health = 20;
         this.contact = false;
         counter = 10;
         colcount = 10;
         rb = this.GetComponent<Rigidbody2D>();
+		hitHappenedRecently = false;
 
     }
 
@@ -44,51 +55,75 @@ public abstract class MasterZombieScript : MonoBehaviour
         this.start = transform.position;
         this.destin = VSR.bounds.ClosestPoint(start);
 
-
-
-        // Debug.Log(this.counter + " " + this.contact);
-        //print("staying");
-        if (this.contact)
-        {
-            if (counter == 0)
-            {
-                this.counter = 30;
-                vehicle.updateHealth(damage, this.name);
-            }
-            else
-            {
-                counter--;
-            }
-        }
-        else
-        {
-            if (colcount == 0)
-            {
-                ZSR.sprite = Face;
-            }
-            else
-            {
-                colcount--;
-            }
-        }
+		ApplyCooldown();
+		RevertFace();
+		CheckDies();
     }
 
-    public virtual void updateHealth(int change)
-    {
-        this.health += change;
+	void ApplyCooldown()
+	{
+		if (hitHappenedRecently)
+		{
+			//begin cooldown counter
+			if (this.counter == 0)
+			{
+				//reset cooldown
+				hitHappenedRecently = false;
+				this.counter = 30;
+				print("COOLDOWN RESET");
+			}
+			else
+			{
+				this.counter--;
+				//print("COOLDOWNWARD @ " + counter);
+			}
+		}
+	}
 
-        if (this.health <= 0) {
-            Destroy(this.gameObject);
+	void RevertFace()
+	{
+		if (!this.contact)
+		{
+			if (colcount == 0)
+			{
+				ZSR.sprite = Face;
+			}
+			else
+			{
+				colcount--;
+			}
+		}
+	}
 
-        } 
-    }
+
+	public override void Move(int direction)
+	{
+		//method that wouldn't make sense to implement, the signature of the parameter doesn't match what happens here... so it just gets discarded for now.
+
+	}
+ 
+
+	//depreciated
+	//this manner of interaction has been depreciated by the visitor pattern
+	//also the zombie will be responsible for destroying itself when it's health hits zero, we shouldn't be invoking it's death from here.
+	//also the zombie will be responsible for updateHealth, this shouldn't be publically exposed.
+
+	//public virtual void updateHealth(int change)
+	//{
+	//	this.health += change;
+
+	//	if (this.health <= 0) {
+	//		Destroy(this.gameObject);
+
+	//	} 
+	//}
 
 
 
     /*
      * Intial contact of the zombie to the car, stops it from moving 
      */
-    public virtual void OnCollisionEnter2D(Collision2D col)
+    protected override void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Vehicle")
         {
@@ -96,17 +131,29 @@ public abstract class MasterZombieScript : MonoBehaviour
 
             this.transform.position = this.transform.position;
         }
+
+
+
+		ReceiveDamage(col);
+
     }
 
+	void ReceiveDamage(Collision2D col)
+	{
+		if (!col.gameObject.GetComponent<ProjectileController>()) return;
 
+		DamageVisitor damager = col.gameObject.GetComponent<DamageVisitor>();
+		DamageVisitable damagable = gameObject.GetComponent<DamageVisitable>();
 
+		damagable.AcceptDamageFrom(damager);
 
+	}
 
     /*
      * Resets the zombie attack period to half
      * enables the rigidbody on the zombies
      */
-    public virtual void OnCollisionExit2D(Collision2D col)
+	protected override void OnCollisionExit2D(Collision2D col)
     {
         if (col.gameObject.tag == "Vehicle")
         {
@@ -146,5 +193,20 @@ public abstract class MasterZombieScript : MonoBehaviour
             MonoBehaviour.print(obj);
         }
     }
+
+	public override void AcceptDamageFrom(DamageVisitor damager)
+	{
+		int damageAmount = damager.CauseDamageTo(this);
+		health -= damageAmount;
+	}
+
+	// i hate muddying this simple pure "CauseDamageTo" with this unclean conditional, it violates clean code conventions... i have no better choice at the moment... 
+	// it's more like "AttemptCauseDamageNow"
+	public override int CauseDamageTo(DamageVisitable damagable)
+	{
+		int damage = (hitHappenedRecently) ? 0 : this.damage;	
+		if (!hitHappenedRecently) hitHappenedRecently = true;
+		return damage;
+	}
 
 }

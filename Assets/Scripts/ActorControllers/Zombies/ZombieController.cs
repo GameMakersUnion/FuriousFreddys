@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ZombieController : MasterZombieScript
 {
-    
+
+	// required to limit multiple executions for a single OnCollisionEnter2D to once per instance
+	private List<GameObject> isColliding = new List<GameObject>();
+
     Vector3 direction;
     public float speed;
     
@@ -36,7 +40,7 @@ public class ZombieController : MasterZombieScript
         }
     }
 
-    public override void OnCollisionExit2D(Collision2D col)
+    protected override void OnCollisionExit2D(Collision2D col)
     {
         if (col.gameObject.tag == "Vehicle")
         {
@@ -48,11 +52,16 @@ public class ZombieController : MasterZombieScript
             //print("exiting" + this.name);
 
         }
+
+
+
+
+		isColliding.Remove(col.gameObject);
     }
 
     
 
-    public override void OnCollisionEnter2D(Collision2D col)
+    protected override void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Vehicle")
         {
@@ -63,6 +72,32 @@ public class ZombieController : MasterZombieScript
             ZSR.sprite = Oface;
            // print("entering" + this.name);
         }
+
+
+
+		ReceiveDamage(col);
+
     }
+
+	void ReceiveDamage(Collision2D col)
+	{
+		if (!col.gameObject.GetComponent<ProjectileController>()) return;
+
+		if (isColliding.Contains(col.gameObject)) return;
+		isColliding.Add(col.gameObject);
+
+		DamageVisitor damager = col.gameObject.GetComponent<DamageVisitor>();
+		DamageVisitable damagable = gameObject.GetComponent<DamageVisitable>();
+		damagable.AcceptDamageFrom(damager);
+
+	}
+
+	//redundant method call
+	//public override int CauseDamageTo(DamageVisitable damagable)
+	//{
+	//	//i don't agree this "damage" variable should have public access, there's no reason this for that and invites confusion, ugly coupling, etc.
+	//	//we should only access "damage" through specific interfaces such as this "CauseDamageTo" method, so the access scope of damage should be private or protected
+	//	return damage;
+	//}
 
 }
