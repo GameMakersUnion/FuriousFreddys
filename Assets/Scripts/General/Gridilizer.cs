@@ -156,6 +156,7 @@ public class Gridilizer : MonoBehaviour
         GameObject cell = new GameObject(cellName);
         cell.transform.localScale = transform.localScale;
         cell.tag = "Cell";
+		cell.layer = LayerMask.NameToLayer("Vehicle");
         return cell;
     }
 

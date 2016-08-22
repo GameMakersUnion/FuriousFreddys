@@ -139,7 +139,8 @@ public class VaperHookShot : MonoBehaviour
         // joints[n].GetComponent<Rigidbody2D>().gravityScale = 0;
         CircleCollider2D col = joints[n].AddComponent<CircleCollider2D>();
         HingeJoint2D ph = joints[n].AddComponent<HingeJoint2D>();
-        //
+		joints[n].AddComponent<TongueJoint>();
+		//
         //ph.swingAxis = swingAxis;
        // SoftJointLimit limit_setter = ph.lowTwistLimit;
         //limit_setter.limit = lowTwistLimit;
@@ -184,10 +185,5 @@ public class VaperHookShot : MonoBehaviour
         joints = new GameObject[0];
         segments = 0;
     }
-
-    
-
-
-
 
 }
