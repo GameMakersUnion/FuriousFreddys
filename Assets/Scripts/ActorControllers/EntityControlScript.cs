@@ -25,9 +25,9 @@ public abstract class EntityControlScript : MonoBehaviour, DamageVisitable, Dama
 
 	protected abstract void OnCollisionExit2D(Collision2D col);
 
-	protected void ReportHealth()
+	public void ReportHealth()
 	{
-		print("health of : " + this + " is: " + health);
+		print("health of : " + this + " is: " + this.health);
 	}
 
 	protected void CheckDies()

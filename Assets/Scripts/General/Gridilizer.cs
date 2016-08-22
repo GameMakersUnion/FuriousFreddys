@@ -34,7 +34,9 @@ public class Gridilizer : MonoBehaviour
     public List<List<Sprite>> gridCellsInLayers = new List<List<Sprite>>();
 
     SpriteRenderer sr;
-    GameObject gridBucket;
+
+	[HideInInspector]
+    public GameObject gridActive;
 
     public My2DArray myArray;
 
@@ -49,7 +51,10 @@ public class Gridilizer : MonoBehaviour
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        gridBucket = BuildGridIn(sr.sprite);
+        gridActive = BuildGridIn(sr.sprite);
+		AddCellControllers();
+
+		//TestCellHealth();
 
         ApplyPhysicsFromParentToChildren();
         //DisablePhysicsOnParent();
@@ -72,7 +77,6 @@ public class Gridilizer : MonoBehaviour
             UtilSpawnMarkerAt(contact);
             SpriteRenderer sr = contact.otherCollider.gameObject.GetComponent<SpriteRenderer>();
             StartCoroutine(FlashSprite(sr));
-            TestNext(sr);
         }
     }
 
@@ -81,7 +85,7 @@ public class Gridilizer : MonoBehaviour
     //key Gridilizer methods
     /******************************************/
 
-    void TestNext(SpriteRenderer sr)
+    private void TestNext(SpriteRenderer sr)
     {
         //SetCellToLayerNext(sr);
         SetCellToLayerLower(sr);
@@ -160,7 +164,29 @@ public class Gridilizer : MonoBehaviour
         return cell;
     }
 
-    //loops
+	private void AddCellControllers()
+	{
+		VehicleControlScript vehicle = transform.GetComponent<VehicleControlScript>();
+
+		foreach (Transform cell in gridActive.transform)
+		{
+			CellController cellControl = cell.gameObject.AddComponent<CellController>();
+			cellControl.Health = Mathf.CeilToInt( vehicle.Health / (rows * columns) );   //e.g. 5000 / 24 = 208.33 == 208 ==~ 209 Ceil'd.
+			cellControl.healthOrig = cellControl.Health;
+			cellControl.layers = gridCellsInLayers.Count;
+		}
+	}
+
+	//private void TestCellHealth()
+	//{
+	//	foreach (Transform cell in gridActive.transform)
+	//	{
+	//		CellController cellControl = cell.gameObject.GetComponent<CellController>();
+	//		print(cell.name + " : " + cellControl.Health);
+	//	}
+	//}
+
+	//loops
     public void SetCellToLayerNext(SpriteRenderer sr)
     {
         SetCellToLayerByDelta(sr, +1);
@@ -210,6 +236,31 @@ public class Gridilizer : MonoBehaviour
         sr.sprite = cellNextLayer;
     }
 
+	public void SetCellToLayer(SpriteRenderer sr, int layerIndex)
+	{
+		bool belowTop = layerIndex > 0 && layerIndex < (gridCellsInLayers.Count - 1);
+		bool aboveBottom = layerIndex < (gridCellsInLayers.Count - 1) && layerIndex >= 0;
+
+		if (!(belowTop && aboveBottom)) 
+		{
+			return;
+			//throw new System.ArgumentException("Sprite " + sprite.name + " was not found in loaded layers of cells.");
+		}
+
+		Sprite sprite = sr.sprite;
+		Vector2? cellNullable = GetCellLayerAndIndexOf(sprite); //TODO: bit of redundant search, optimize later.
+		if (cellNullable == null)
+		{
+			return;
+			//throw new System.ArgumentException("Sprite " + sprite.name + " was not found in loaded layers of cells.");
+		}
+		Vector2 cellCoalesced = new Vector2(cellNullable.GetValueOrDefault().x, cellNullable.GetValueOrDefault().y);
+		int cellIndex = (int)cellCoalesced.y;
+		Sprite cellNextLayer = gridCellsInLayers[layerIndex][cellIndex];
+		sr.sprite = cellNextLayer;
+
+ 	}
+
     /**
      * from Active grid...
      * currently souces from Active grid ... TBD if this will remain this way.... that is, returning a single Vector2 datum despite 
@@ -217,7 +268,7 @@ public class Gridilizer : MonoBehaviour
      */
     public Vector2? GetCellPositionActiveOf(Sprite sprite)
     {
-        GameObject children = this.gridBucket;
+        GameObject children = this.gridActive;
         foreach (Transform child in children.transform)
         {
             SpriteRenderer sr = child.GetComponent<SpriteRenderer>();
@@ -301,7 +352,7 @@ public class Gridilizer : MonoBehaviour
     //     * there's probably a better way to access a specific index than the below loop... 
     //     * i'm beginning to think i shouldn't be storing my only reference to the list of active children in the transform hierarchy....
     //     */
-    //    GameObject children = this.gridBucket;
+    //    GameObject children = this.gridActive;
     //    foreach (Transform child in children.transform)
     //    {
     //        if (index == child.GetSiblingIndex())
@@ -340,15 +391,15 @@ public class Gridilizer : MonoBehaviour
     void ToggleGridOnOrOff()
     {
         //is this the most efficent way or cleanest way to write this??? I'm not sure. 
-        if (!useGrid && (gridBucket != null))
+        if (!useGrid && (gridActive != null))
         {
             gridBuiltAttempted = false;
-            Destroy(gridBucket);
+            Destroy(gridActive);
         }
-        else if (useGrid && !gridBuiltAttempted && (gridBucket == null))
+        else if (useGrid && !gridBuiltAttempted && (gridActive == null))
         {
             gridBuiltAttempted = true;
-            gridBucket = BuildGridIn(sr.sprite);
+            gridActive = BuildGridIn(sr.sprite);
         }
     }
 
@@ -392,7 +443,7 @@ public class Gridilizer : MonoBehaviour
     void ApplyPhysicsFromParentToChildren()
     {
         GameObject parent = this.gameObject;
-        GameObject children = this.gridBucket;
+        GameObject children = this.gridActive;
         if (children == null) return;
 
         //Collider2D col = this.GetComponent<BoxCollider2D>();
@@ -422,7 +473,7 @@ public class Gridilizer : MonoBehaviour
     
     void SetGridHitPoints()
     {
-        GameObject children = this.gridBucket;
+        GameObject children = this.gridActive;
         if (children == null) return;
 
         //int health = this.GetComponent<VehicleControlScript>().health;
