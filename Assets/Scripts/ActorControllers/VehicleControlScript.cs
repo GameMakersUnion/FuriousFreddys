@@ -6,9 +6,11 @@ public class VehicleControlScript : EntityControlScript
 {
 
 	// required to limit multiple executions for a single OnCollisionEnter2D to once per instance
-	private List<GameObject> isColliding = new List<GameObject>();
+	[HideInInspector]
+	public List<GameObject> isColliding = new List<GameObject>();
 	
 	Rigidbody2D rb;
+	Gridilizer gr;
 
     public override int Health
     {
@@ -18,9 +20,10 @@ public class VehicleControlScript : EntityControlScript
 
     protected override void Start () {
         base.Start();
-        health = 5000;
+        health = 1500;
         moveFactor = 750;
-        rb= this.GetComponent<Rigidbody2D>();
+        rb = this.GetComponent<Rigidbody2D>();
+		gr = this.GetComponent<Gridilizer>();
     }
 
     public override void Move(int direction)
@@ -81,8 +84,8 @@ public class VehicleControlScript : EntityControlScript
 		if (col.gameObject.GetComponent<TongueJoint>()) return;
 		if (col.gameObject.GetComponent<ProjectileController>()) return;
 
-		if (isColliding.Contains(col.gameObject)) return;
-		isColliding.Add(col.gameObject);
+		//if (isColliding.Contains(col.gameObject)) return;
+		//isColliding.Add(col.gameObject);
 
 		//laggy
 		//print("V OnCollisionEnter executing... col.gameObject.name: " + col.gameObject.name + ", this.gameObject.name: " + this.gameObject.name);
@@ -98,16 +101,18 @@ public class VehicleControlScript : EntityControlScript
 		damagable.AcceptDamageFrom(damager);
 	}
 
-	protected override void OnCollisionExit2D(Collision2D col)
-	{
-		isColliding.Remove(col.gameObject);
-	}
+	protected override void OnCollisionExit2D(Collision2D col) { } 
+
+	//protected override void OnCollisionExit2D(Collision2D col)
+	//{
+	//	isColliding.Remove(col.gameObject);
+	//}
 
 	public override void AcceptDamageFrom(DamageVisitor damager)
 	{
-		int damageAmount = damager.CauseDamageTo(this);
-		health -= damageAmount;
-		if (damageAmount != 0) ReportHealth();
+		//int damageAmount = damager.CauseDamageTo(this);
+		//health -= damageAmount;
+		//if (damageAmount != 0) ReportHealth();
 	}
 
 	public override int CauseDamageTo(DamageVisitable damagable)
