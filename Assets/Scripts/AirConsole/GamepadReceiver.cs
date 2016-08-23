@@ -13,7 +13,7 @@ The component allows the current gameobject to receive messages from the gamepad
 
 public class GamepadReceiver : MonoBehaviour {
 
-    public int playerNumber = 1; //This is the player number 1-4
+    public int playerNumber = 1; //This is the player number 1-5
     public UnityEvent leftButtonUp;
     public UnityEvent leftButtonDown;
     public UnityEvent rightButtonUp;

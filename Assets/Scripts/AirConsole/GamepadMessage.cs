@@ -43,6 +43,10 @@ public class GamepadMessage : MonoBehaviour {
     {
         SendMessageToController(message, 3);
     }
+    public void SendMessageToControllerToPlayerFive(string message)
+    {
+        SendMessageToController(message, 4);
+    }
     // Update is called once per frame
     void Update () {
 	
