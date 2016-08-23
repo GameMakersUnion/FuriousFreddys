@@ -37,6 +37,9 @@ public class SingletonGodController : MonoBehaviour {
     [HideInInspector]
     public VehicleControlScript vehicleControlScript;
 
+    [HideInInspector]
+    public StateManager stateManager;
+
     /**
      * This Awake method block is the heart of a singleton. Don't play with.
      */
@@ -60,6 +63,7 @@ public class SingletonGodController : MonoBehaviour {
         gameControllerScript = Utils.FindComponentOn("ZombieController");
         gameControllerScript = Utils.FindComponentOn<GameControllerScript>("ZombieController");
         vehicleControlScript = Utils.FindComponentTagged<VehicleControlScript>("Vehicle");
+        stateManager = Utils.FindComponentOn<StateManager>("StateManager");
     }
 
 }
