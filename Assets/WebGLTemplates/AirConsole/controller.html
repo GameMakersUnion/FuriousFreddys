@@ -2,8 +2,15 @@
 <html>
 <head>
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  
   <script type="text/javascript" src="https://www.airconsole.com/api/airconsole-1.4.0.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ 
+  
   <style type=text/css>
   
   .button{
@@ -69,7 +76,7 @@
      */
     function App() {
       var me = this;
-      me.airconsole = new AirConsole({"orientation": "portrait", "synchronize_time" : "true"});
+      me.airconsole = new AirConsole({"orientation": "AirConsole.ORIENTATION_LANDSCAPE", "synchronize_time" : "true"});
       me.airconsole.onMessage = function(from, data) {
         console.log("onMessage", from, data);
         document.getElementById("content").innerHTML = "device " + from + " says: " + data;
@@ -195,56 +202,64 @@
  
 </head>
 <body onload="window.app = new App()">
-    <!-- Driver Screen  -->
-    <div id="driver" style="display:none">
-        <strong>Driver Screen</strong>
-        <button class="button" ontouchstart="window.app.sendMessageToScreen('left-down')" ontouchend="window.app.sendMessageToScreen('left-up')"> Turn Left</button>
-        <button class="button" ontouchstart="window.app.sendMessageToScreen('right-down')" ontouchend="window.app.sendMessageToScreen('right-up')">Turn Right</button>
-    </div>
+	<div class="fluid-container">
+		<div class="row">
+			<div class="col-xs-12">
+				<!-- Driver Screen  -->
+				<div id="driver" class="hide">
+					<strong>Driver Screen</strong>
+					<button class="button" ontouchstart="window.app.sendMessageToScreen('left-down')" ontouchend="window.app.sendMessageToScreen('left-up')"> Turn Left</button>
+					<button class="button" ontouchstart="window.app.sendMessageToScreen('right-down')" ontouchend="window.app.sendMessageToScreen('right-up')">Turn Right</button>
+				</div>
 
-    <!-- Shooter Screen  -->
-    <div id="shooter" style="display:none">
-        <strong>Shooter Screen</strong>
-        <button class="button" ontouchstart="window.app.sendMessageToScreen('left-down')" ontouchend="window.app.sendMessageToScreen('left-up')"> Turn Left</button>
-        <button class="button" ontouchstart="window.app.sendMessageToScreen('right-down')" ontouchend="window.app.sendMessageToScreen('right-up')">Turn Right</button>
-    </div>
+				<!-- Shooter Screen  -->
+				<div id="shooter" class="hide">
+					<strong>Shooter Screen</strong>
+					<button class="button" ontouchstart="window.app.sendMessageToScreen('left-down')" ontouchend="window.app.sendMessageToScreen('left-up')"> Turn Left</button>
+					<button class="button" ontouchstart="window.app.sendMessageToScreen('right-down')" ontouchend="window.app.sendMessageToScreen('right-up')">Turn Right</button>
+				</div>
 
-    <!-- Support Screen  -->
-    <div id="support" style="display:none">
-        <strong>Support Screen</strong>
-    </div>
+				<!-- Support Screen  -->
+				<div id="support" class="hide">
+					<strong>Support Screen</strong>
+				</div>
 
-    <!-- Store Screen  -->
-    <div id="store">
-        <strong>Store Screen</strong>
-    </div>
-    <div id="debug">
-
-    
-        <div style="margin-top:50px">
-            <div style="float:left">
-             <button class="button" ontouchstart="window.app.sendMessageToScreen('left')" ontouchend="window.app.sendMessageToScreen('stop')">Send Message to Screen: Rotate Logo Left</button>
-             <button class="button" ontouchstart="window.app.sendMessageToScreen('right')" ontouchend="window.app.sendMessageToScreen('stop')">Send Message to Screen: Rotate Logo Right</button>
-             <button class="button button-left" ontouchstart="window.app.broadcastMessage('Hey everyone!')" >Broadcast Message</button>
-             <button class="button button-right" ontouchstart="window.app.displayDeviceId()">Show my Device Id</button>
-             <button class="button button-left" ontouchstart="window.app.displayNickname()">Show my Nickname</button>
-             <button class="button button-right" ontouchstart="window.app.displayProfilePicture()">Show Profile Picture</button>
-             <button class="button" ontouchstart="window.app.setSomeCustomData()">Set Custom Data on this Device</button>
-             <button class="button" ontouchstart="window.app.setCustomDeviceStateProperty('health', 50)">Set 'health' property on this Device</button>
-             <button class="button" ontouchstart="window.app.displayNumberOfControllers()">Show Number of connected Controllers</button>
-             <button class="button" ontouchstart="window.app.showPlayerNumber()">Show my Player Number</button>
-             <button class="button button-left" ontouchstart="window.app.showServerTime()">Show Server Time</button>
-             <button class="button button-right" ontouchstart="window.app.showLoginStatus()">Am I logged in?</button>
-             <button class="button button-left" ontouchstart="window.app.hideDefaultUI()">Hide Default UI</button>
-             <button class="button button-right" ontouchstart="window.app.showDefaultUI()">Show Default UI</button>
-             <button class="button button-left" ontouchstart="window.app.navigateHome()">Navigate Home </button>
-             <button class="button button-right" ontouchstart="window.app.navigateToPong()">Navigate to Pong</button>
-             <button class="button" ontouchstart="window.app.tellScreenToShowAd()">Tell Screen to show an ad</button>
-            </div>
-        
-        </div>
-        <div id ="profile-pic"></div>
-        <div id="content"><!--Incoming messages get displayed in this container--></div>
-    </div>
+				<!-- Store Screen  -->
+				<div id="store" class="hide">
+					<strong>Store Screen</strong>
+				</div>
+				<div id="ready">
+					<button class="btn btn-block btn-danger" style="height:100%">Ready</button>
+				</div>
+				<div id="debug" class="hide">
+					<div style="margin-top:50px">
+						<div style="float:left">
+						 <button class="button" ontouchstart="window.app.sendMessageToScreen('left')" ontouchend="window.app.sendMessageToScreen('stop')">Send Message to Screen: Rotate Logo Left</button>
+						 <button class="button" ontouchstart="window.app.sendMessageToScreen('right')" ontouchend="window.app.sendMessageToScreen('stop')">Send Message to Screen: Rotate Logo Right</button>
+						 <button class="button button-left" ontouchstart="window.app.broadcastMessage('Hey everyone!')" >Broadcast Message</button>
+						 <button class="button button-right" ontouchstart="window.app.displayDeviceId()">Show my Device Id</button>
+						 <button class="button button-left" ontouchstart="window.app.displayNickname()">Show my Nickname</button>
+						 <button class="button button-right" ontouchstart="window.app.displayProfilePicture()">Show Profile Picture</button>
+						 <button class="button" ontouchstart="window.app.setSomeCustomData()">Set Custom Data on this Device</button>
+						 <button class="button" ontouchstart="window.app.setCustomDeviceStateProperty('health', 50)">Set 'health' property on this Device</button>
+						 <button class="button" ontouchstart="window.app.displayNumberOfControllers()">Show Number of connected Controllers</button>
+						 <button class="button" ontouchstart="window.app.showPlayerNumber()">Show my Player Number</button>
+						 <button class="button button-left" ontouchstart="window.app.showServerTime()">Show Server Time</button>
+						 <button class="button button-right" ontouchstart="window.app.showLoginStatus()">Am I logged in?</button>
+						 <button class="button button-left" ontouchstart="window.app.hideDefaultUI()">Hide Default UI</button>
+						 <button class="button button-right" ontouchstart="window.app.showDefaultUI()">Show Default UI</button>
+						 <button class="button button-left" ontouchstart="window.app.navigateHome()">Navigate Home </button>
+						 <button class="button button-right" ontouchstart="window.app.navigateToPong()">Navigate to Pong</button>
+						 <button class="button" ontouchstart="window.app.tellScreenToShowAd()">Tell Screen to show an ad</button>
+						</div>
+					
+					</div>
+					<div id ="profile-pic"></div>
+					<div id="content"><!--Incoming messages get displayed in this container--></div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
 </body>
 </html>
