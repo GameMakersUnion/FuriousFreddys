@@ -22,8 +22,10 @@ public class GamepadReceiver : MonoBehaviour {
     public UnityEvent primaryButtonDown;
     public UnityEvent secondaryButtonUp;
     public UnityEvent secondaryButtonDown;
-    
-  
+    public UnityEvent onConnect;
+    public UnityEvent onDisconnect;
+
+
 
     // Use this for initialization
     void Awake()
@@ -72,10 +74,11 @@ public class GamepadReceiver : MonoBehaviour {
         AirConsole.instance.Broadcast(message);
     }
 
-    void OnMessage(int from, JToken data)
+    void OnMessage(int device_id, JToken data)
     {
         Debug.Log((string)data);
-        Debug.Log(from);
+        Debug.Log(device_id);
+        int from = AirConsole.instance.ConvertDeviceIdToPlayerNumber(device_id);
         if (from == playerNumber) { //Only invoke methods if its the player they want
             Debug.Log("Wee");
             switch ((string)data)
