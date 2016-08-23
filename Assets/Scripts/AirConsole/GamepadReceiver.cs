@@ -13,17 +13,19 @@ The component allows the current gameobject to receive messages from the gamepad
 
 public class GamepadReceiver : MonoBehaviour {
 
-    public int playerNumber = 1; //This is the player number 1-4
-    public UnityEvent leftButtonUp;
-    public UnityEvent leftButtonDown;
-    public UnityEvent rightButtonUp;
-    public UnityEvent rightButtonDown;
+    public int playerNumber = 1; //This is the player number 1-5
+    public UnityEvent upButtonUp;
+    public UnityEvent upButtonDown;
+    public UnityEvent downButtonUp;
+    public UnityEvent downButtonDown;
     public UnityEvent primaryButtonUp;
     public UnityEvent primaryButtonDown;
     public UnityEvent secondaryButtonUp;
     public UnityEvent secondaryButtonDown;
-    
-  
+    public UnityEvent onConnect;
+    public UnityEvent onDisconnect;
+
+
 
     // Use this for initialization
     void Awake()
@@ -34,14 +36,14 @@ public class GamepadReceiver : MonoBehaviour {
 
         //  = new Dictionary<string, UnityEvent>();
 
-        if (leftButtonUp == null)
-            leftButtonUp = new UnityEvent();
-        if (leftButtonDown == null)
-            leftButtonDown = new UnityEvent();
-        if (rightButtonUp == null)
-            rightButtonUp = new UnityEvent();
-        if (rightButtonDown == null)
-            rightButtonDown = new UnityEvent();
+        if (upButtonUp == null)
+            upButtonUp = new UnityEvent();
+        if (upButtonDown == null)
+            upButtonDown = new UnityEvent();
+        if (downButtonUp == null)
+            downButtonUp = new UnityEvent();
+        if (downButtonDown == null)
+            downButtonDown = new UnityEvent();
         if (primaryButtonUp == null)
             primaryButtonUp = new UnityEvent();
         if (primaryButtonDown == null)
@@ -72,18 +74,19 @@ public class GamepadReceiver : MonoBehaviour {
         AirConsole.instance.Broadcast(message);
     }
 
-    void OnMessage(int from, JToken data)
+    void OnMessage(int device_id, JToken data)
     {
         Debug.Log((string)data);
-        Debug.Log(from);
+        Debug.Log(device_id);
+        int from = AirConsole.instance.ConvertDeviceIdToPlayerNumber(device_id);
         if (from == playerNumber) { //Only invoke methods if its the player they want
             Debug.Log("Wee");
             switch ((string)data)
             {
-                case "left-up": leftButtonUp.Invoke(); break;
-                case "left-down": leftButtonDown.Invoke(); break;
-                case "right-up": rightButtonUp.Invoke(); break;
-                case "right-down": rightButtonDown.Invoke(); break;
+                case "up-up": upButtonUp.Invoke(); break;
+                case "up-down": upButtonDown.Invoke(); break;
+                case "down-up": downButtonUp.Invoke(); break;
+                case "down-down": downButtonDown.Invoke(); break;
                 case "primary-up": primaryButtonUp.Invoke(); break;
                 case "primary-down": primaryButtonDown.Invoke(); break;
                 case "secondary-up": secondaryButtonUp.Invoke(); break;
