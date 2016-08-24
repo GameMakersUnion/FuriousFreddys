@@ -10,7 +10,8 @@ public class MoveTestController : MonoBehaviour
     private Transform tf;
     private Rigidbody2D rb;
 
-	void Start () {
+	void Start ()
+    {
         changeSpeed();
         target = GameObject.FindGameObjectWithTag("Vehicle");
         tf = transform;
@@ -19,7 +20,8 @@ public class MoveTestController : MonoBehaviour
 
 	void Update ()
     {
-        tf.position = Vector2.MoveTowards(tf.position, target.transform.position, speed * Time.deltaTime);
+        Vector3 targetPosition = target.transform.position - new Vector3(0, 2, 0);
+        tf.position = Vector2.MoveTowards(tf.position, targetPosition, speed * Time.deltaTime);
         if (Time.time > nextSpeedChange) changeSpeed();
     }
 
@@ -32,7 +34,7 @@ public class MoveTestController : MonoBehaviour
     {
         nextSpeedChange = Time.time + speedChangeRate;
         speed = Mathf.Round(Random.Range(minSpeed, maxSpeed));
-        Debug.Log("Speed is " + speed);
+        //Debug.Log("Speed is " + speed);
     }
 
 }

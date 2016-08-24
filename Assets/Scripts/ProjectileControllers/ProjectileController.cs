@@ -41,7 +41,8 @@ public class ProjectileController : MonoBehaviour, DamageVisitor {
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		Destroy(gameObject);
+        if (col.gameObject.tag != "Vehicle")
+		    Destroy(gameObject);
 	}
 
 	public virtual int CauseDamageTo(DamageVisitable visitable)

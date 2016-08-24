@@ -15,7 +15,6 @@ public class StateManager : MonoBehaviour
         currentState = gameState.SPLASH;
         Debug.Log("curr state is " + currentState);
 
-
     }
 
     void Update()
@@ -29,7 +28,6 @@ public class StateManager : MonoBehaviour
     {
         if (vehicle.Health <= 0)
         {
-            //next state
             LoadGameOverScene();
         }
     }
@@ -44,18 +42,21 @@ public class StateManager : MonoBehaviour
         }
     }
 
+    //called when game starts up
     public void LoadStartScene()
     {
         currentState = gameState.SPLASH;
         SceneManager.LoadScene("title-Tyler");
     }
 
+    //called by start button on splash screen, or by game over screen after a few seconds (?)
     public void LoadLobbyScene()
     {
         currentState = gameState.LOBBY;
         SceneManager.LoadScene("ready-victor");
     }
 
+    //called in lobby screen, a few seconds after all players have connected and readied up (?)
     public void LoadGameplayScene()
     {
         FindVehicleRef();
@@ -63,6 +64,7 @@ public class StateManager : MonoBehaviour
         SceneManager.LoadScene("combined-Ian");
     }
 
+    //called from the gameplay screen after the vehicle dies
     public void LoadGameOverScene()
     {
         currentState = gameState.GAMEOVER;

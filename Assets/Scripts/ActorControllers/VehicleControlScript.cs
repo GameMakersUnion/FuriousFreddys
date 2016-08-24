@@ -94,7 +94,7 @@ public class VehicleControlScript : EntityControlScript
 		DamageVisitable damagable = gameObject.GetComponent<DamageVisitable>();
 		if (damager == null)
 		{
-			Debug.LogWarning("Non-damager " + col.gameObject.name + " collided with damageable " + gameObject.name + ", please implement DamageVisitor method on it, or exclude from check on this damagable. ");
+			//Debug.LogWarning("Non-damager " + col.gameObject.name + " collided with damageable " + gameObject.name + ", please implement DamageVisitor method on it, or exclude from check on this damagable. ");
 			return;
 		}
 

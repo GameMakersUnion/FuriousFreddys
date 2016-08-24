@@ -104,11 +104,12 @@ public class CellController : EntityControlScript {
 		int damageAmount = damager.CauseDamageTo(this);
 		Health -= damageAmount;
 		vehicle.Health -= damageAmount * damageMultiplyer[level];
-
+        /*
 		if (damageAmount != 0) {
 			print("health of : " + this + " is: " + health);
 			vehicle.ReportHealth(); 
 		}
+        */
 	}
 
 	public override int CauseDamageTo(DamageVisitable damagable) 
@@ -130,7 +131,7 @@ public class CellController : EntityControlScript {
 
 		if (damager == null)
 		{
-			Debug.LogWarning("Non-damager " + col.gameObject.name + " collided with damageable " + gameObject.name + ", please implement DamageVisitor method on it, or exclude from check on this damagable. ");
+			//Debug.LogWarning("Non-damager " + col.gameObject.name + " collided with damageable " + gameObject.name + ", please implement DamageVisitor method on it, or exclude from check on this damagable. ");
 			return;
 		}
 

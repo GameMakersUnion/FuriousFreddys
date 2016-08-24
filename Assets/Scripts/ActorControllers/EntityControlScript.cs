@@ -27,7 +27,7 @@ public abstract class EntityControlScript : MonoBehaviour, DamageVisitable, Dama
 
 	public void ReportHealth()
 	{
-		print("health of : " + this + " is: " + this.health);
+		//print("health of : " + this + " is: " + this.health);
 	}
 
 	protected void CheckDies()
