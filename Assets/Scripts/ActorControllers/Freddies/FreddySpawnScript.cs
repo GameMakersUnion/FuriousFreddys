@@ -30,18 +30,40 @@ public class FreddySpawnScript : MonoBehaviour {
         }
     }
 
-    void Awake()
+    void Start()
     {
-
-        NumPlayers = 5;
-        for (int i = 1; i <= numPlayers_; i++)
+        //only self-initialize in debug mode.
+        //otherwise require PlayerManager to invoke directly....
+        StateManager sm = SingletonGodController.instance.stateManager;
+        if (sm.currentState == StateManager.gameState.GAMEPLAY || true) //TODO REMOVE  || true.!!   
         {
-            InstantiatePlayer(i);
+            InstantiatePlayers(numPlayers_);
+        }
+        else
+        {
+            PlayerManager pm = Utils.FindComponentOn<SingletonGodController>("SingletonGodController").GetComponent<PlayerManager>();
+            InstantiatePlayers(pm.playerCount);
         }
 
     }
-
-    void InstantiatePlayer(int playerNum)
+    /// <summary>
+    /// Debug instantiate all players manually
+    /// </summary>
+    public void InstantiatePlayers(int numPlayers)
+    {
+        if (numPlayers < 0)
+            return;
+        for (int i = 1; i <= numPlayers; i++)
+        {
+            InstantiatePlayer(i);
+        }
+    }
+    /// <summary>
+    /// Instantiates Player and decides position and assigns sprite
+    /// </summary>
+    /// <param name="playerNum">int position and color and type</param>
+    /// <returns>PlayerConstrolScript of player created</returns>
+    private PlayerControlScript InstantiatePlayer(int playerNum)
     {
         Vector3 position = Vector3.zero;
         PlayerControlScript freddy = null;
@@ -85,6 +107,7 @@ public class FreddySpawnScript : MonoBehaviour {
         {
             Debug.Log("Freddy failed to spawn.");
         }
+        return freddy;
     }
 
 }

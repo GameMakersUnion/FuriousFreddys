@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public abstract class MasterZombieScript : EntityControlScript
 {
@@ -21,7 +22,7 @@ public abstract class MasterZombieScript : EntityControlScript
     protected Rigidbody2D rb;
     protected int colcount;
 	private bool hitHappenedRecently;
-
+    public Statistics stats;
 	//TODO: this is temporary. Ian will remove. Will phase this out, once done encapsulating it elsewhere
 	public override int Health
 	{
@@ -135,10 +136,9 @@ public abstract class MasterZombieScript : EntityControlScript
 
 
 		ReceiveDamage(col);
-
     }
 
-	void ReceiveDamage(Collision2D col)
+    void ReceiveDamage(Collision2D col)
 	{
 		if (!col.gameObject.GetComponent<ProjectileController>()) return;
 
@@ -196,17 +196,27 @@ public abstract class MasterZombieScript : EntityControlScript
 
 	public override void AcceptDamageFrom(DamageVisitor damager)
 	{
+        
 		int damageAmount = damager.CauseDamageTo(this);
-		health -= damageAmount;
-	}
+        health -= damageAmount;
+
+        this.stats.damageTaken += damageAmount;
+        //EntityControlScript entity = (EntityControlScript)damager;
+        //GunnerControlScript freddy = //entity.transform.parent.GetComponent<FreddyFuckerController>();
+       // freddy.stats.damageDelt += damageAmount;
+        //freddy.stats.shotsConnected++;
+    }
 
 	// i hate muddying this simple pure "CauseDamageTo" with this unclean conditional, it violates clean code conventions... i have no better choice at the moment... 
 	// it's more like "AttemptCauseDamageNow"
 	public override int CauseDamageTo(DamageVisitable damagable)
 	{
-		int damage = (hitHappenedRecently) ? 0 : this.damage;	
-		if (!hitHappenedRecently) hitHappenedRecently = true;
-		return damage;
+		int damage = (hitHappenedRecently) ? 0 : this.damage;
+        if (!hitHappenedRecently)
+        {
+            hitHappenedRecently = true;
+            this.stats.damageDelt = damage;
+        }
+        return damage;
 	}
-
 }

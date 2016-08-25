@@ -1,0 +1,30 @@
+Stats for game:
+	Vehicle (Driver):
+		-Damage Taken
+		-Damage Recieved from rocks
+		-Distance Traveled
+		-Average Speed
+	
+
+	Player:
+		-Shots Fired
+		-Shots Connected
+		-Damage Delt
+		-Zombies Killed
+		-Time spent debuffed
+		-Average DPS
+		-Car Healing
+		-Saves
+		-Time spent buffing
+		
+	Master Zombie :
+		-Time Spent Alive
+		-Damage Delt to Car
+			
+			Vaper:
+				-Time Spent Hooked
+				- Hook Completion
+			FF: 
+				-Time Spent Fucking
+				-Jumps Connected
+				-Jumps Percentage

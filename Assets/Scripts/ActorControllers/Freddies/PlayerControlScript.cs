@@ -1,6 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class PlayerControlScript : EntityControlScript {
+    public int playerNumber = 0; //Their player number
+
+
 
     private bool keyPress;
     protected Transform tf;
@@ -37,4 +41,4 @@ public abstract class PlayerControlScript : EntityControlScript {
 
 	}
 
- }
+}

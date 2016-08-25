@@ -4,7 +4,7 @@ public abstract class EntityControlScript : MonoBehaviour, DamageVisitable, Dama
 
     protected int health;
     protected float moveFactor;
-
+    //protected int damage;
     public abstract int Health { get; set; }
 
 	protected virtual void Start () {
@@ -20,6 +20,7 @@ public abstract class EntityControlScript : MonoBehaviour, DamageVisitable, Dama
 	public abstract void AcceptDamageFrom(DamageVisitor visitor);
 
 	public abstract int CauseDamageTo(DamageVisitable visitable);
+
 
 	protected abstract void OnCollisionEnter2D(Collision2D col);
 
