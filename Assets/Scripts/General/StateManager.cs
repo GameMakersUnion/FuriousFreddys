@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class StateManager : MonoBehaviour
 {
 
-    private enum gameState { SPLASH, LOBBY, GAMEPLAY, GAMEOVER };
+    private enum gameState { SPLASH, LOBBY, GAMEPLAY, GAMEOVER, DEBUG };
     private gameState currentState;
     private VehicleControlScript vehicle;
 
@@ -20,11 +20,11 @@ public class StateManager : MonoBehaviour
     void Update()
     {
         if (currentState == gameState.GAMEPLAY)
-            CheckVehicleDeath();
+            CheckGameOver();
 
     }
 
-    void CheckVehicleDeath()
+    void CheckGameOver()
     {
         if (vehicle.Health <= 0)
         {

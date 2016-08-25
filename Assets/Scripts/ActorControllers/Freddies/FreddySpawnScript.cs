@@ -40,8 +40,12 @@ public class FreddySpawnScript : MonoBehaviour {
         }
 
     }
-
-    void InstantiatePlayer(int playerNum)
+    /// <summary>
+    /// Instantiates Player and decides position and assigns sprite
+    /// </summary>
+    /// <param name="playerNum">int position and color and type</param>
+    /// <returns>PlayerConstrolScript of player created</returns>
+    public PlayerControlScript InstantiatePlayer(int playerNum)
     {
         Vector3 position = Vector3.zero;
         PlayerControlScript freddy = null;
@@ -85,6 +89,7 @@ public class FreddySpawnScript : MonoBehaviour {
         {
             Debug.Log("Freddy failed to spawn.");
         }
+        return freddy;
     }
 
 }
