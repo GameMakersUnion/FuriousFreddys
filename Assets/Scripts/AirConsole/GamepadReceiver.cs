@@ -14,14 +14,14 @@ The component allows the current gameobject to receive messages from the gamepad
 public class GamepadReceiver : MonoBehaviour {
 
     public int playerNumber = 1; //This is the player number 1-5
-    public UnityEvent upButtonUp;
-    public UnityEvent upButtonDown;
-    public UnityEvent downButtonUp;
-    public UnityEvent downButtonDown;
-    public UnityEvent primaryButtonUp;
-    public UnityEvent primaryButtonDown;
-    public UnityEvent secondaryButtonUp;
-    public UnityEvent secondaryButtonDown;
+    public UnityEvent upButtonReleased;
+    public UnityEvent upButtonPressed;
+    public UnityEvent downButtonReleased;
+    public UnityEvent downButtonPressed;
+    public UnityEvent primaryButtonReleased;
+    public UnityEvent primaryButtonPressed;
+    public UnityEvent secondaryButtonReleased;
+    public UnityEvent secondaryButtonPressed;
     public UnityEvent onConnect;
     public UnityEvent onDisconnect;
 
@@ -36,22 +36,22 @@ public class GamepadReceiver : MonoBehaviour {
 
         //  = new Dictionary<string, UnityEvent>();
 
-        if (upButtonUp == null)
-            upButtonUp = new UnityEvent();
-        if (upButtonDown == null)
-            upButtonDown = new UnityEvent();
-        if (downButtonUp == null)
-            downButtonUp = new UnityEvent();
-        if (downButtonDown == null)
-            downButtonDown = new UnityEvent();
-        if (primaryButtonUp == null)
-            primaryButtonUp = new UnityEvent();
-        if (primaryButtonDown == null)
-            primaryButtonDown = new UnityEvent();
-        if (secondaryButtonUp == null)
-            secondaryButtonUp = new UnityEvent();
-        if (secondaryButtonDown == null)
-            secondaryButtonDown = new UnityEvent();
+        if (upButtonReleased == null)
+            upButtonReleased = new UnityEvent();
+        if (upButtonPressed == null)
+            upButtonPressed = new UnityEvent();
+        if (downButtonReleased == null)
+            downButtonReleased = new UnityEvent();
+        if (downButtonPressed == null)
+            downButtonPressed = new UnityEvent();
+        if (primaryButtonReleased == null)
+            primaryButtonReleased = new UnityEvent();
+        if (primaryButtonPressed == null)
+            primaryButtonPressed = new UnityEvent();
+        if (secondaryButtonReleased == null)
+            secondaryButtonReleased = new UnityEvent();
+        if (secondaryButtonPressed == null)
+            secondaryButtonPressed = new UnityEvent();
     }
 
     void OnReady(string code)
@@ -83,14 +83,14 @@ public class GamepadReceiver : MonoBehaviour {
             Debug.Log("Wee");
             switch ((string)data)
             {
-                case "up-up": upButtonUp.Invoke(); break;
-                case "up-down": upButtonDown.Invoke(); break;
-                case "down-up": downButtonUp.Invoke(); break;
-                case "down-down": downButtonDown.Invoke(); break;
-                case "primary-up": primaryButtonUp.Invoke(); break;
-                case "primary-down": primaryButtonDown.Invoke(); break;
-                case "secondary-up": secondaryButtonUp.Invoke(); break;
-                case "secondary-down": secondaryButtonDown.Invoke(); break;
+                case "up-up": upButtonReleased.Invoke(); break;
+                case "up-down": upButtonPressed.Invoke(); break;
+                case "down-up": downButtonReleased.Invoke(); break;
+                case "down-down": downButtonPressed.Invoke(); break;
+                case "primary-up": primaryButtonReleased.Invoke(); break;
+                case "primary-down": primaryButtonPressed.Invoke(); break;
+                case "secondary-up": secondaryButtonReleased.Invoke(); break;
+                case "secondary-down": secondaryButtonPressed.Invoke(); break;
             }
         }
         
