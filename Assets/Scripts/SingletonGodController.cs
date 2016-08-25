@@ -64,11 +64,12 @@ public class SingletonGodController : MonoBehaviour {
      */
     void Start()
     {
-        playerManager = Utils.FindComponentOn<PlayerManager>("PlayerManager");
+        
         gameControllerScript = Utils.FindComponentOn("ZombieController");
-        gameControllerScript = Utils.FindComponentOn<GameControllerScript>("ZombieController");
-        vehicleControlScript = Utils.FindComponentTagged<VehicleControlScript>("Vehicle");
-        stateManager = Utils.FindComponentOn<StateManager>("StateManager");
+
+        playerManager = gameObject.GetComponent<PlayerManager>();
+        stateManager = gameObject.GetComponent<StateManager>();
+        playerManager.stateManager = stateManager;
         
     }
 

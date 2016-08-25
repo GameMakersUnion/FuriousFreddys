@@ -7,7 +7,14 @@ using Newtonsoft.Json.Linq;
 public class PlayerManager: MonoBehaviour
 {
     private List<PlayerControlScript> players = new List<PlayerControlScript>();
+    public int playerCount { get; private set; }
     private FreddySpawnScript spawnScript;
+    public const int maxPlayers = 5;
+
+    [HideInInspector]
+    public StateManager stateManager;
+
+
 
     void Awake()
     {
@@ -25,6 +32,7 @@ public class PlayerManager: MonoBehaviour
 
     }
 
+
     void OnConnect(int device_id)
     {
         SetActivePlayers();//Reassign the player numbers
@@ -36,39 +44,29 @@ public class PlayerManager: MonoBehaviour
         SetActivePlayers();//Reassign the player numbers
         //Send player count to player spawner
     }
-    /// <summary>
-    /// Add Player to Active Game
-    /// </summary>
-    /// <returns>PlayerControlScript</returns>
-    PlayerControlScript AddPlayer()
-    {
-        //make new player
-        PlayerControlScript player;
-        if(players.Count == 0)
-        {
-            //PlayerControlScript player;
-            GameObject gameobject = new GameObject("Driver");
-            player = gameobject.AddComponent<DriverControlScript>();
-            players.Add(player);
-        }else
-        {
-            GameObject gameobject = new GameObject("Gunner");
-            player = gameobject.AddComponent<GunnerControlScript>();
-            players.Add(player);
-        }
-        //do airconsole stuff
-        SetActivePlayers();
-        return player;
-    }
 
     /// <summary>
-    /// Remove Player from the Active Game
+    /// Spawn all players onto the vehicle and transitions to GAMEPLAY state
     /// </summary>
-    void RemovePlayer(PlayerControlScript player)
+    public void SpawnPlayers()
     {
-        players.Remove(player);
+
+        if (!stateManager)//If for some reason we didn't find the state manager
+        {
+            //Please locate statemanager
+            stateManager = Utils.FindComponentOn<StateManager>("StateManager");
+        }
+        //Change to Gameplay State
+        stateManager.LoadGameplayScene();
+        //Find Vehicle gameobject
+        VehicleControlScript vehicle = Utils.FindComponentOn<VehicleControlScript>("Vehicle");
+        //Spawn Freddies
         SetActivePlayers();
+        //vehicle.GetComponent<FreddySpawnScript>().InstantiatePlayers(3);//GetPlayerDeviceIds().Count
+        //update playerCount instead of above line
+        playerCount = 3;
     }
+
     /// <summary>
     /// Gets the player Roles
     /// </summary>
@@ -85,12 +83,7 @@ public class PlayerManager: MonoBehaviour
     {
         //Set the currently connected devices as the active players (assigning them a player number)
         AirConsole.instance.SetActivePlayers();
-        int i=0;
-        foreach (PlayerControlScript player in players)
-        {
-            player.playerNumber = i;
-            i++;
-        }
+
     }
 
     /// <summary>
