@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class CellController : EntityControlScript {
 
@@ -102,6 +103,7 @@ public class CellController : EntityControlScript {
 	public override void AcceptDamageFrom(DamageVisitor damager) 
 	{
 		int damageAmount = damager.CauseDamageTo(this);
+       
 		Health -= damageAmount;
 		vehicle.Health -= damageAmount * damageMultiplyer[level];
         /*

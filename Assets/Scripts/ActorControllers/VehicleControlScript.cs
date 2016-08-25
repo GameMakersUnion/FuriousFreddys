@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class VehicleControlScript : EntityControlScript
 {
@@ -8,7 +9,7 @@ public class VehicleControlScript : EntityControlScript
 	// required to limit multiple executions for a single OnCollisionEnter2D to once per instance
 	[HideInInspector]
 	public List<GameObject> isColliding = new List<GameObject>();
-	
+    VehicleDriverStatistics stats;
 	Rigidbody2D rb;
 	Gridilizer gr;
 
@@ -110,12 +111,14 @@ public class VehicleControlScript : EntityControlScript
 
 	public override void AcceptDamageFrom(DamageVisitor damager)
 	{
-		//int damageAmount = damager.CauseDamageTo(this);
-		//health -= damageAmount;
-		//if (damageAmount != 0) ReportHealth();
-	}
+        //int damageAmount = damager.CauseDamageTo(this);
+        //health -= damageAmount;
+        //if (damageAmount != 0) ReportHealth();
+        //if damager is a rock this.stats.damageTakenFromRocks += damageAmount
+        //this.stats.damageTaken+= damageAmount
+    }
 
-	public override int CauseDamageTo(DamageVisitable damagable)
+    public override int CauseDamageTo(DamageVisitable damagable)
 	{
 		return 0;
 	}
