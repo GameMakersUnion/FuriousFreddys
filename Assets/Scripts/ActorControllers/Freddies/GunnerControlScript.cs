@@ -11,7 +11,7 @@ public class GunnerControlScript : PlayerControlScript
 {
 
     public WeaponController CurrWeaponScript; //Prefab for weap to be instantiated from
-
+    public PlayerStatistics stats;
     private int ammo; //what can be fired before reloading
     private float nextFire;
     private bool isReloading;
@@ -48,6 +48,7 @@ public class GunnerControlScript : PlayerControlScript
 
     private void Shoot()
     {
+
         if (Time.time > nextFire)
         {
             if (!isReloading && ammo <= 0)
@@ -77,6 +78,7 @@ public class GunnerControlScript : PlayerControlScript
 
 	public override int CauseDamageTo(DamageVisitable damagable)
 	{
+
 		return 0;
 	}
 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class TongueJoint : EntityControlScript {
 
@@ -57,5 +58,4 @@ public class TongueJoint : EntityControlScript {
 	{
 		
 	}
-
 }
