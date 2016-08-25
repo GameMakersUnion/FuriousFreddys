@@ -10,6 +10,7 @@ TagManager:
   - Bullet
   - Freddy
   - Cell
+  - Boundary
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Vehicle
   - VaperTongue
   - FreddyFucker2
-  - Projectile
+  - Bullet
   - 
   - 
   - 

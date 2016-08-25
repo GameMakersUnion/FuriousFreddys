@@ -12,7 +12,6 @@ GameObject:
   - 114: {fileID: 11499042}
   - 58: {fileID: 58000013345952306}
   - 58: {fileID: 58000011604435440}
-  - 58: {fileID: 58000013082056484}
   m_Layer: 9
   m_Name: FredGreen
   m_TagString: Freddy
@@ -44,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89955f60b4189b4fbe08b6435d3e1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrWeaponScript: {fileID: 11497108, guid: 95d2bd3e898a3514cb82802254406714, type: 2}
+  CurrWeaponScript: {fileID: 114000013087560248, guid: 0d5cf945c4b0a2b4e911aefe4665e236,
+    type: 2}
 --- !u!212 &21204858
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -103,20 +103,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!58 &58000013082056484
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137780}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.46
 --- !u!58 &58000013345952306
 CircleCollider2D:
   m_ObjectHideFlags: 1

@@ -13,7 +13,7 @@ GameObject:
   - 58: {fileID: 5843602}
   - 114: {fileID: 11490988}
   - 114: {fileID: 11444112}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: TempBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}

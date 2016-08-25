@@ -2,16 +2,20 @@
 
 public abstract class PlayerControlScript : EntityControlScript {
 
+    private bool keyPress;
+    protected Transform tf;
+
     public override int Health
     {
         get { return -1; }
         set {}
     }
 
-    protected Transform tf;
+    
 
     protected override void Start()
     {
+        keyPress = false;
         tf = GetComponent<Transform>();
     }
 

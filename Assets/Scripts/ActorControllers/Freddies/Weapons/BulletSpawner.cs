@@ -3,9 +3,9 @@
 public class BulletSpawner : MonoBehaviour
 {
 
-    private Transform tf;
+    protected Transform tf;
 
-    void Start()
+    protected virtual void Start()
     {
         tf = transform;
     }

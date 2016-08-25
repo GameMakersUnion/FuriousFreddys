@@ -18,7 +18,6 @@ public class ProjectileController : MonoBehaviour, DamageVisitor {
         if (Time.time > deathTime) Destroy(gameObject);
     }
 
-
 	//i moved this logic to be "receiving" instead of "generating"
 	//i changed the prefab from trigger to regular rigidbody
 	void OnTriggerEnter2D(Collider2D col)
@@ -34,14 +33,12 @@ public class ProjectileController : MonoBehaviour, DamageVisitor {
 			//call take dmg method in zombie controller
 			//coll.GetComponent<MasterZombieScript>().updateHealth(-damage);
 			//Destroy(gameObject);
-
 		}
-
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-        if (col.gameObject.tag != "Vehicle")
+        if (!(col.gameObject.tag == "Vehicle" || col.gameObject.tag == "Cell"))
 		    Destroy(gameObject);
 	}
 
