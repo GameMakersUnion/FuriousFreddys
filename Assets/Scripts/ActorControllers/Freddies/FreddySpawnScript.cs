@@ -30,21 +30,24 @@ public class FreddySpawnScript : MonoBehaviour {
         }
     }
 
-    void Start()
+    void Awake()
     {
+        InstantiatePlayers(5);
+
+        /*
         //only self-initialize in debug mode.
         //otherwise require PlayerManager to invoke directly....
         StateManager sm = SingletonGodController.instance.stateManager;
         if (sm.currentState == StateManager.gameState.GAMEPLAY || true) //TODO REMOVE  || true.!!   
         {
-            InstantiatePlayers(numPlayers_);
+            InstantiatePlayers(numPlayers_); //numPlayers_ or maxPlayers??
         }
         else
         {
             PlayerManager pm = Utils.FindComponentOn<SingletonGodController>("SingletonGodController").GetComponent<PlayerManager>();
             InstantiatePlayers(pm.playerCount);
         }
-
+        */
     }
     /// <summary>
     /// Debug instantiate all players manually
