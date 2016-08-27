@@ -18,6 +18,11 @@ public class PlayerManager: MonoBehaviour
 
     void Awake()
     {
+        if (AirConsole.instance == null)
+        {
+            Debug.LogWarning("Airconsole not found , add it to your scene noob");
+            return;
+        }
         // register events
         //AirConsole.instance.onReady += OnReady;
         //AirConsole.instance.onMessage += OnMessage;

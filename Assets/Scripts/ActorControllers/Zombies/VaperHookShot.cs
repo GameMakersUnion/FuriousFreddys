@@ -29,7 +29,7 @@ public class VaperHookShot : MonoBehaviour
     public float lowTwistLimit = -100.0F;                   //  The lower limit around the primary axis of the character joint. 
     public float highTwistLimit = 100.0F;                   //  The upper limit around the primary axis of the character joint.
     public float swing1Limit = 20.0F;
-    void Awake() {
+    void Start() {
         
         ropeMass = 10;
         line = gameObject.GetComponent<LineRenderer>();

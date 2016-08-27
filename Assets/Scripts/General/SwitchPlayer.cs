@@ -1,26 +1,29 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
-public class Switcher : MonoBehaviour {
+public class SwitchPlayer : MonoBehaviour {
 
-    private PlayerControlScript[] Players;
+    private List<PlayerControlScript> Players;
 
     private PlayerControlScript Player;
-    private int currPlayer;
 
 	void Start () {
-        
-        currPlayer = 0;
+
         GameObject vehicle = GameObject.FindGameObjectWithTag("Vehicle");
-        Players = vehicle.GetComponent<FreddySpawnScript>().Freddies.ToArray();
-        Player = Players[currPlayer];
+        Players = vehicle.GetComponent<FreddySpawnScript>().Freddies;
+        Player = Players[0];
 	}
 	
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-            CyclePlayers();
-        if (Input.GetKey(KeyCode.Space))
-            Player.PerformAction();
+
+        if (Players.Contains(Player)) { 
+            if (Input.GetKeyDown(KeyCode.Q))
+                CyclePlayers();
+        
+            if (Input.GetKey(KeyCode.Space))
+                Player.PerformAction();
+        }
     }
 
     void FixedUpdate() {
@@ -42,10 +45,11 @@ public class Switcher : MonoBehaviour {
 
     void CyclePlayers()
     {
-        if (++currPlayer >= Players.Length)
-            currPlayer = 0;
+        int current = Players.IndexOf(Player);
+        if (++current >= Players.Count)
+            current = 0;
        // Debug.Log(currPlayer);
-        Player = Players[currPlayer];
+        Player = Players[current];
     }
 
 }
