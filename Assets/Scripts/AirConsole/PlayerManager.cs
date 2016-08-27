@@ -6,7 +6,10 @@ using Newtonsoft.Json.Linq;
 
 public class PlayerManager: MonoBehaviour
 {
+    public enum playersStatus { READY, UNREADY, GO };
+    public playersStatus status { get; private set; }
     private List<PlayerControlScript> players = new List<PlayerControlScript>();
+    //private List<PlayerControlScript> players = new List<PlayerControlScript>();
     public int playerCount { get; private set; }
     private FreddySpawnScript spawnScript;
     public const int maxPlayers = 5;
@@ -37,6 +40,20 @@ public class PlayerManager: MonoBehaviour
 
     }
 
+    void Start()
+    {
+        //Spawn readypanels
+
+    }
+
+    /// <summary>
+    /// Start the countdown before going to gameplay
+    /// </summary>
+    void StartCountDown()
+    {
+
+    }
+
 
     void OnConnect(int device_id)
     {
@@ -49,6 +66,33 @@ public class PlayerManager: MonoBehaviour
         SetActivePlayers();//Reassign the player numbers
         //Send player count to player spawner
     }
+
+    void Update()
+    {
+        if (stateManager)
+        {
+            //If we are in the lobby check the lobby manager to see if all players are ready
+            if(stateManager.currentState == StateManager.gameState.LOBBY)
+            {
+
+            }
+        }
+    }
+
+    /// <summary>
+    /// Lets Player Manager know all players are ready
+    /// </summary>
+    public void PlayersStatus(playersStatus input)
+    {
+        status = input;
+        
+    }
+
+    public playersStatus PlayerStatus()
+    {
+        return status;
+    }
+
 
     /// <summary>
     /// Spawn all players onto the vehicle and transitions to GAMEPLAY state

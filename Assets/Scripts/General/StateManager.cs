@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class StateManager : MonoBehaviour
 {
@@ -14,6 +15,16 @@ public class StateManager : MonoBehaviour
 
         currentState = gameState.SPLASH;
         Debug.Log("curr state is " + currentState);
+        SceneManager.sceneLoaded += new UnityAction<Scene, LoadSceneMode>(OnSceneLoad);
+        
+    }
+
+    void OnSceneLoad(Scene s, LoadSceneMode c)
+    {
+        if (currentState == gameState.GAMEPLAY)
+        {
+            FindVehicleRef();
+        }
 
     }
 
@@ -21,6 +32,7 @@ public class StateManager : MonoBehaviour
     {
         if (currentState == gameState.GAMEPLAY)
             CheckGameOver();
+        
 
     }
 
@@ -31,6 +43,12 @@ public class StateManager : MonoBehaviour
             LoadGameOverScene();
         }
     }
+    /*
+    void OnLevelWasLoaded()
+    {
+        Debug.Log("WAAAATTT");
+    }*/
+
 
     void FindVehicleRef()
     {
@@ -62,6 +80,7 @@ public class StateManager : MonoBehaviour
         FindVehicleRef();
         currentState = gameState.GAMEPLAY;
         SceneManager.LoadScene("combined-Ian");
+
     }
 
     //called from the gameplay screen after the vehicle dies

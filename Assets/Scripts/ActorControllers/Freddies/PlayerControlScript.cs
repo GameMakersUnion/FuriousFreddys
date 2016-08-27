@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class PlayerControlScript : EntityControlScript {
     public int playerNumber = 0; //Their player number
-
+    public bool ready=false;
 
 
     private bool keyPress;

@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 404600}
   - 114: {fileID: 11453318}
   m_Layer: 0
-  m_Name: Switcher
+  m_Name: SwitchPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

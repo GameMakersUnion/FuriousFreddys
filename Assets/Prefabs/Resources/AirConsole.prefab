@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37d83ebce05ad74683fd3228dde9e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  browserStartMode: 0
+  browserStartMode: 2
   controllerHtml: {fileID: 4900000, guid: ca1927dd42a559848a0029d2859ba111, type: 3}
   autoScaleCanvas: 1
 --- !u!1001 &100100000

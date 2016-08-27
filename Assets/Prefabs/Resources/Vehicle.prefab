@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32905366dcb53c4fbcd02a65f645687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isColliding: []
 --- !u!212 &21271186
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -147,6 +148,6 @@ MonoBehaviour:
   showCollisionMarkers: 0
   printCollisionInfo: 0
   gridLayersAttached:
-  - {fileID: 21300000, guid: 80fedc1b6b20f90439b738b9af029bba, type: 3}
-  - {fileID: 21300000, guid: 56060c1448dd6aa4e8c5a53196da56f2, type: 3}
-  - {fileID: 21300000, guid: b36bfe326054c2f40a34f3e882f63d7a, type: 3}
+  - {fileID: 21300000, guid: 7c8a8bd3f9d54a2489697a9da0a0bea5, type: 3}
+  - {fileID: 21300036, guid: ae619cf4977b8cf458854639de116170, type: 3}
+  gridActive: {fileID: 0}
