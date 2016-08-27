@@ -22,7 +22,7 @@ public abstract class MasterZombieScript : EntityControlScript
     protected Rigidbody2D rb;
     protected int colcount;
 	private bool hitHappenedRecently;
-    public Statistics stats;
+    public VaperStatistics stats = new VaperStatistics();
 	//TODO: this is temporary. Ian will remove. Will phase this out, once done encapsulating it elsewhere
 	public override int Health
 	{
