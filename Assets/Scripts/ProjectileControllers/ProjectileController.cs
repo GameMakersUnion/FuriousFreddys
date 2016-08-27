@@ -22,7 +22,11 @@ public class ProjectileController : MonoBehaviour, DamageVisitor {
 	//i changed the prefab from trigger to regular rigidbody
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.tag == "Zombie")
+
+        if (!(col.gameObject.tag == "Vehicle" || col.gameObject.tag == "Cell" || col.gameObject.tag == "Bullet"))
+            Destroy(gameObject);
+
+        if (col.gameObject.tag == "Zombie")
 		{
 
 			//depreciated
@@ -35,14 +39,24 @@ public class ProjectileController : MonoBehaviour, DamageVisitor {
 			//Destroy(gameObject);
 		}
 	}
-
+    /*
 	void OnCollisionEnter2D(Collision2D col)
 	{
-        if (!(col.gameObject.tag == "Vehicle" || col.gameObject.tag == "Cell"))
-		    Destroy(gameObject);
-	}
+        if (col.gameObject.tag == "Zombie")
+		{
 
-	public virtual int CauseDamageTo(DamageVisitable visitable)
+			//depreciated
+			//this manner of interaction has been depreciated by the visitor pattern
+			//also the zombie will be responsible for destroying itself when it's health hits zero, we shouldn't be invoking it's death from here.
+			//also the zombie will be responsible for updateHealth, this shouldn't be publically exposed.
+
+			//call take dmg method in zombie controller
+			//coll.GetComponent<MasterZombieScript>().updateHealth(-damage);
+			//Destroy(gameObject);
+		}
+	}
+    */
+    public virtual int CauseDamageTo(DamageVisitable visitable)
 	{
 		return damage;
 	}

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class SpreadSpawner : BulletSpawner {
 
@@ -13,6 +12,7 @@ public class SpreadSpawner : BulletSpawner {
 
     public override void Spawn(GameObject Projectile, GameObject MuzzleFlash)
     {
+        Debug.Log("Shotty firing");
         if (MuzzleFlash != null)
             Instantiate(MuzzleFlash, tf.localPosition, tf.localRotation);
 
@@ -20,6 +20,8 @@ public class SpreadSpawner : BulletSpawner {
         float angle = arcAngle / -2;
         float increment = arcAngle / 4;
         tf.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        Vector3 pos = tf.position;
+        Quaternion rot = tf.rotation;
 
         for (int i = 0; i < 5; i++)
         {

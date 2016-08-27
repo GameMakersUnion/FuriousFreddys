@@ -8,7 +8,7 @@ public class VaperControlScript : MasterZombieScript {
     public float speed;
     bool shooting;
     public int tongueMaxRange;
-    public new VaperStatistics stats;
+    VaperStatistics Vpstats = new VaperStatistics();
 
     public override void Start()
     {
@@ -66,7 +66,7 @@ public class VaperControlScript : MasterZombieScript {
         hookShoot.BuildRope();
         //print(this.gameObject.name + " i shoot tongue");
        hookShoot.destination = d;
-        this.stats.hooksConnected++;
+        smoker.GetComponent<VaperControlScript>().Vpstats.hooksConnected++;
 
     }
     void breakTongue() {

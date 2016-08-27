@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class PlayerStatistics : Statistics {
-    public int shotsFired;
-    public int shotsConnected;
-    public int saves;
+    public int shotsFired = 0;
+    public int shotsConnected = 0;
+    public int saves = 0;
 
 }
