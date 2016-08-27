@@ -2,12 +2,14 @@
 using UnityEngine;
 
 public abstract class PlayerControlScript : EntityControlScript {
+
     public int playerNumber = 0; //Their player number
 
 
 
     private bool keyPress;
     protected Transform tf;
+    private GamepadReceiver receiver;
 
     public override int Health
     {
@@ -21,6 +23,9 @@ public abstract class PlayerControlScript : EntityControlScript {
     {
         keyPress = false;
         tf = GetComponent<Transform>();
+        receiver = gameObject.AddComponent<GamepadReceiver>();
+        receiver.upButtonPressed.AddListener(UpButtonPressed);
+
     }
 
 	protected override void OnCollisionEnter2D(Collision2D col)
@@ -32,7 +37,12 @@ public abstract class PlayerControlScript : EntityControlScript {
 	{
 	
 	}
-    
+
+    protected void UpButtonPressed()
+    {
+        Debug.Log("up button pressed");
+    }
+
     public abstract void PerformAction();
 
 	//do nothing
