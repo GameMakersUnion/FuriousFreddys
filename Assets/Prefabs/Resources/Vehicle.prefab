@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -64,7 +64,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 2.46, y: 4.08}
+  m_Size: {x: 3.56, y: 6.4}
 --- !u!114 &11413698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1099212831
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4e556610eeffc854f85626f1f3f48b0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 45d215898e0fcc949a50dd420dc3a12e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -149,5 +149,5 @@ MonoBehaviour:
   printCollisionInfo: 0
   gridLayersAttached:
   - {fileID: 21300000, guid: 7c8a8bd3f9d54a2489697a9da0a0bea5, type: 3}
-  - {fileID: 21300036, guid: ae619cf4977b8cf458854639de116170, type: 3}
+  - {fileID: 21300000, guid: b5c20b8ed275d2f428ddaf30f430d9c9, type: 3}
   gridActive: {fileID: 0}

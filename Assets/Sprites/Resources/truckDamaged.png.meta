@@ -1,51 +1,69 @@
 fileFormatVersion: 2
-guid: ae619cf4977b8cf458854639de116170
-timeCreated: 1472313510
+guid: b5c20b8ed275d2f428ddaf30f430d9c9
+timeCreated: 1472527104
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: damaged-truck_0
-    21300002: damaged-truck_1
-    21300004: damaged-truck_2
-    21300006: damaged-truck_3
-    21300008: damaged-truck_4
-    21300010: damaged-truck_5
-    21300012: damaged-truck_6
-    21300014: damaged-truck_7
-    21300016: damaged-truck_8
-    21300018: damaged-truck_9
-    21300020: damaged-truck_10
-    21300022: damaged-truck_11
-    21300024: damaged-truck_12
-    21300026: damaged-truck_13
-    21300028: damaged-truck_14
-    21300030: damaged-truck_15
-    21300032: damaged-truck_16
-    21300034: damaged-truck_17
-    21300036: truck-damaged_0
-    21300038: truck-damaged_1
-    21300040: truck-damaged_2
-    21300042: truck-damaged_3
-    21300044: truck-damaged_4
-    21300046: truck-damaged_5
-    21300048: truck-damaged_6
-    21300050: truck-damaged_7
-    21300052: truck-damaged_8
-    21300054: truck-damaged_9
-    21300056: truck-damaged_10
-    21300058: truck-damaged_11
-    21300060: truck-damaged_12
-    21300062: truck-damaged_13
-    21300064: truck-damaged_14
-    21300066: truck-damaged_15
-    21300068: truck-damaged_16
-    21300070: truck-damaged_17
-    21300072: truck-damaged_18
-    21300074: truck-damaged_19
-    21300076: truck-damaged_20
-    21300078: truck-damaged_21
-    21300080: truck-damaged_22
-    21300082: truck-damaged_23
+    21300000: truckDamaged_0
+    21300002: truckDamaged_1
+    21300004: truckDamaged_2
+    21300006: truckDamaged_3
+    21300008: truckDamaged_4
+    21300010: truckDamaged_5
+    21300012: truckDamaged_6
+    21300014: truckDamaged_7
+    21300016: truckDamaged_8
+    21300018: truckDamaged_9
+    21300020: truckDamaged_10
+    21300022: truckDamaged_11
+    21300024: truckDamaged_12
+    21300026: truckDamaged_13
+    21300028: truckDamaged_14
+    21300030: truckDamaged_15
+    21300032: truckDamaged_16
+    21300034: truckDamaged_17
+    21300036: truckDamaged_18
+    21300038: truckDamaged_19
+    21300040: truckDamaged_20
+    21300042: truckDamaged_21
+    21300044: truckDamaged_22
+    21300046: truckDamaged_23
+    21300048: truckDamaged_24
+    21300050: truckDamaged_25
+    21300052: truckDamaged_26
+    21300054: truckDamaged_27
+    21300056: truckDamaged_28
+    21300058: truckDamaged_29
+    21300060: truckDamaged_30
+    21300062: truckDamaged_31
+    21300064: truckDamaged_32
+    21300066: truckDamaged_33
+    21300068: truckDamaged_34
+    21300070: truckDamaged_35
+    21300072: truckDamaged_36
+    21300074: truckDamaged_37
+    21300076: truckDamaged_38
+    21300078: truckDamaged_39
+    21300080: truckDamaged_40
+    21300082: truckDamaged_41
+    21300084: truckDamaged_42
+    21300086: truckDamaged_43
+    21300088: truckDamaged_44
+    21300090: truckDamaged_45
+    21300092: truckDamaged_46
+    21300094: truckDamaged_47
+    21300096: truckDamaged_48
+    21300098: truckDamaged_49
+    21300100: truckDamaged_50
+    21300102: truckDamaged_51
+    21300104: truckDamaged_52
+    21300106: truckDamaged_53
+    21300108: truckDamaged_54
+    21300110: truckDamaged_55
+    21300112: truckDamaged_56
+    21300114: truckDamaged_57
+    21300116: truckDamaged_58
+    21300118: truckDamaged_59
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -95,312 +113,312 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: truck-damaged_0
+      name: truckDamaged_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 623.3333
-        width: 113.25
-        height: 124.666664
+        y: 533.3333
+        width: 96
+        height: 106.666664
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: truck-damaged_1
+      name: truckDamaged_1
       rect:
         serializedVersion: 2
-        x: 113
-        y: 623.3333
-        width: 113.25
-        height: 124.666664
+        x: 96
+        y: 533.3333
+        width: 96
+        height: 106.666664
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: truck-damaged_2
+      name: truckDamaged_2
       rect:
         serializedVersion: 2
-        x: 226
-        y: 623.3333
-        width: 113.25
-        height: 124.666664
+        x: 192
+        y: 533.3333
+        width: 96
+        height: 106.666664
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: truck-damaged_3
+      name: truckDamaged_3
       rect:
         serializedVersion: 2
-        x: 339
-        y: 623.3333
-        width: 113.25
-        height: 124.666664
+        x: 288
+        y: 533.3333
+        width: 96
+        height: 106.666664
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: truck-damaged_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 499.33334
-        width: 113.25
-        height: 124.666664
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: truck-damaged_5
-      rect:
-        serializedVersion: 2
-        x: 113
-        y: 499.33334
-        width: 113.25
-        height: 124.666664
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: truck-damaged_6
-      rect:
-        serializedVersion: 2
-        x: 226
-        y: 499.33334
-        width: 113.25
-        height: 124.666664
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: truck-damaged_7
-      rect:
-        serializedVersion: 2
-        x: 339
-        y: 499.33334
-        width: 113.25
-        height: 124.666664
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: truck-damaged_8
+      name: truckDamaged_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 375.33334
-        width: 113.25
-        height: 124.666664
+        y: 427.33334
+        width: 96
+        height: 106.666664
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: truck-damaged_9
+      name: truckDamaged_5
       rect:
         serializedVersion: 2
-        x: 113
-        y: 375.33334
-        width: 113.25
-        height: 124.666664
+        x: 96
+        y: 427.33334
+        width: 96
+        height: 106.666664
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: truck-damaged_10
+      name: truckDamaged_6
       rect:
         serializedVersion: 2
-        x: 226
-        y: 375.33334
-        width: 113.25
-        height: 124.666664
+        x: 192
+        y: 427.33334
+        width: 96
+        height: 106.666664
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: truck-damaged_11
+      name: truckDamaged_7
       rect:
         serializedVersion: 2
-        x: 339
-        y: 375.33334
-        width: 113.25
-        height: 124.666664
+        x: 288
+        y: 427.33334
+        width: 96
+        height: 106.666664
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: truck-damaged_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 251.33334
-        width: 113.25
-        height: 124.666664
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: truck-damaged_13
-      rect:
-        serializedVersion: 2
-        x: 113
-        y: 251.33334
-        width: 113.25
-        height: 124.666664
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: truck-damaged_14
-      rect:
-        serializedVersion: 2
-        x: 226
-        y: 251.33334
-        width: 113.25
-        height: 124.666664
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: truck-damaged_15
-      rect:
-        serializedVersion: 2
-        x: 339
-        y: 251.33334
-        width: 113.25
-        height: 124.666664
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: truck-damaged_16
+      name: truckDamaged_8
       rect:
         serializedVersion: 2
         x: 0
-        y: 127.333336
-        width: 113.25
-        height: 124.666664
+        y: 321.33334
+        width: 96
+        height: 106.666664
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: truck-damaged_17
+      name: truckDamaged_9
       rect:
         serializedVersion: 2
-        x: 113
-        y: 127.333336
-        width: 113.25
-        height: 124.666664
+        x: 96
+        y: 321.33334
+        width: 96
+        height: 106.666664
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: truck-damaged_18
+      name: truckDamaged_10
       rect:
         serializedVersion: 2
-        x: 226
-        y: 127.333336
-        width: 113.25
-        height: 124.666664
+        x: 192
+        y: 321.33334
+        width: 96
+        height: 106.666664
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: truck-damaged_19
+      name: truckDamaged_11
       rect:
         serializedVersion: 2
-        x: 339
-        y: 127.333336
-        width: 113.25
-        height: 124.666664
+        x: 288
+        y: 321.33334
+        width: 96
+        height: 106.666664
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: truck-damaged_20
+      name: truckDamaged_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 215.33334
+        width: 96
+        height: 106.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: truckDamaged_13
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 215.33334
+        width: 96
+        height: 106.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: truckDamaged_14
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 215.33334
+        width: 96
+        height: 106.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: truckDamaged_15
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 215.33334
+        width: 96
+        height: 106.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: truckDamaged_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 109.333336
+        width: 96
+        height: 106.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: truckDamaged_17
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 109.333336
+        width: 96
+        height: 106.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: truckDamaged_18
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 109.333336
+        width: 96
+        height: 106.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: truckDamaged_19
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 109.333336
+        width: 96
+        height: 106.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: truckDamaged_20
       rect:
         serializedVersion: 2
         x: 0
         y: 3.3333359
-        width: 113.25
-        height: 124.666664
+        width: 96
+        height: 106.666664
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: truck-damaged_21
+      name: truckDamaged_21
       rect:
         serializedVersion: 2
-        x: 113
+        x: 96
         y: 3.3333359
-        width: 113.25
-        height: 124.666664
+        width: 96
+        height: 106.666664
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: truck-damaged_22
+      name: truckDamaged_22
       rect:
         serializedVersion: 2
-        x: 226
+        x: 192
         y: 3.3333359
-        width: 113.25
-        height: 124.666664
+        width: 96
+        height: 106.666664
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: truck-damaged_23
+      name: truckDamaged_23
       rect:
         serializedVersion: 2
-        x: 339
+        x: 288
         y: 3.3333359
-        width: 113.25
-        height: 124.666664
+        width: 96
+        height: 106.666664
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
