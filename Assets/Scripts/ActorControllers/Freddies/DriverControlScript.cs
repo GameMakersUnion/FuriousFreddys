@@ -16,6 +16,11 @@ public class DriverControlScript : PlayerControlScript {
 	
 	}
 
+    protected override void UpButtonPressed()
+    {
+        Debug.Log("up button pressed");
+    }
+
     public override void Move(int direction)
     {
         vehicle.Move(direction);

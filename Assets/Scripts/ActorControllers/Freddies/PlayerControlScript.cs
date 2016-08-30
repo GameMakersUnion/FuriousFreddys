@@ -9,7 +9,7 @@ public abstract class PlayerControlScript : EntityControlScript {
 
     private bool keyPress;
     protected Transform tf;
-    private GamepadReceiver receiver;
+    protected GamepadReceiver receiver;
 
     public override int Health
     {
@@ -17,14 +17,14 @@ public abstract class PlayerControlScript : EntityControlScript {
         set {}
     }
 
-    
-
     protected override void Start()
     {
         keyPress = false;
         tf = GetComponent<Transform>();
         receiver = gameObject.AddComponent<GamepadReceiver>();
-        receiver.upButtonPressed.AddListener(UpButtonPressed);
+        receiver.upButtonPressed.AddListener(delegate { UpButtonPressed(); });
+
+        receiver.downButtonPressed.AddListener(UpButtonPressed);
 
     }
 
@@ -38,10 +38,7 @@ public abstract class PlayerControlScript : EntityControlScript {
 	
 	}
 
-    protected void UpButtonPressed()
-    {
-        Debug.Log("up button pressed");
-    }
+    protected abstract void UpButtonPressed();
 
     public abstract void PerformAction();
 

@@ -31,6 +31,11 @@ public class GunnerControlScript : PlayerControlScript
         //Debug.Log("Gunner's parent is: " + transform.parent);
     }
 
+    protected override void UpButtonPressed()
+    {
+        Debug.Log("up button pressed");
+    }
+
     public override void Move(int direction)
     {
         CurrWeapon.transform.RotateAround

@@ -76,11 +76,10 @@ public class GamepadReceiver : MonoBehaviour {
 
     void OnMessage(int device_id, JToken data)
     {
-        Debug.Log((string)data);
-        Debug.Log(device_id);
+        //Debug.Log((string)data);
+        //Debug.Log(device_id);
         int from = AirConsole.instance.ConvertDeviceIdToPlayerNumber(device_id);
         if (from == playerNumber) { //Only invoke methods if its the player they want
-            Debug.Log("Wee");
             switch ((string)data)
             {
                 case "up-up": upButtonReleased.Invoke(); break;
