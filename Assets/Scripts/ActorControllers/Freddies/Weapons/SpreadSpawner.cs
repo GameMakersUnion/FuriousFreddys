@@ -25,8 +25,9 @@ public class SpreadSpawner : BulletSpawner {
 
         for (int i = 0; i < 5; i++)
         {
-            ProjectileController bullet = Instantiate(projectile, tf.position, tf.rotation) as ProjectileController;
-            bullet.Owner = freddy;
+            GameObject bullet = (GameObject)Instantiate(projectile, tf.position, tf.rotation);
+            if (bullet == null) Debug.Log("wut");
+            bullet.GetComponent<ProjectileController>().Owner = freddy;
             angle += increment;
             tf.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }

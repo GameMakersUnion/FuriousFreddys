@@ -15,8 +15,14 @@ public class BulletSpawner : MonoBehaviour
         Debug.Log("Gun firing");
         if (muzzleFlash != null)
             Instantiate(muzzleFlash, tf.localPosition, tf.localRotation);
-        ProjectileController bullet = Instantiate(projectile, tf.position, tf.rotation) as ProjectileController;
-        bullet.Owner = freddy;
+        GameObject bullet = (GameObject) Instantiate(projectile, tf.position, tf.rotation);
+        if (bullet == null) Debug.Log("wut");
+        bullet.GetComponent<ProjectileController>().Owner = freddy;
+    }
+
+    protected void Shoot()
+    {
+
     }
 
 }

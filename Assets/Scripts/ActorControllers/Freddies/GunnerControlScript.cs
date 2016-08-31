@@ -10,7 +10,10 @@ using UnityEngine;
 public class GunnerControlScript : PlayerControlScript
 {
 
-    public WeaponController CurrWeaponScript; //Prefab for weap to be instantiated from
+    private WeaponController CurrWeaponScript; //Prefab for weap to be instantiated from
+
+    public WeaponController[] Weapons; //TEMP. for MVP only
+
     public PlayerStatistics stats;
     private int ammo; //what can be fired before reloading
     private int shotsFired;
@@ -18,12 +21,23 @@ public class GunnerControlScript : PlayerControlScript
     private bool isReloading;
     private GameObject CurrWeapon; //THIS is used for shooting
 
+    private int weapNum;
+
     protected override void Start()
     {
         base.Start();
         moveFactor = 200;
         Quaternion rot = Quaternion.Euler(0, 0, tf.rotation.eulerAngles.z + 180);
-        CurrWeapon = (GameObject)Instantiate(CurrWeaponScript.gameObject, Vector3.zero, rot);
+
+        weapNum = UnityEngine.Random.Range(0, Weapons.Length);
+
+        /*
+        weap = CurrWeaponScript;
+        CurrWeapon = (GameObject)Instantiate(weap.gameObject, Vector3.zero, rot);
+        */
+        CurrWeaponScript = Weapons[weapNum];
+        CurrWeapon = (GameObject)Instantiate(CurrWeaponScript.gameObject, Vector3.zero, rot); //TEMP FOR MVP. Use above when done.
+
         CurrWeapon.transform.parent = gameObject.transform;
         CurrWeapon.transform.localPosition = CurrWeaponScript.pos;
         ammo = CurrWeaponScript.magSize;
