@@ -13,6 +13,7 @@ public class GunnerControlScript : PlayerControlScript
     public WeaponController CurrWeaponScript; //Prefab for weap to be instantiated from
     public PlayerStatistics stats;
     private int ammo; //what can be fired before reloading
+    private int shotsFired;
     private float nextFire;
     private bool isReloading;
     private GameObject CurrWeapon; //THIS is used for shooting
@@ -26,6 +27,7 @@ public class GunnerControlScript : PlayerControlScript
         CurrWeapon.transform.parent = gameObject.transform;
         CurrWeapon.transform.localPosition = CurrWeaponScript.pos;
         ammo = CurrWeaponScript.magSize;
+        shotsFired = 0;
         nextFire = 0;
         isReloading = false;
         //Debug.Log("Gunner's parent is: " + transform.parent);
@@ -61,7 +63,8 @@ public class GunnerControlScript : PlayerControlScript
 
             if (!isReloading)
             {
-                CurrWeapon.GetComponent<WeaponController>().Fire();
+                CurrWeapon.GetComponent<WeaponController>().Fire(this);
+                shotsFired++;
                 nextFire = Time.time + CurrWeaponScript.fireRate;
                 ammo--;
                 Debug.Log("Ammo is " + ammo);
@@ -83,7 +86,6 @@ public class GunnerControlScript : PlayerControlScript
 
 	public override int CauseDamageTo(DamageVisitable damagable)
 	{
-
 		return 0;
 	}
 

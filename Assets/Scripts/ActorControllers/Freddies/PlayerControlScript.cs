@@ -6,6 +6,8 @@ public abstract class PlayerControlScript : EntityControlScript {
     public int playerNumber = 0; //Their player number
     public bool ready=false;
 
+    private delegate void SomeDelegate();
+    SomeDelegate someDelegate;
 
     private bool keyPress;
     protected Transform tf;
@@ -22,6 +24,9 @@ public abstract class PlayerControlScript : EntityControlScript {
         keyPress = false;
         tf = GetComponent<Transform>();
         receiver = gameObject.AddComponent<GamepadReceiver>();
+
+        someDelegate += UpButtonPressed;
+
         receiver.upButtonPressed.AddListener(delegate { UpButtonPressed(); });
 
         receiver.downButtonPressed.AddListener(UpButtonPressed);

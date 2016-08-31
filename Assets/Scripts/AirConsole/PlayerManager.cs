@@ -113,7 +113,7 @@ public class PlayerManager: MonoBehaviour
         SetActivePlayers();
         //vehicle.GetComponent<FreddySpawnScript>().InstantiatePlayers(3);//GetPlayerDeviceIds().Count
         //update playerCount instead of above line
-        playerCount = 3;
+        playerCount = 3; //does this need to be fixed victor? -Tyler
     }
 
     /// <summary>

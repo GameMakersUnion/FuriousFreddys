@@ -7,10 +7,18 @@ public class ProjectileController : MonoBehaviour, DamageVisitor {
     public float timeAlive;
 
     private float deathTime;
+    private GunnerControlScript owner; //the gunner freddy who fired it. this remains null if the bullet was shot by a zomb
+
+    public GunnerControlScript Owner
+    {
+        get { return owner; }
+        set { owner = value; }
+    }
 
     void Start()
     {
         deathTime = Time.time + timeAlive;
+        owner = null;
     }
 
     void Update()

@@ -10,11 +10,11 @@ public class SpreadSpawner : BulletSpawner {
         arcAngle = 45;
 	}
 
-    public override void Spawn(GameObject Projectile, GameObject MuzzleFlash)
+    public override void Spawn(GameObject projectile, GameObject muzzleFlash, GunnerControlScript freddy)
     {
         Debug.Log("Shotty firing");
-        if (MuzzleFlash != null)
-            Instantiate(MuzzleFlash, tf.localPosition, tf.localRotation);
+        if (muzzleFlash != null)
+            Instantiate(muzzleFlash, tf.localPosition, tf.localRotation);
 
         //algorithm to spawn pellets in a pattern
         float angle = arcAngle / -2;
@@ -25,7 +25,8 @@ public class SpreadSpawner : BulletSpawner {
 
         for (int i = 0; i < 5; i++)
         {
-            Instantiate(Projectile, tf.position, tf.rotation);
+            ProjectileController bullet = Instantiate(projectile, tf.position, tf.rotation) as ProjectileController;
+            bullet.Owner = freddy;
             angle += increment;
             tf.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
