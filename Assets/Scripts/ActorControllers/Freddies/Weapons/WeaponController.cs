@@ -9,9 +9,9 @@ public class WeaponController : MonoBehaviour
     public GameObject Projectile, MuzzleFlash;
     public BulletSpawner Spawner;
 
-    public void Fire()
+    public void Fire(GunnerControlScript freddy)
     {
-        Spawner.Spawn(Projectile, MuzzleFlash);
+        Spawner.Spawn(Projectile, MuzzleFlash, freddy);
     }
 
 }

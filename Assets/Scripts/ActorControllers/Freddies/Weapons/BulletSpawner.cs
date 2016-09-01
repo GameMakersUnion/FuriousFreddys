@@ -10,12 +10,19 @@ public class BulletSpawner : MonoBehaviour
         tf = transform;
     }
 
-    public virtual void Spawn(GameObject Projectile, GameObject MuzzleFlash)
+    public virtual void Spawn(GameObject projectile, GameObject muzzleFlash, GunnerControlScript freddy)
     {
         Debug.Log("Gun firing");
-        if (MuzzleFlash != null)
-            Instantiate(MuzzleFlash, tf.localPosition, tf.localRotation);
-        Instantiate(Projectile, tf.position, tf.rotation);
+        if (muzzleFlash != null)
+            Instantiate(muzzleFlash, tf.localPosition, tf.localRotation);
+        GameObject bullet = (GameObject) Instantiate(projectile, tf.position, tf.rotation);
+        if (bullet == null) Debug.Log("wut");
+        bullet.GetComponent<ProjectileController>().Owner = freddy;
+    }
+
+    protected void Shoot()
+    {
+
     }
 
 }

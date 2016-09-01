@@ -43,6 +43,7 @@ public class StateManager : MonoBehaviour
             LoadGameOverScene();
         }
     }
+
     /*
     void OnLevelWasLoaded()
     {
