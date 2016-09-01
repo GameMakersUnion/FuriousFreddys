@@ -25,6 +25,7 @@ public class TongueJoint : EntityControlScript {
 
 	public override void AcceptDamageFrom(DamageVisitor damager)
 	{
+		print("doh");
 		int damageAmount = damager.CauseDamageTo(this);
 		health -= damageAmount;
 	}
