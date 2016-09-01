@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11490988}
   - 114: {fileID: 11444112}
   - 61: {fileID: 61000011606439138}
+  - 58: {fileID: 5843602}
   m_Layer: 14
   m_Name: Bullet
   m_TagString: Bullet
@@ -52,7 +53,7 @@ Rigidbody2D:
   m_Constraints: 4
 --- !u!58 &5843602
 CircleCollider2D:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184428}
@@ -142,7 +143,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
