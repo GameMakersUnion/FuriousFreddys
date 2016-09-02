@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11451790}
   - 114: {fileID: 114000013070215904}
   - 114: {fileID: 114000010645859892}
+  - 114: {fileID: 114000010664994502}
   m_Layer: 0
   m_Name: SingletonGodController
   m_TagString: Untagged
@@ -47,6 +48,7 @@ MonoBehaviour:
   vehicleControlScript: {fileID: 0}
   playerManager: {fileID: 0}
   stateManager: {fileID: 0}
+  analyticsManager: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -67,6 +69,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a3a6c93728d5cd42a40f3289db7a7fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114000010664994502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a568f856b331cf847b6747e48bc460ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114000013070215904

@@ -42,7 +42,9 @@ public class SingletonGodController : MonoBehaviour {
 
     [HideInInspector]
     public StateManager stateManager;
-    
+
+    [HideInInspector]
+    public AnalyticsManager analyticsManager;
 
     /**
      * This Awake method block is the heart of a singleton. Don't play with.
@@ -70,7 +72,7 @@ public class SingletonGodController : MonoBehaviour {
         playerManager = gameObject.GetComponent<PlayerManager>();
         stateManager = gameObject.GetComponent<StateManager>();
         playerManager.stateManager = stateManager;
-        
+        analyticsManager = gameObject.GetComponent<AnalyticsManager>();
     }
 
 }
