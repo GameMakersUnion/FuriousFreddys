@@ -19,6 +19,7 @@ public class LevelController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+		createGameBounds();
         if (MoveRoad)
         {
             createRoadSegments();
@@ -50,6 +51,19 @@ public class LevelController : MonoBehaviour {
             setRoadSegementsVisibility(ShowRoad);
 
     }
+
+	void createGameBounds()
+	{
+		GameObject gameBounds = new GameObject("GameBounds");
+		gameBounds.transform.parent = this.transform;
+		BoxCollider2D bc1 = gameBounds.AddComponent<BoxCollider2D>();
+		bc1.offset = new Vector2(-10.5f, 0);
+		bc1.size = new Vector2(1, 40);
+
+		BoxCollider2D bc2 = gameBounds.AddComponent<BoxCollider2D>();
+		bc2.offset = new Vector2(10.5f, 0);
+		bc2.size = bc1.size;
+	}
 
     void createRoadSegments()
     {

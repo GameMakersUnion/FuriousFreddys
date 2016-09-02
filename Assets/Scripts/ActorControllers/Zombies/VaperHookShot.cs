@@ -90,8 +90,8 @@ public class VaperHookShot : MonoBehaviour
         line.SetVertexCount(segments);
         segmentPos = new Vector3[segments];
         joints = new GameObject[segments];
-        segmentPos[0] = smoker.transform.position;
-        segmentPos[segments - 1] = target.position;
+        segmentPos[0] = smoker.transform.position + Vector3.back;
+        segmentPos[segments - 1] = target.position + Vector3.back;
 
         // Find the distance between each segment
         var segs = segments - 1;
@@ -151,7 +151,7 @@ public class VaperHookShot : MonoBehaviour
         //ph.swing1Limit = limit_setter;
         //ph.breakForce = ropeBreakForce; <--------------- TODO
 
-        joints[n].transform.position = segmentPos[n];
+		joints[n].transform.position = segmentPos[n] + Vector3.back;
 
         rigid.drag = ropeDrag;
         rigid.mass = ropeMass;
