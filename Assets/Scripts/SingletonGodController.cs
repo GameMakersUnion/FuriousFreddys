@@ -32,7 +32,7 @@ public class SingletonGodController : MonoBehaviour {
     public bool iHasVariable;
 
     [HideInInspector]
-    public GameControllerScript gameControllerScript;
+    public ZombieSpawnOnceController gameControllerScript;
 
     [HideInInspector]
     public VehicleControlScript vehicleControlScript;

@@ -88,6 +88,7 @@ public class StateManager : MonoBehaviour
     public void LoadGameOverScene()
     {
         currentState = gameState.GAMEOVER;
+
         //load whatever
     }
 

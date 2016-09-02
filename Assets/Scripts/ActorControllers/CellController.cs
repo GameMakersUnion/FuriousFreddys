@@ -106,13 +106,21 @@ public class CellController : EntityControlScript {
        
 		Health -= damageAmount;
 		vehicle.Health -= damageAmount * damageMultiplyer[level];
+        
+        vehicle.UpdateHealthText();
+        /*
+        if (vehicle.Health <= 0)
+        {
+            Destroy(vehicle);
+        }
+
         /*
 		if (damageAmount != 0) {
 			print("health of : " + this + " is: " + health);
 			vehicle.ReportHealth(); 
 		}
         */
-	}
+    }
 
 	public override int CauseDamageTo(DamageVisitable damagable) 
 	{

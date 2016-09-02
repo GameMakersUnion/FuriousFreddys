@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isColliding: []
+  HealthText: {fileID: 0}
 --- !u!212 &21271186
 SpriteRenderer:
   m_ObjectHideFlags: 1

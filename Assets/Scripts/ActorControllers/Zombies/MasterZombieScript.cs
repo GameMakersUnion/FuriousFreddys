@@ -186,7 +186,7 @@ public abstract class MasterZombieScript : EntityControlScript
      */
     public void print(object obj)
     {
-        GameControllerScript script = SingletonGodController.instance.gameControllerScript;
+        ZombieSpawnOnceController script = SingletonGodController.instance.gameControllerScript;
 
         if (script != null && script.printDebugInfo)
         {

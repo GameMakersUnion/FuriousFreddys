@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameControllerScript : MonoBehaviour {
+public class ZombieSpawnOnceController : MonoBehaviour {
 
     [Tooltip("For debugging, takes performance hit")]
     public bool printDebugInfo;
@@ -11,17 +11,18 @@ public class GameControllerScript : MonoBehaviour {
     public VaperControlScript vaperControlScript;
     public FreddyFuckerController FFController;
     //I fucked up big time, ill need to fix this shit later.
-    GameObject van;
-    VehicleControlScript vehicle;
+    GameObject vehicle;
+    VehicleControlScript vehicleScript;
     //end fuck up
     private float endTime;
     private bool gameOver;
     public int ZombiesSpawned;
     GameObject Gnmies;
+
     // Use this for initialization
     void Start () {
-        van = GameObject.FindWithTag("Vehicle");
-        vehicle = van.GetComponent<VehicleControlScript>();
+        vehicle = GameObject.FindWithTag("Vehicle");
+        vehicleScript = vehicle.GetComponent<VehicleControlScript>();
         endTime = Time.time + gameTime;
         gameOver = false;
         Gnmies = new GameObject("NMIES");
@@ -32,16 +33,20 @@ public class GameControllerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (vehicle.currentHealth()  == 0&&  !gameOver)
+        Debug.Log("health is " + vehicleScript.Health);
+        if (vehicleScript.Health  <= 0 &&  !gameOver)
         {
-           // print("game over");
+            Debug.Log("game over");
+            // print("game over");
+            Destroy(vehicle);
             gameOver = true;
+            
         }
 	}
 
     void SpawnZombies()
     {
-        Vector3 vanPos = van.transform.position;
+        Vector3 vanPos = vehicle.transform.position;
 
 
         for (int i = 0; i < ZombiesSpawned; i++) {
@@ -80,7 +85,7 @@ public class GameControllerScript : MonoBehaviour {
 	 */
 	public void print(object obj)
 	{
-		GameControllerScript script = SingletonGodController.instance.gameControllerScript;
+		ZombieSpawnOnceController script = SingletonGodController.instance.gameControllerScript;
 
 		if (script != null && script.printDebugInfo)
 		{

@@ -585,13 +585,13 @@ public static class Utils
     }
 
     //TODO: refactor this, desire to generalize 
-    public static GameControllerScript FindComponentOn(string nameGameObject)
+    public static ZombieSpawnOnceController FindComponentOn(string nameGameObject)
     {
         GameObject find = GameObject.Find(nameGameObject);
-        GameControllerScript findComponent = null;
+        ZombieSpawnOnceController findComponent = null;
         if (find != null)
         {
-            findComponent = find.GetComponent<GameControllerScript>();
+            findComponent = find.GetComponent<ZombieSpawnOnceController>();
         }
         return findComponent;
     }

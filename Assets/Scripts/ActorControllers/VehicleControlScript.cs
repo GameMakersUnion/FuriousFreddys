@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using System;
 
 public class VehicleControlScript : EntityControlScript
@@ -13,6 +14,8 @@ public class VehicleControlScript : EntityControlScript
 	Rigidbody2D rb;
 	Gridilizer gr;
 
+    public Text HealthText;
+
     public override int Health
     {
         get { return health; }
@@ -22,6 +25,7 @@ public class VehicleControlScript : EntityControlScript
     protected override void Start () {
         base.Start();
         health = 1500;
+        UpdateHealthText();
         moveFactor = 750;
         rb = this.GetComponent<Rigidbody2D>();
 		gr = this.GetComponent<Gridilizer>();
@@ -58,26 +62,13 @@ public class VehicleControlScript : EntityControlScript
 
         }
 
-    }
-    
-    /**
-     * returns the current health of the car
-     */ 
-    public int currentHealth() {
-        return health;
+        //if (health <= 0) Destroy(gameObject);
+
     }
 
-    /*
-     * @param the amount of health points that will be added or removed from the car
-     */ 
-    public int updateHealth( int damage, string name) {
-        
-        health = currentHealth() - damage;
-        if (health < 0) {
-            health = 0;
-        }
-        //Debug.Log(health);
-        return health;
+    public void UpdateHealthText()
+    {
+        HealthText.text = "Truck Health: " + health;
     }
 
 	protected override void OnCollisionEnter2D(Collision2D col)
@@ -111,11 +102,7 @@ public class VehicleControlScript : EntityControlScript
 
 	public override void AcceptDamageFrom(DamageVisitor damager)
 	{
-        //int damageAmount = damager.CauseDamageTo(this);
-        //health -= damageAmount;
-        //if (damageAmount != 0) ReportHealth();
-        //if damager is a rock this.stats.damageTakenFromRocks += damageAmount
-        //this.stats.damageTaken+= damageAmount
+        //please see the version of this method in CellController
     }
 
     public override int CauseDamageTo(DamageVisitable damagable)
