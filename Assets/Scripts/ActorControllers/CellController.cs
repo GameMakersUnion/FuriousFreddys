@@ -108,10 +108,10 @@ public class CellController : EntityControlScript {
 		vehicle.Health -= damageAmount * damageMultiplyer[level];
         
         vehicle.UpdateHealthText();
-        /*
+        
         if (vehicle.Health <= 0)
         {
-            Destroy(vehicle);
+            Destroy(vehicle.gameObject);
         }
 
         /*

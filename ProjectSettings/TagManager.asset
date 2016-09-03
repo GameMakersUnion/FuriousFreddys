@@ -48,6 +48,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 1087700091
+    locked: 0
   - name: Van
     uniqueID: 3195754465
     locked: 0

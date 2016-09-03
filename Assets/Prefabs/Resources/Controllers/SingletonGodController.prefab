@@ -12,6 +12,8 @@ GameObject:
   - 114: {fileID: 114000013070215904}
   - 114: {fileID: 114000010645859892}
   - 114: {fileID: 114000010664994502}
+  - 114: {fileID: 114000013747565920}
+  - 114: {fileID: 114000010045176370}
   m_Layer: 0
   m_Name: SingletonGodController
   m_TagString: Untagged
@@ -60,6 +62,22 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 139442}
   m_IsPrefabParent: 1
+--- !u!114 &114000010045176370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139442}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25d2f688a2249844badb455005b12942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveRoad: 1
+  ShowRoad: 1
+  roadSegmentPrefab: {fileID: 1000012595085494, guid: 8debf6437812e834eb345ea3d9c8b79a,
+    type: 2}
+  rockPrefab: {fileID: 165790, guid: e6c420568cdd61f4582b7850e5b1bfec, type: 2}
 --- !u!114 &114000010645859892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,3 +112,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateManager: {fileID: 0}
+--- !u!114 &114000013747565920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139442}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db9c466427d56b3459d8266d7fd83095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Zombies:
+  - {fileID: 11435888, guid: 2c210016b3be61b4682ae85238ad351c, type: 2}
+  testZomb: {fileID: 144468, guid: 2c210016b3be61b4682ae85238ad351c, type: 2}

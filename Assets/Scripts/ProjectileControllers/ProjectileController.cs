@@ -26,15 +26,17 @@ public class ProjectileController : MonoBehaviour, DamageVisitor {
         if (Time.time > deathTime) Destroy(gameObject);
     }
 
+    
 	void OnCollisionEnter2D(Collision2D col)
 	{
 		//demorgan's law
-		if (!(col.gameObject.tag == "Vehicle" && col.gameObject.tag == "Cell" && col.gameObject.tag == "Bullet"))
+		if (!(col.gameObject.tag == "Vehicle" || col.gameObject.tag == "Cell" || col.gameObject.tag == "Bullet"))
 		{
 			Destroy(gameObject);
 		}
 
 	}
+
     public virtual int CauseDamageTo(DamageVisitable visitable)
 	{
 		return damage;
