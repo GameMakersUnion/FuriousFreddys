@@ -79,11 +79,13 @@ public class GamepadReceiver : MonoBehaviour {
         //Debug.Log((string)data);
         //Debug.Log(device_id);
         int from = AirConsole.instance.ConvertDeviceIdToPlayerNumber(device_id);
+		///Debug.Log(from + " == " + playerNumber);
         if (from == playerNumber) { //Only invoke methods if its the player they want
+			//Debug.Log((string)data);
             switch ((string)data)
             {
                 case "up-up": upButtonReleased.Invoke(); break;
-                case "up-down": upButtonPressed.Invoke(); break;
+				case "up-down": upButtonPressed.Invoke(); Debug.Log("up button pressed"); break;
                 case "down-up": downButtonReleased.Invoke(); break;
                 case "down-down": downButtonPressed.Invoke(); break;
                 case "primary-up": primaryButtonReleased.Invoke(); break;
