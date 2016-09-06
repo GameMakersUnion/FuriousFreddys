@@ -47,34 +47,6 @@ public class GunnerControlScript : PlayerControlScript
         //Debug.Log("Gunner's parent is: " + transform.parent);
     }
 
-	protected override void UpButtonReleased()
-	{
-		//Do button released logic
-	}
-	protected override void UpButtonPressed()
-	{
-		//Do button pressed logic
-        Move(-1);
-	}
-	protected override void DownButtonReleased()
-	{
-		//Do button realeasd logic
-	}
-	protected override void DownButtonPressed()
-	{
-		//Do button pressed logic
-        Move(1);
-    }
-	protected override void PrimaryButtonReleased()
-	{
-		//Do button realeasd logic
-	}
-	protected override void PrimaryButtonPressed()
-	{
-		//Do button pressed logic
-        PerformAction();
-	}
-
     public override void Move(int direction)
     {
         CurrWeapon.transform.RotateAround

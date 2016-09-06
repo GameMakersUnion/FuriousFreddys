@@ -632,12 +632,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0a7d17d6d3dbc64cbc1605f980c50df, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &404379216 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114000013070215904, guid: d0a7d17d6d3dbc64cbc1605f980c50df,
-    type: 2}
-  m_PrefabInternal: {fileID: 404379215}
-  m_Script: {fileID: 11500000, guid: 8104e5d07c625844591eac2137925762, type: 3}
 --- !u!1 &413699058
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,6 +786,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 471325841}
+--- !u!114 &509019287 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000010645859892, guid: d0a7d17d6d3dbc64cbc1605f980c50df,
+    type: 2}
+  m_PrefabInternal: {fileID: 404379215}
+  m_Script: {fileID: 11500000, guid: 4a3a6c93728d5cd42a40f3289db7a7fb, type: 3}
 --- !u!1 &620898404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,6 +1312,7 @@ MonoBehaviour:
   playerNumber: 3
   playerReady: 0
   playerConnected: 0
+  receiver: {fileID: 0}
 --- !u!1 &1111392915
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,8 +1422,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 404379216}
-        m_MethodName: SpawnPlayers
+      - m_Target: {fileID: 509019287}
+        m_MethodName: LoadGameplayScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1593,6 +1594,7 @@ MonoBehaviour:
   playerNumber: 2
   playerReady: 0
   playerConnected: 0
+  receiver: {fileID: 0}
 --- !u!1 &1227085307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,6 +1960,7 @@ MonoBehaviour:
   playerNumber: 1
   playerReady: 0
   playerConnected: 0
+  receiver: {fileID: 0}
 --- !u!1 &1483449774
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,6 +2629,7 @@ MonoBehaviour:
   playerNumber: 0
   playerReady: 0
   playerConnected: 0
+  receiver: {fileID: 0}
 --- !u!1 &1872365570
 GameObject:
   m_ObjectHideFlags: 0
@@ -3003,6 +3007,7 @@ MonoBehaviour:
   playerNumber: 4
   playerReady: 0
   playerConnected: 0
+  receiver: {fileID: 0}
 --- !u!1 &2009676393
 GameObject:
   m_ObjectHideFlags: 0

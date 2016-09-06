@@ -131,7 +131,8 @@ public class StateManager : MonoBehaviour
     {
         //FindVehicleRef();   //not working anyways
         currentState = gameState.GAMEPLAY;
-        SceneManager.LoadScene("combined-victor");
+        //SceneManager.LoadScene("combined-victor");
+        SceneManager.LoadScene("classes-Tyler");
 
         //delegate magic:
         SceneManager.sceneLoaded += new UnityAction<Scene, LoadSceneMode>(LoadVehicle);
