@@ -30,6 +30,7 @@ public abstract class PlayerControlScript : EntityControlScript {
         keyPress = false;
         tf = GetComponent<Transform>();
         receiver = gameObject.AddComponent<GamepadReceiver>();
+        receiver.playerNumber = playerNumber;
 
 		//Adds a listener to the gamepadreciever
 		receiver.upButtonReleased.AddListener(UpButtonReleased);
@@ -39,7 +40,7 @@ public abstract class PlayerControlScript : EntityControlScript {
 		receiver.upButtonReleased.AddListener(PrimaryButtonReleased);
 		receiver.upButtonPressed.AddListener(PrimaryButtonPressed);
 
-	
+	    
 
     }
 

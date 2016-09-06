@@ -108,11 +108,15 @@ public class PlayerManager: MonoBehaviour
         //Change to Gameplay State
         stateManager.LoadGameplayScene();
         //Find Vehicle gameobject
-        VehicleControlScript vehicle = Utils.FindComponentOn<VehicleControlScript>("Vehicle");
+        
+        //VehicleControlScript vehicle = Utils.FindComponentOn<VehicleControlScript>("Vehicle");
+        VehicleControlScript vehicle = SingletonGodController.instance.vehicleControlScript;
+
         //Spawn Freddies
         SetActivePlayers();
         //vehicle.GetComponent<FreddySpawnScript>().InstantiatePlayers(3);//GetPlayerDeviceIds().Count
         //update playerCount instead of above line
+
         playerCount = 3; //does this need to be fixed victor? -Tyler
     }
 

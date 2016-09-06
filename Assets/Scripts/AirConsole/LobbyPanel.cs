@@ -12,6 +12,7 @@ public class LobbyPanel : MonoBehaviour {
     private Image image;
     public bool playerReady;
     public bool playerConnected;
+    public GamepadReceiver receiver;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +20,9 @@ public class LobbyPanel : MonoBehaviour {
         AirConsole.instance.onDisconnect += OnDisconnect;
         image = GetComponent<Image>();
         playerReady = false;
+        receiver = gameObject.GetComponent<GamepadReceiver>();
+        receiver.playerNumber = playerNumber;
+
     }
 
     void OnConnect(int device_id)

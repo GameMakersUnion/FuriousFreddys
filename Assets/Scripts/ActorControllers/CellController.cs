@@ -24,15 +24,21 @@ public class CellController : EntityControlScript {
 	protected override void Start()
 	{
 		base.Start();
-		vehicle = transform.parent.parent.GetComponent<VehicleControlScript>();
-		gr = transform.parent.parent.GetComponent<Gridilizer>();
-		sr = transform.GetComponent<SpriteRenderer>();
+        //Init();
 	}
 
 	protected override void Update()
 	{
 		CheckSwapCellSprite();
 	}
+
+
+    public void Init()
+    {
+        vehicle = transform.parent.parent.GetComponent<VehicleControlScript>();
+        gr = transform.parent.parent.GetComponent<Gridilizer>();
+        sr = transform.GetComponent<SpriteRenderer>();
+    }
 
 	
 	float lastPercentage;

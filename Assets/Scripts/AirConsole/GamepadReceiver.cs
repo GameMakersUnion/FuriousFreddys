@@ -13,7 +13,8 @@ The component allows the current gameobject to receive messages from the gamepad
 
 public class GamepadReceiver : MonoBehaviour {
 
-	private PlayerControlScript playerControlScript;
+    public int playerNumber;
+	//private PlayerControlScript playerControlScript;
     public UnityEvent upButtonReleased;
     public UnityEvent upButtonPressed;
     public UnityEvent downButtonReleased;
@@ -56,7 +57,7 @@ public class GamepadReceiver : MonoBehaviour {
 
 	void Start()
 	{
-		playerControlScript = GetComponent<PlayerControlScript>();
+		
 	}
 
     void OnReady(string code)
@@ -85,7 +86,7 @@ public class GamepadReceiver : MonoBehaviour {
         //Debug.Log(device_id);
         int from = AirConsole.instance.ConvertDeviceIdToPlayerNumber(device_id);
 		///Debug.Log(from + " == " + playerNumber);
-        if (playerControlScript != null && from == playerControlScript.PlayerNumber) { //Only invoke methods if its the player they want
+        if (from == playerNumber) { //Only invoke methods if its the player they want
 			//Debug.Log((string)data);
             switch ((string)data)
             {

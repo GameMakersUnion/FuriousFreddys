@@ -19,3 +19,5 @@ EditorBuildSettings:
     path: Assets/Scenes/store-victor.unity
   - enabled: 1
     path: Assets/Scenes/zombies-Tudor.unity
+  - enabled: 1
+    path: Assets/Scenes/combined-victor.unity

@@ -23,6 +23,11 @@ public class StateManager : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Seems to occur after the last scene ended and the next scene has finished loading (not entirely sure).
+    /// </summary>
+    /// <param name="s"></param>
+    /// <param name="c"></param>
     void OnSceneLoad(Scene s, LoadSceneMode c)
     {
         if (currentState == gameState.GAMEPLAY)
@@ -35,7 +40,9 @@ public class StateManager : MonoBehaviour
     void Update()
     {
         if (currentState == gameState.GAMEPLAY)
-            CheckGameOver();
+        {
+            //CheckGameOver();
+        }
         
 
     }
@@ -65,6 +72,11 @@ public class StateManager : MonoBehaviour
         return vehicle;
     }
 
+
+    public void LoadVehicle(Scene s, LoadSceneMode c)
+    {
+        LoadVehicle();
+    }
 
     public void SetState()
     {
@@ -116,9 +128,12 @@ public class StateManager : MonoBehaviour
     //called in lobby screen, a few seconds after all players have connected and readied up (?)
     public void LoadGameplayScene()
     {
-        FindVehicleRef();
+        //FindVehicleRef();   //not working anyways
         currentState = gameState.GAMEPLAY;
         SceneManager.LoadScene("combined-victor");
+
+        //delegate magic:
+        SceneManager.sceneLoaded += new UnityAction<Scene, LoadSceneMode>(LoadVehicle);
 
     }
 
