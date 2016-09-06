@@ -37,10 +37,10 @@ public abstract class PlayerControlScript : EntityControlScript {
 		//Adds a listener to the gamepadreciever
 		receiver.upButtonReleased.AddListener(UpButtonReleased);
 		receiver.upButtonPressed.AddListener(UpButtonPressed);
-		receiver.upButtonReleased.AddListener(UpButtonReleased);
-		receiver.upButtonPressed.AddListener(UpButtonPressed);
-		receiver.upButtonReleased.AddListener(PrimaryButtonReleased);
-		receiver.upButtonPressed.AddListener(PrimaryButtonPressed);
+		receiver.downButtonReleased.AddListener(DownButtonReleased);
+		receiver.downButtonPressed.AddListener(DownButtonPressed);
+		receiver.primaryButtonReleased.AddListener(PrimaryButtonReleased);
+		receiver.primaryButtonPressed.AddListener(PrimaryButtonPressed);
 
     }
 
