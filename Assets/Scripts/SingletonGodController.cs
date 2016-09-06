@@ -95,9 +95,4 @@ public class SingletonGodController : MonoBehaviour {
     {
         
     }
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 5898176798610e9fdc493fd62b8d54ff8b3af6ea
 }
