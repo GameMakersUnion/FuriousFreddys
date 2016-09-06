@@ -8,6 +8,7 @@ public class StateManager : MonoBehaviour
     public enum gameState { SPLASH, LOBBY, GAMEPLAY, GAMEOVER, DEBUG_GAMEPLAY };
     public gameState currentState { get; private set; } 
     private VehicleControlScript vehicle;
+    private Scene activeScene;
 
     void Start()
     {
@@ -16,6 +17,9 @@ public class StateManager : MonoBehaviour
         currentState = gameState.SPLASH;
         Debug.Log("curr state is " + currentState);
         SceneManager.sceneLoaded += new UnityAction<Scene, LoadSceneMode>(OnSceneLoad);
+
+        DetermineScene();
+        SetState();
         
     }
 
@@ -41,6 +45,40 @@ public class StateManager : MonoBehaviour
         if (vehicle.Health <= 0)
         {
             LoadGameOverScene();
+        }
+    }
+
+    public void DetermineScene()
+    {
+        activeScene = SceneManager.GetActiveScene();
+    }
+
+    public GameObject LoadVehicle()
+    {
+        GameObject vehicleResource = (GameObject)Resources.Load("Vehicle");
+        GameObject vehicle = (GameObject)Instantiate(vehicleResource, Vector3.zero, Quaternion.identity);
+        vehicle.name = "Vehicle";
+
+        vehicle.GetComponent<FreddySpawnScript>().InstantiatePlayers(5);
+        SingletonGodController.instance.switchPlayer = gameObject.GetComponent<SwitchPlayer>();
+
+        return vehicle;
+    }
+
+
+    public void SetState()
+    {
+        if (activeScene.name == "classes-Tyler")
+        {
+            currentState = gameState.GAMEPLAY;
+        }
+        else if (activeScene.name == "combined-victor")
+        {
+            currentState = gameState.GAMEPLAY;
+        }
+        else if (activeScene.name == "ready-victor")
+        {
+            currentState = gameState.LOBBY;
         }
     }
 

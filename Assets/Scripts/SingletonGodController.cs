@@ -36,9 +36,14 @@ public class SingletonGodController : MonoBehaviour {
 
     [HideInInspector]
     public VehicleControlScript vehicleControlScript;
+    [HideInInspector]
+    public GameObject vehicle;
 
     [HideInInspector]
     public PlayerManager playerManager;
+
+    [HideInInspector]
+    public SwitchPlayer switchPlayer;
 
     [HideInInspector]
     public StateManager stateManager;
@@ -54,6 +59,22 @@ public class SingletonGodController : MonoBehaviour {
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            gameControllerScript = Utils.FindComponentOn("ZombieController");
+
+            playerManager = gameObject.GetComponent<PlayerManager>();
+            stateManager = gameObject.GetComponent<StateManager>();
+            stateManager.DetermineScene();
+            stateManager.SetState();
+
+            playerManager.stateManager = stateManager;
+            analyticsManager = gameObject.GetComponent<AnalyticsManager>();
+
+            if (stateManager.currentState == StateManager.gameState.GAMEPLAY)
+            {
+                vehicle = LoadVehicle();
+            }
+
         }
         else
         {
@@ -67,12 +88,18 @@ public class SingletonGodController : MonoBehaviour {
     void Start()
     {
         
-        gameControllerScript = Utils.FindComponentOn("ZombieController");
+    }
 
-        playerManager = gameObject.GetComponent<PlayerManager>();
-        stateManager = gameObject.GetComponent<StateManager>();
-        playerManager.stateManager = stateManager;
-        analyticsManager = gameObject.GetComponent<AnalyticsManager>();
+    GameObject LoadVehicle()
+    {
+        GameObject vehicleResource = (GameObject)Resources.Load("Vehicle");
+        GameObject vehicle  = (GameObject)Instantiate(vehicleResource, Vector3.zero, Quaternion.identity);
+        vehicle.name = "Vehicle";
+
+        vehicle.GetComponent<FreddySpawnScript>().InstantiatePlayers(5);
+        switchPlayer = gameObject.GetComponent<SwitchPlayer>();
+
+        return vehicle;
     }
 
 }

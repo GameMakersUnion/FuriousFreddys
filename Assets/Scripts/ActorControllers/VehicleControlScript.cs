@@ -22,13 +22,24 @@ public class VehicleControlScript : EntityControlScript
         set { health = value; }
     }
 
+    protected void Awake()
+    {
+        print("STUFF");
+        rb = this.GetComponent<Rigidbody2D>();
+        gr = this.GetComponent<Gridilizer>();
+
+    }
+
     protected override void Start () {
         base.Start();
         health = 1500;
         UpdateHealthText();
         moveFactor = 750;
-        rb = this.GetComponent<Rigidbody2D>();
-		gr = this.GetComponent<Gridilizer>();
+
+        PlayerManager pm = Utils.FindComponentOn<SingletonGodController>("SingletonGodController").GetComponent<PlayerManager>();
+        FreddySpawnScript fs = this.GetComponent<FreddySpawnScript>();
+        fs.InstantiatePlayers(pm.playerCount);
+
     }
 
     public override void Move(int direction)
@@ -40,8 +51,10 @@ public class VehicleControlScript : EntityControlScript
         rb.velocity = new Vector3(moveFactor * direction * Time.deltaTime, 0, 0);
 
     }
-    public void Update()
+    protected override void Update()
     {
+        base.Update();
+
         // this is broken car is supposed to realign itself and try to return to the upright position
 
         //print(this.transform.rotation.eulerAngles.z);
@@ -68,7 +81,7 @@ public class VehicleControlScript : EntityControlScript
 
     public void UpdateHealthText()
     {
-        HealthText.text = "Truck Health: " + health;
+        //HealthText.text = "Truck Health: " + health;
     }
 
 	protected override void OnCollisionEnter2D(Collision2D col)

@@ -201,6 +201,10 @@ Prefab:
       propertyPath: HealthText
       value: 
       objectReference: {fileID: 301125666}
+    - target: {fileID: 162482, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66d91597c9a80ae4d803752aa06d2347, type: 2}
   m_IsPrefabParent: 0
@@ -421,6 +425,10 @@ Prefab:
       propertyPath: m_Name
       value: Switcher
       objectReference: {fileID: 0}
+    - target: {fileID: 169768, guid: 0c4b8ccf9e28d6a40a3e33f279b745bb, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0c4b8ccf9e28d6a40a3e33f279b745bb, type: 2}
   m_IsPrefabParent: 0
@@ -453,6 +461,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Zombies:
   - {fileID: 11435888, guid: 2c210016b3be61b4682ae85238ad351c, type: 2}
+  - {fileID: 11480150, guid: 15409875022b5074992a0583a2169011, type: 2}
+  - {fileID: 11455962, guid: 2c0d447c2a190dc43a9b02f755bb318c, type: 2}
   testZomb: {fileID: 144468, guid: 2c210016b3be61b4682ae85238ad351c, type: 2}
 --- !u!4 &1555255545
 Transform:
@@ -467,6 +477,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!1 &1682709841 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 139442, guid: d0a7d17d6d3dbc64cbc1605f980c50df, type: 2}
+  m_PrefabInternal: {fileID: 1886024837}
+--- !u!114 &1682709849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1682709841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6df3ee5ac26fb649a19dd3d2dc0bba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1711234653
 GameObject:
   m_ObjectHideFlags: 0

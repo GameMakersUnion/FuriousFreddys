@@ -10,6 +10,10 @@ public class SwitchPlayer : MonoBehaviour {
 	void Start () {
 
         GameObject vehicle = GameObject.FindGameObjectWithTag("Vehicle");
+        if (vehicle == null)
+        {
+            vehicle = SingletonGodController.instance.vehicle;
+        }
         Players = vehicle.GetComponent<FreddySpawnScript>().Freddies;
         Player = Players[0];
 	}
