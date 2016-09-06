@@ -63,9 +63,15 @@ public class SingletonGodController : MonoBehaviour {
             gameControllerScript = Utils.FindComponentOn("ZombieController");
 
             playerManager = gameObject.GetComponent<PlayerManager>();
-            stateManager = gameObject.GetComponent<StateManager>();
+            
+			//ugly hack?
+			stateManager = gameObject.GetComponent<StateManager>();
             stateManager.DetermineScene();
             stateManager.SetState();
+			if (stateManager.currentState == StateManager.gameState.GAMEPLAY)
+			{
+				vehicle = stateManager.LoadVehicle();
+			}
 
             playerManager.stateManager = stateManager;
             analyticsManager = gameObject.GetComponent<AnalyticsManager>();
@@ -90,5 +96,8 @@ public class SingletonGodController : MonoBehaviour {
         
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5898176798610e9fdc493fd62b8d54ff8b3af6ea
 }

@@ -16,10 +16,33 @@ public class DriverControlScript : PlayerControlScript {
 	
 	}
 
-    protected override void UpButtonPressed()
+    protected override void UpButtonReleased()
     {
-        Debug.Log("up button pressed");
+        //Do button released logic
+        Move(-1);
     }
+	protected override void UpButtonPressed()
+	{
+		//Do button pressed logic
+	}
+	protected override void DownButtonReleased()
+	{
+		//Do button realeasd logic
+        Move(1);
+    }
+	protected override void DownButtonPressed()
+	{
+		//Do button pressed logic
+	}
+	protected override void PrimaryButtonReleased()
+	{
+		//Do button realeasd logic
+	}
+	protected override void PrimaryButtonPressed()
+	{
+		//Do button pressed logic
+        PerformAction();
+	}
 
     public override void Move(int direction)
     {

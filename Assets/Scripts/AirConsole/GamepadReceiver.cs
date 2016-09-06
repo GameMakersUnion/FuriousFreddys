@@ -13,7 +13,8 @@ The component allows the current gameobject to receive messages from the gamepad
 
 public class GamepadReceiver : MonoBehaviour {
 
-    public int playerNumber = 1; //This is the player number 1-5
+    public int playerNumber;
+	//private PlayerControlScript playerControlScript;
     public UnityEvent upButtonReleased;
     public UnityEvent upButtonPressed;
     public UnityEvent downButtonReleased;
@@ -54,6 +55,11 @@ public class GamepadReceiver : MonoBehaviour {
             secondaryButtonPressed = new UnityEvent();
     }
 
+	void Start()
+	{
+		
+	}
+
     void OnReady(string code)
     {
         //Log to on-screen Console
@@ -79,11 +85,13 @@ public class GamepadReceiver : MonoBehaviour {
         //Debug.Log((string)data);
         //Debug.Log(device_id);
         int from = AirConsole.instance.ConvertDeviceIdToPlayerNumber(device_id);
+		///Debug.Log(from + " == " + playerNumber);
         if (from == playerNumber) { //Only invoke methods if its the player they want
+			//Debug.Log((string)data);
             switch ((string)data)
             {
                 case "up-up": upButtonReleased.Invoke(); break;
-                case "up-down": upButtonPressed.Invoke(); break;
+				case "up-down": upButtonPressed.Invoke(); Debug.Log("up button pressed"); break;
                 case "down-up": downButtonReleased.Invoke(); break;
                 case "down-down": downButtonPressed.Invoke(); break;
                 case "primary-up": primaryButtonReleased.Invoke(); break;
@@ -97,8 +105,6 @@ public class GamepadReceiver : MonoBehaviour {
 
 
     // Update is called once per frame
-    void Update()
-    {
-
+    void Update(){
     }
 }

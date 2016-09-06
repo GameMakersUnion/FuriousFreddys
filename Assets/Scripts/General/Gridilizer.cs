@@ -48,17 +48,23 @@ public class Gridilizer : MonoBehaviour
     //unity monobehaviour overrides
     /******************************************/
 
-    void Start()
+    void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
         gridActive = BuildGridIn(sr.sprite);
-		AddCellControllers();
+        AddCellControllers();
 
-		//TestCellHealth();
+        //TestCellHealth();
 
         ApplyPhysicsFromParentToChildren();
         //DisablePhysicsOnParent();
         SetGridHitPoints();
+
+    }
+
+    void Start()
+    {
+
     }
 
     void Update()
@@ -171,6 +177,7 @@ public class Gridilizer : MonoBehaviour
 		foreach (Transform cell in gridActive.transform)
 		{
 			CellController cellControl = cell.gameObject.AddComponent<CellController>();
+            cellControl.Init();
 			cellControl.Health = Mathf.CeilToInt( vehicle.Health / (rows * columns) );   //e.g. 5000 / 24 = 208.33 == 208 ==~ 209 Ceil'd.
 			cellControl.healthOrig = cellControl.Health;
 			cellControl.layers = gridCellsInLayers.Count;

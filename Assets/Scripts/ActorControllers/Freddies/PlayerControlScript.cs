@@ -3,11 +3,8 @@ using UnityEngine;
 
 public abstract class PlayerControlScript : EntityControlScript {
 
-    public int playerNumber = 0; //Their player number
+    protected int playerNumber; //Their player number
     public bool ready=false;
-
-    private delegate void SomeDelegate();
-    SomeDelegate someDelegate;
 
     private bool keyPress;
     protected Transform tf;
@@ -19,17 +16,31 @@ public abstract class PlayerControlScript : EntityControlScript {
         set {}
     }
 
+	public int PlayerNumber
+	{
+		get;
+		set;
+	}
+
+
+
     protected override void Start()
     {
+		
         keyPress = false;
         tf = GetComponent<Transform>();
         receiver = gameObject.AddComponent<GamepadReceiver>();
+        receiver.playerNumber = playerNumber;
 
-        someDelegate += UpButtonPressed;
+		//Adds a listener to the gamepadreciever
+		receiver.upButtonReleased.AddListener(UpButtonReleased);
+		receiver.upButtonPressed.AddListener(UpButtonPressed);
+		receiver.upButtonReleased.AddListener(UpButtonReleased);
+		receiver.upButtonPressed.AddListener(UpButtonPressed);
+		receiver.upButtonReleased.AddListener(PrimaryButtonReleased);
+		receiver.upButtonPressed.AddListener(PrimaryButtonPressed);
 
-        receiver.upButtonPressed.AddListener(delegate { UpButtonPressed(); });
-
-        receiver.downButtonPressed.AddListener(UpButtonPressed);
+	    
 
     }
 
@@ -44,6 +55,11 @@ public abstract class PlayerControlScript : EntityControlScript {
 	}
 
     protected abstract void UpButtonPressed();
+	protected abstract void UpButtonReleased();
+	protected abstract void DownButtonPressed();
+	protected abstract void DownButtonReleased();
+	protected abstract void PrimaryButtonPressed();
+	protected abstract void PrimaryButtonReleased();
 
     public abstract void PerformAction();
 

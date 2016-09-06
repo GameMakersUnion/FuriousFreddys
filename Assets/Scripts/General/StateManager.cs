@@ -23,6 +23,11 @@ public class StateManager : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Seems to occur after the last scene ended and the next scene has finished loading (not entirely sure).
+    /// </summary>
+    /// <param name="s"></param>
+    /// <param name="c"></param>
     void OnSceneLoad(Scene s, LoadSceneMode c)
     {
         if (currentState == gameState.GAMEPLAY)
@@ -35,7 +40,9 @@ public class StateManager : MonoBehaviour
     void Update()
     {
         if (currentState == gameState.GAMEPLAY)
-            CheckGameOver();
+        {
+            //CheckGameOver();
+        }
         
 
     }
@@ -66,13 +73,16 @@ public class StateManager : MonoBehaviour
     }
 
 
+    public void LoadVehicle(Scene s, LoadSceneMode c)
+    {
+        LoadVehicle();
+    }
+
     public void SetState()
     {
-        if (activeScene.name == "classes-Tyler")
-        {
-            currentState = gameState.GAMEPLAY;
-        }
-        else if (activeScene.name == "combined-victor")
+		if (activeScene.name == "classes-Tyler" || activeScene.name == "combined-victor" || 
+			activeScene.name == "combined-Ian" || activeScene.name == "zombies-Tudor" ||
+			activeScene.name == "roads-Lukas")
         {
             currentState = gameState.GAMEPLAY;
         }
@@ -80,6 +90,10 @@ public class StateManager : MonoBehaviour
         {
             currentState = gameState.LOBBY;
         }
+		else
+		{
+			Debug.LogWarning("Unknown Scene loaded, State cannot be determined.");
+		}
     }
 
     /*
@@ -115,10 +129,12 @@ public class StateManager : MonoBehaviour
     //called in lobby screen, a few seconds after all players have connected and readied up (?)
     public void LoadGameplayScene()
     {
-        FindVehicleRef();
+        //FindVehicleRef();   //not working anyways
         currentState = gameState.GAMEPLAY;
-        //SceneManager.LoadScene("combined-Ian");
-        SceneManager.LoadScene("classes-Tyler");
+        SceneManager.LoadScene("combined-victor");
+
+        //delegate magic:
+        SceneManager.sceneLoaded += new UnityAction<Scene, LoadSceneMode>(LoadVehicle);
 
     }
 
