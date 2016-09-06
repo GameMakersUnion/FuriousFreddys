@@ -94,13 +94,17 @@ public class ZombWaveController : MonoBehaviour
     void SpawnWave()
     {
 
+        int amount = Random.Range(minAmount, maxAmount);
+
         for (int i = 0; i < Zombies.Count; i++)
         {
-            for (int j = 0; j < minAmount; j++)
+            int spawnAmount = amount / (i+1);
+            for (int j = 0; j < spawnAmount; j++)
             {
+                Debug.Log("spawning zombs");
                 float x = Random.Range(lowBoundX, highBoundX);
                 float y = Random.Range(lowBoundY, highBoundY);
-                Instantiate(testZomb.gameObject, new Vector3(x, y, 0), Quaternion.identity);
+                Instantiate(Zombies[i].gameObject, new Vector3(x, y, 0), Quaternion.identity);
             }
         }
 
