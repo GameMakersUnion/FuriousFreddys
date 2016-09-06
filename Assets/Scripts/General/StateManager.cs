@@ -80,11 +80,9 @@ public class StateManager : MonoBehaviour
 
     public void SetState()
     {
-        if (activeScene.name == "classes-Tyler")
-        {
-            currentState = gameState.GAMEPLAY;
-        }
-        else if (activeScene.name == "combined-victor")
+		if (activeScene.name == "classes-Tyler" || activeScene.name == "combined-victor" || 
+			activeScene.name == "combined-Ian" || activeScene.name == "zombies-Tudor" ||
+			activeScene.name == "roads-Lukas")
         {
             currentState = gameState.GAMEPLAY;
         }
@@ -92,6 +90,10 @@ public class StateManager : MonoBehaviour
         {
             currentState = gameState.LOBBY;
         }
+		else
+		{
+			Debug.LogWarning("Unknown Scene loaded, State cannot be determined.");
+		}
     }
 
     /*

@@ -63,17 +63,19 @@ public class SingletonGodController : MonoBehaviour {
             gameControllerScript = Utils.FindComponentOn("ZombieController");
 
             playerManager = gameObject.GetComponent<PlayerManager>();
-            stateManager = gameObject.GetComponent<StateManager>();
+            
+			//ugly hack?
+			stateManager = gameObject.GetComponent<StateManager>();
             stateManager.DetermineScene();
             stateManager.SetState();
+			if (stateManager.currentState == StateManager.gameState.GAMEPLAY)
+			{
+				vehicle = stateManager.LoadVehicle();
+			}
 
             playerManager.stateManager = stateManager;
             analyticsManager = gameObject.GetComponent<AnalyticsManager>();
 
-            if (stateManager.currentState == StateManager.gameState.GAMEPLAY)
-            {
-                vehicle = LoadVehicle();
-            }
 
         }
         else
@@ -88,18 +90,6 @@ public class SingletonGodController : MonoBehaviour {
     void Start()
     {
         
-    }
-
-    GameObject LoadVehicle()
-    {
-        GameObject vehicleResource = (GameObject)Resources.Load("Vehicle");
-        GameObject vehicle  = (GameObject)Instantiate(vehicleResource, Vector3.zero, Quaternion.identity);
-        vehicle.name = "Vehicle";
-
-        vehicle.GetComponent<FreddySpawnScript>().InstantiatePlayers(5);
-        switchPlayer = gameObject.GetComponent<SwitchPlayer>();
-
-        return vehicle;
     }
 
 }
