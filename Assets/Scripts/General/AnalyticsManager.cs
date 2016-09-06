@@ -45,7 +45,7 @@ public class AnalyticsManager : MonoBehaviour {
     }
 
     public void UpdateTotalDamageDeltByRocks(int damage) {
-
+         
     }
 
     public void CalculateMVPFreddys() {

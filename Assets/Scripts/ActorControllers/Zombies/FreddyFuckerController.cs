@@ -6,7 +6,7 @@ public class FreddyFuckerController : MasterZombieScript {
     bool jumping;
     public int jumpMaxRange;
     public int jumpMinRange;
-    bool attached;
+    GunnerControlScript attached;
     // Use this for initialization
     public override void Start () {
         base.Start();
@@ -60,6 +60,13 @@ public class FreddyFuckerController : MasterZombieScript {
             this.transform.position = new Vector2(transform.parent.position.x + Random.Range(-0.20F, 0.20F), transform.parent.position.y + Random.Range(-0.20F, 0.20F));
         }
 
+        if (health == 0) {
+            if (attached != null) {
+                attached.RemoveFromList(this);
+            }
+        }
+
+
     }
 
 
@@ -88,7 +95,7 @@ public class FreddyFuckerController : MasterZombieScript {
     public  void OnTriggerEnter2D(Collider2D col)
     {
         print(col.gameObject.name);
-        if (col.gameObject.tag == "Freddy" && !attached)
+        if (col.gameObject.tag == "Gunner" && !attached)
         {
             attach(col.gameObject);
         }
@@ -105,9 +112,9 @@ public class FreddyFuckerController : MasterZombieScript {
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0;
         this.gameObject.layer = 13;
-        attached = true;
+        attached = ob.GetComponent<GunnerControlScript>();
         this.transform.parent = ob.transform;
-        
+        ob.GetComponent<GunnerControlScript>().AddToList(this);
     }
 
 
