@@ -97,6 +97,7 @@ public class FreddySpawnScript : MonoBehaviour {
             case 5:
                 position = new Vector3(-0.4f, -1.5f, 0);
                 freddy = Resources.Load<GunnerControlScript>("Freddy_Gunner");
+				
                 break;
             default:
                 Debug.LogWarning("Unable to spawn player " + playerNum);
@@ -108,6 +109,7 @@ public class FreddySpawnScript : MonoBehaviour {
             Vector3 vehiclePos = this.transform.position;
             PlayerControlScript freddySpawn = Instantiate(freddy, position * transform.localScale.x + vehiclePos, Quaternion.identity) as PlayerControlScript;
             freddySpawn.transform.parent = transform;
+			freddySpawn.playerNumber = playerNum - 1;
             freddies_.Add(freddySpawn);
         }
         else
