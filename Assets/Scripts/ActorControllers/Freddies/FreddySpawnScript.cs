@@ -101,7 +101,7 @@ public class FreddySpawnScript : MonoBehaviour {
             Vector3 vehiclePos = this.transform.position;
             PlayerControlScript freddySpawn = Instantiate(freddy, position * transform.localScale.x + vehiclePos, Quaternion.identity) as PlayerControlScript;
             freddySpawn.transform.parent = transform;
-			freddySpawn.playerNumber = playerNum - 1;
+			freddySpawn.PlayerNumber = playerNum - 1;
             freddies_.Add(freddySpawn);
         }
         else
