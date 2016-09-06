@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
-
+using System.Collections.Generic;
 /*
  * The movement/shooting controls in this script are called from the switcher for now,
  * but will be called in their own update functions by controllers once the game
@@ -13,14 +13,14 @@ public class GunnerControlScript : PlayerControlScript
     private WeaponController CurrWeaponScript; //Prefab for weap to be instantiated from
 
     public WeaponController[] Weapons; //TEMP. for MVP only
-
+    private bool canShoot;
     public PlayerStatistics stats;
     private int ammo; //what can be fired before reloading
     private int shotsFired;
     private float nextFire;
     private bool isReloading;
     private GameObject CurrWeapon; //THIS is used for shooting
-
+    public List<FreddyFuckerController> FuckersAttached = new List<FreddyFuckerController>();
     private int weapNum;
 
     protected override void Start()
@@ -28,9 +28,9 @@ public class GunnerControlScript : PlayerControlScript
         base.Start();
         moveFactor = 200;
         Quaternion rot = Quaternion.Euler(0, 0, tf.rotation.eulerAngles.z + 180);
-
+        canShoot = true;
         weapNum = UnityEngine.Random.Range(0, Weapons.Length);
-
+        this.tag = "Gunner";
         /*
         weap = CurrWeaponScript;
         CurrWeapon = (GameObject)Instantiate(weap.gameObject, Vector3.zero, rot);
@@ -64,23 +64,45 @@ public class GunnerControlScript : PlayerControlScript
 
     private void Shoot()
     {
-
-        if (Time.time > nextFire)
+        if (FuckersAttached.Count == 0)
         {
-            if (!isReloading && ammo <= 0)
-                StartCoroutine(Reload());
-
-            if (!isReloading)
+            if (Time.time > nextFire)
             {
-                CurrWeapon.GetComponent<WeaponController>().Fire(this);
-                shotsFired++;
-                nextFire = Time.time + CurrWeaponScript.fireRate;
-                ammo--;
-                Debug.Log("Ammo is " + ammo);
+                if (!isReloading && ammo <= 0)
+                    StartCoroutine(Reload());
+
+                if (!isReloading)
+                {
+                    CurrWeapon.GetComponent<WeaponController>().Fire(this);
+                    shotsFired++;
+                    nextFire = Time.time + CurrWeaponScript.fireRate;
+                    ammo--;
+                    Debug.Log("Ammo is " + ammo);
+                }
+
             }
 
         }
+    }
+    public void AddToList(FreddyFuckerController f) {
+        if (FuckersAttached.Contains(f))
+        {
+            return;
+        }
+        else {
+            FuckersAttached.Add(f);
+        }
+    }
 
+    public void RemoveFromList(FreddyFuckerController f) {
+        if (FuckersAttached.Contains(f))
+        {
+            FuckersAttached.Remove(f);
+        }
+        else
+        {
+            return;
+        }
     }
 
     private IEnumerator Reload()
