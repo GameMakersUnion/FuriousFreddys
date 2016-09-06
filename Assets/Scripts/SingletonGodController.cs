@@ -72,7 +72,7 @@ public class SingletonGodController : MonoBehaviour {
 
             if (stateManager.currentState == StateManager.gameState.GAMEPLAY)
             {
-                vehicle = LoadVehicle();
+                vehicle = stateManager.LoadVehicle();
             }
 
         }
@@ -90,16 +90,5 @@ public class SingletonGodController : MonoBehaviour {
         
     }
 
-    GameObject LoadVehicle()
-    {
-        GameObject vehicleResource = (GameObject)Resources.Load("Vehicle");
-        GameObject vehicle  = (GameObject)Instantiate(vehicleResource, Vector3.zero, Quaternion.identity);
-        vehicle.name = "Vehicle";
-
-        vehicle.GetComponent<FreddySpawnScript>().InstantiatePlayers(5);
-        switchPlayer = gameObject.GetComponent<SwitchPlayer>();
-
-        return vehicle;
-    }
 
 }

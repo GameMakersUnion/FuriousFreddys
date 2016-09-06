@@ -88,7 +88,6 @@ public class StateManager : MonoBehaviour
         Debug.Log("WAAAATTT");
     }*/
 
-
     void FindVehicleRef()
     {
         GameObject temp = GameObject.FindGameObjectWithTag("Vehicle");
@@ -118,7 +117,8 @@ public class StateManager : MonoBehaviour
     {
         FindVehicleRef();
         currentState = gameState.GAMEPLAY;
-        SceneManager.LoadScene("combined-Ian");
+        //SceneManager.LoadScene("combined-Ian");
+        SceneManager.LoadScene("classes-Tyler");
 
     }
 
