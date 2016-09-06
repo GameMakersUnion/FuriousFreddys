@@ -13,8 +13,7 @@ public class VehicleControlScript : EntityControlScript
     VehicleDriverStatistics stats;
 	Rigidbody2D rb;
 	Gridilizer gr;
-
-    public Text HealthText;
+    Text HealthText;
 
     public override int Health
     {
@@ -33,7 +32,11 @@ public class VehicleControlScript : EntityControlScript
     protected override void Start () {
         base.Start();
         health = 1500;
+
+        HealthText = GameObject.Find("TruckHealth").GetComponent<Text>();
+        if (HealthText == null) Debug.Log("HealthText has not been found");
         UpdateHealthText();
+
         moveFactor = 750;
 
         PlayerManager pm = Utils.FindComponentOn<SingletonGodController>("SingletonGodController").GetComponent<PlayerManager>();
@@ -81,7 +84,7 @@ public class VehicleControlScript : EntityControlScript
 
     public void UpdateHealthText()
     {
-        //HealthText.text = "Truck Health: " + health;
+        HealthText.text = "Truck Health: " + health;
     }
 
 	protected override void OnCollisionEnter2D(Collision2D col)

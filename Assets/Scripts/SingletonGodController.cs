@@ -76,11 +76,6 @@ public class SingletonGodController : MonoBehaviour {
             playerManager.stateManager = stateManager;
             analyticsManager = gameObject.GetComponent<AnalyticsManager>();
 
-            if (stateManager.currentState == StateManager.gameState.GAMEPLAY)
-            {
-                vehicle = stateManager.LoadVehicle();
-            }
-
         }
         else
         {

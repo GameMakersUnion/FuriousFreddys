@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.25128, y: -0.104487635, z: 0}
+  m_LocalPosition: {x: 4.459124, y: -2.5305917, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -62,7 +62,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.41
+  m_Radius: 0.47
 --- !u!114 &11455962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,10 +74,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2725b3df66bf44d9ac757ce376329d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Oface: {fileID: 21300000, guid: c54174150281c384093e6041601425b7, type: 3}
-  Face: {fileID: 21300000, guid: c54174150281c384093e6041601425b7, type: 3}
+  Oface: {fileID: 21300000, guid: f7ef7108f2a15f64ea26ac5ffaf74ae6, type: 3}
+  Face: {fileID: 21300000, guid: 2d092af84d6d609439b3fea4799a21cb, type: 3}
   damage: 0
-  health: 0
   speed: 0.3
   jumpMaxRange: 4
   jumpMinRange: 2
@@ -110,7 +109,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1462585621
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d635af76af8b7834e9119231e8b4395e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2d092af84d6d609439b3fea4799a21cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -210,7 +210,7 @@ GameObject:
   - 114: {fileID: 114000011582584642}
   - 114: {fileID: 114000010252959838}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: GameCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
