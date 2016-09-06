@@ -30,6 +30,10 @@ public abstract class PlayerControlScript : EntityControlScript {
         receiver = gameObject.AddComponent<GamepadReceiver>();
         receiver.playerNumber = playerNumber;
 
+        upButtonPressed = false;
+        downButtonPressed = false;
+        primaryButtonPressed = false;
+
 		//Adds a listener to the gamepadreciever
 		receiver.upButtonReleased.AddListener(UpButtonReleased);
 		receiver.upButtonPressed.AddListener(UpButtonPressed);
@@ -48,15 +52,7 @@ public abstract class PlayerControlScript : EntityControlScript {
         if (primaryButtonPressed) PerformAction();
     }
 
-    protected override void OnCollisionEnter2D(Collision2D col)
-	{
-
-	}
-
-	protected override void OnCollisionExit2D(Collision2D col)
-	{
-	
-	}
+    
 
     protected void UpButtonPressed() { upButtonPressed = true; }
     protected void UpButtonReleased() { upButtonPressed = false; }
@@ -67,7 +63,17 @@ public abstract class PlayerControlScript : EntityControlScript {
 
     public abstract void PerformAction();
 
-	//do nothing
-	public override void AcceptDamageFrom(DamageVisitor damager) {}
+    protected override void OnCollisionEnter2D(Collision2D col)
+    {
+
+    }
+
+    protected override void OnCollisionExit2D(Collision2D col)
+    {
+
+    }
+
+    //do nothing
+    public override void AcceptDamageFrom(DamageVisitor damager) {}
 
 }

@@ -38,8 +38,8 @@ public class ZombWaveController : MonoBehaviour
 
         minAmount = 3;
         maxAmount = 6;
-        waveSpawnRate = 8f;
-        diffChangeRate = 12f;
+        waveSpawnRate = 12f;
+        diffChangeRate = 18f;
 
         nextWaveSpawn = Time.time + waveSpawnRate;
         nextDiffChange = Time.time + diffChangeRate;

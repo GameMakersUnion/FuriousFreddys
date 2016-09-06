@@ -197,7 +197,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11462050, guid: 58ed0e03854b75a419d21f57ef29e6bc, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11462050, guid: 58ed0e03854b75a419d21f57ef29e6bc, type: 2}
       propertyPath: browserStartMode

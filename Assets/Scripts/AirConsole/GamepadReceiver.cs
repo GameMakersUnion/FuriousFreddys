@@ -26,8 +26,6 @@ public class GamepadReceiver : MonoBehaviour {
     public UnityEvent onConnect;
     public UnityEvent onDisconnect;
 
-
-
     // Use this for initialization
     void Awake()
     {
