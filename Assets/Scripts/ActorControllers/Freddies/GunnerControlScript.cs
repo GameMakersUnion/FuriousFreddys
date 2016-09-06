@@ -54,6 +54,7 @@ public class GunnerControlScript : PlayerControlScript
 	protected override void UpButtonPressed()
 	{
 		//Do button pressed logic
+        Move(-1);
 	}
 	protected override void DownButtonReleased()
 	{
@@ -62,7 +63,8 @@ public class GunnerControlScript : PlayerControlScript
 	protected override void DownButtonPressed()
 	{
 		//Do button pressed logic
-	}
+        Move(1);
+    }
 	protected override void PrimaryButtonReleased()
 	{
 		//Do button realeasd logic
@@ -70,6 +72,7 @@ public class GunnerControlScript : PlayerControlScript
 	protected override void PrimaryButtonPressed()
 	{
 		//Do button pressed logic
+        PerformAction();
 	}
 
     public override void Move(int direction)

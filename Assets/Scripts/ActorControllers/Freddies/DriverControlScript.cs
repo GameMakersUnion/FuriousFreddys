@@ -19,6 +19,7 @@ public class DriverControlScript : PlayerControlScript {
     protected override void UpButtonReleased()
     {
         //Do button released logic
+        Move(-1);
     }
 	protected override void UpButtonPressed()
 	{
@@ -27,7 +28,8 @@ public class DriverControlScript : PlayerControlScript {
 	protected override void DownButtonReleased()
 	{
 		//Do button realeasd logic
-	}
+        Move(1);
+    }
 	protected override void DownButtonPressed()
 	{
 		//Do button pressed logic
@@ -39,6 +41,7 @@ public class DriverControlScript : PlayerControlScript {
 	protected override void PrimaryButtonPressed()
 	{
 		//Do button pressed logic
+        PerformAction();
 	}
 
     public override void Move(int direction)

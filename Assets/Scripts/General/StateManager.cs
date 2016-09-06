@@ -118,7 +118,7 @@ public class StateManager : MonoBehaviour
     {
         FindVehicleRef();
         currentState = gameState.GAMEPLAY;
-        SceneManager.LoadScene("combined-Ian");
+        SceneManager.LoadScene("combined-victor");
 
     }
 
