@@ -55,7 +55,7 @@ public class GamepadReceiver : MonoBehaviour {
 
 	void Start()
 	{
-		
+		print("GamePad Number " + playerNumber);
 	}
 
     void OnReady(string code)
@@ -83,7 +83,7 @@ public class GamepadReceiver : MonoBehaviour {
         //Debug.Log((string)data);
         //Debug.Log(device_id);
         int from = AirConsole.instance.ConvertDeviceIdToPlayerNumber(device_id);
-		///Debug.Log(from + " == " + playerNumber);
+		Debug.Log(from + " == " + playerNumber);
         if (from == playerNumber) { //Only invoke methods if its the player they want
 			//Debug.Log((string)data);
             switch ((string)data)

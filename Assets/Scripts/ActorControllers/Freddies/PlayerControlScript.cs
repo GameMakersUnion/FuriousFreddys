@@ -18,8 +18,8 @@ public abstract class PlayerControlScript : EntityControlScript {
 
 	public int PlayerNumber
 	{
-		get;
-		set;
+		get { return playerNumber; }
+		set { playerNumber = value; }
 	}
 
     protected override void Start()
@@ -29,6 +29,7 @@ public abstract class PlayerControlScript : EntityControlScript {
         tf = GetComponent<Transform>();
         receiver = gameObject.AddComponent<GamepadReceiver>();
         receiver.playerNumber = playerNumber;
+		print("PlayerScript Number "+ playerNumber);
 
         upButtonPressed = false;
         downButtonPressed = false;
@@ -50,6 +51,7 @@ public abstract class PlayerControlScript : EntityControlScript {
         if (upButtonPressed) Move(-1);
         if (downButtonPressed) Move(1);
         if (primaryButtonPressed) PerformAction();
+		if (receiver != null) { receiver.playerNumber = playerNumber; Debug.Log (playerNumber); } //Quick fix for mvp -- Victor
     }
 
     
