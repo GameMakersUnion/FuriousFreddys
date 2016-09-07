@@ -31,13 +31,13 @@ public class VehicleControlScript : EntityControlScript
 
     protected override void Start () {
         base.Start();
-        health = 91500;
+        health = 1500;
 
         HealthText = GameObject.Find("TruckHealth").GetComponent<Text>();
         if (HealthText == null) Debug.Log("HealthText has not been found");
         UpdateHealthText();
 
-        moveFactor = 50;
+        moveFactor = 50.0f;
 
         PlayerManager pm = Utils.FindComponentOn<SingletonGodController>("SingletonGodController").GetComponent<PlayerManager>();
         FreddySpawnScript fs = this.GetComponent<FreddySpawnScript>();
@@ -53,13 +53,13 @@ public class VehicleControlScript : EntityControlScript
 
         //rb.velocity = new Vector3(moveFactor * direction * Time.deltaTime, 0, 0);
         Debug.Log("Truck moving.");
-        rb.AddForce(new Vector2(moveFactor * direction, 0));
-
+        rb.AddForce(new Vector2(moveFactor * direction, 0.0f));
+        Debug.Log(new Vector2(moveFactor * direction, 0.0f));
     }
     protected override void Update()
     {
         base.Update();
-
+        rb.AddForce(new Vector2(moveFactor, 0.0f));
         // this is broken car is supposed to realign itself and try to return to the upright position
 
         //print(this.transform.rotation.eulerAngles.z);

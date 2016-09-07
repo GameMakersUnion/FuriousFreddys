@@ -12,14 +12,10 @@ public class DriverControlScript : PlayerControlScript {
         //vehicle = GameObject.FindGameObjectWithTag("Vehicle").GetComponent<VehicleControlScript>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     public override void Move(int direction)
     {
-        Debug.Log(playerNumber + " steering...");
+        Debug.Log(playerNumber + " steering... in " + direction);
         vehicle.Move(direction);
     }
 
