@@ -65,7 +65,7 @@ public class LevelController : MonoBehaviour {
 		bc2.size = bc1.size;
 	}
 
-    void createRoadSegments()
+    public void createRoadSegments()
     {
         //List to hold roadSegments
         roadSegments = new List<GameObject>();
