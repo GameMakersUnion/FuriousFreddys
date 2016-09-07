@@ -132,6 +132,11 @@ public class StateManager : MonoBehaviour
         //FindVehicleRef();   //not working anyways
         currentState = gameState.GAMEPLAY;
         //SceneManager.LoadScene("combined-victor");
+        LevelController lc = SingletonGodController.instance.levelController;
+        lc.enabled = true;
+        lc.createRoadSegments();
+
+        SingletonGodController.instance.zombWaveController.enabled = true;
         SceneManager.LoadScene("classes-Tyler");
 
         //delegate magic:

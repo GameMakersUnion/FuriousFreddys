@@ -49,7 +49,15 @@ public class SingletonGodController : MonoBehaviour {
     public StateManager stateManager;
 
     [HideInInspector]
+    public LevelController levelController;
+
+    [HideInInspector]
+    public ZombWaveController zombWaveController;
+
+    [HideInInspector]
     public AnalyticsManager analyticsManager;
+
+
 
     /**
      * This Awake method block is the heart of a singleton. Don't play with.
@@ -74,6 +82,10 @@ public class SingletonGodController : MonoBehaviour {
 			}
 
             playerManager.stateManager = stateManager;
+
+            levelController = GetComponent<LevelController>();
+
+            zombWaveController = GetComponent<ZombWaveController>();
             analyticsManager = gameObject.GetComponent<AnalyticsManager>();
 
         }
