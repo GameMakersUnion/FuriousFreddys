@@ -77,6 +77,12 @@ public class StateManager : MonoBehaviour
     {
         LoadVehicle();
     }
+    public void LoadRoad(Scene s, LoadSceneMode c)
+    {
+        LevelController lc = SingletonGodController.instance.levelController;
+        lc.enabled = true;
+        lc.createRoadSegments();
+    }
 
     public void SetState()
     {
@@ -132,16 +138,14 @@ public class StateManager : MonoBehaviour
         //FindVehicleRef();   //not working anyways
         currentState = gameState.GAMEPLAY;
         //SceneManager.LoadScene("combined-victor");
-        LevelController lc = SingletonGodController.instance.levelController;
-        lc.enabled = true;
-        lc.createRoadSegments();
+   
 
         SingletonGodController.instance.zombWaveController.enabled = true;
         SceneManager.LoadScene("classes-Tyler");
 
         //delegate magic:
         SceneManager.sceneLoaded += new UnityAction<Scene, LoadSceneMode>(LoadVehicle);
-
+        SceneManager.sceneLoaded += new UnityAction<Scene, LoadSceneMode>(LoadRoad);
     }
 
     //called from the gameplay screen after the vehicle dies
