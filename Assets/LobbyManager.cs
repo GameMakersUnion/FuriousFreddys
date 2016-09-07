@@ -72,10 +72,11 @@ public class LobbyManager : MonoBehaviour {
         {
             
             countDown -= Time.deltaTime;
-            countDownText.text = "Game begins in " + countDown + " seconds!";
+            countDownText.text = "Game begins in " + System.Math.Round(countDown) + " seconds!";
             if (countDown == 0)
             {
                 playerManager.PlayersStatus(PlayerManager.playersStatus.GO);
+                countDownText.text = "GO!";
             }
         }
 
