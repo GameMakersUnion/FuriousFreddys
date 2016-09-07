@@ -84,7 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magSize: 20
   fireRate: 0.2
-  reloadTime: 3
+  reloadTime: 0
   pos: {x: 0, y: -0.9, z: 0}
   Projectile: {fileID: 184428, guid: b121c826ae67ab5489b0295af173fd10, type: 2}
   MuzzleFlash: {fileID: 0}

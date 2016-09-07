@@ -52,7 +52,7 @@ public class FreddySpawnScript : MonoBehaviour {
     {
         if (numPlayers < 0)
             return;
-        for (int i = 1; i <= numPlayers; i++)
+        for (int i = 0; i < numPlayers; i++)
         {
             InstantiatePlayer(i);
         }
@@ -70,23 +70,23 @@ public class FreddySpawnScript : MonoBehaviour {
         switch (playerNum)
         {
             
-            case 1:
+            case 0:
                 position = new Vector3(-0.65f, 1f, 0);
                 freddy = Resources.Load<DriverControlScript>("Freddy_Driver");
                 break;
-            case 2:
+            case 1:
                 position = new Vector3(0.4f, -1.5f, 0);
                 freddy = Resources.Load<GunnerControlScript>("Freddy_Gunner");
                 break;
-            case 3:
+            case 2:
                 position = new Vector3(-0.8f, -0.8f, 0);
                 freddy = Resources.Load<GunnerControlScript>("Freddy_Gunner");
                 break;
-            case 4:
+            case 3:
                 position = new Vector3(0.8f, -0.8f, 0);
                 freddy = Resources.Load<GunnerControlScript>("Freddy_Gunner");
                 break;
-            case 5:
+            case 4:
                 position = new Vector3(-0.4f, -1.5f, 0);
                 freddy = Resources.Load<GunnerControlScript>("Freddy_Gunner");
 				
@@ -101,7 +101,7 @@ public class FreddySpawnScript : MonoBehaviour {
             Vector3 vehiclePos = this.transform.position;
             PlayerControlScript freddySpawn = Instantiate(freddy, position * transform.localScale.x + vehiclePos, Quaternion.identity) as PlayerControlScript;
             freddySpawn.transform.parent = transform;
-			freddySpawn.PlayerNumber = playerNum - 1;
+			freddySpawn.PlayerNumber = playerNum;
             freddies_.Add(freddySpawn);
         }
         else

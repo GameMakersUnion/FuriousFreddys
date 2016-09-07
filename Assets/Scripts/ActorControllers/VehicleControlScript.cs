@@ -31,13 +31,13 @@ public class VehicleControlScript : EntityControlScript
 
     protected override void Start () {
         base.Start();
-        health = 1500;
+        health = 91500;
 
         HealthText = GameObject.Find("TruckHealth").GetComponent<Text>();
         if (HealthText == null) Debug.Log("HealthText has not been found");
         UpdateHealthText();
 
-        moveFactor = 750;
+        moveFactor = 50;
 
         PlayerManager pm = Utils.FindComponentOn<SingletonGodController>("SingletonGodController").GetComponent<PlayerManager>();
         FreddySpawnScript fs = this.GetComponent<FreddySpawnScript>();
@@ -50,8 +50,10 @@ public class VehicleControlScript : EntityControlScript
         //shift left or right
 
         //tf.Translate(moveFactor * direction * Time.deltaTime, 0, 0);
-        
-        rb.velocity = new Vector3(moveFactor * direction * Time.deltaTime, 0, 0);
+
+        //rb.velocity = new Vector3(moveFactor * direction * Time.deltaTime, 0, 0);
+        Debug.Log("Truck moving.");
+        rb.AddForce(new Vector2(moveFactor * direction, 0));
 
     }
     protected override void Update()

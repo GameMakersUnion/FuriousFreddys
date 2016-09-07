@@ -51,7 +51,7 @@ public abstract class PlayerControlScript : EntityControlScript {
         if (upButtonPressed) Move(-1);
         if (downButtonPressed) Move(1);
         if (primaryButtonPressed) PerformAction();
-		if (receiver != null) { receiver.playerNumber = playerNumber; Debug.Log (playerNumber); } //Quick fix for mvp -- Victor
+		if (receiver != null) { receiver.playerNumber = playerNumber; /*Debug.Log (playerNumber);*/ } //Quick fix for mvp -- Victor
     }
 
     

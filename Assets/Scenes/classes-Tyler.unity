@@ -201,7 +201,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11462050, guid: 58ed0e03854b75a419d21f57ef29e6bc, type: 2}
       propertyPath: browserStartMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58ed0e03854b75a419d21f57ef29e6bc, type: 2}
@@ -328,6 +328,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114000013747565920, guid: d0a7d17d6d3dbc64cbc1605f980c50df,
+        type: 2}
+      propertyPath: Zombies.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 422666, guid: d0a7d17d6d3dbc64cbc1605f980c50df, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0

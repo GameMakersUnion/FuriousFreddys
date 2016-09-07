@@ -8,7 +8,8 @@ public class DriverControlScript : PlayerControlScript {
     // Use this for initialization
     protected override void Start () {
         base.Start();
-        vehicle = GameObject.FindGameObjectWithTag("Vehicle").GetComponent<VehicleControlScript>();
+        vehicle = GetComponentInParent<VehicleControlScript>();
+        //vehicle = GameObject.FindGameObjectWithTag("Vehicle").GetComponent<VehicleControlScript>();
 	}
 	
 	// Update is called once per frame
@@ -18,11 +19,13 @@ public class DriverControlScript : PlayerControlScript {
 
     public override void Move(int direction)
     {
+        Debug.Log(playerNumber + " steering...");
         vehicle.Move(direction);
     }
 
     public override void PerformAction()
     {
+        Debug.Log(playerNumber + " buffing...");
         //powerup or buff or w/e
     }
 

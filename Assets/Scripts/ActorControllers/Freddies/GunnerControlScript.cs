@@ -49,6 +49,7 @@ public class GunnerControlScript : PlayerControlScript
 
     public override void Move(int direction)
     {
+        Debug.Log(playerNumber + " moves...");
         CurrWeapon.transform.RotateAround
             (
             tf.position,
@@ -59,6 +60,7 @@ public class GunnerControlScript : PlayerControlScript
 
     public override void PerformAction()
     {
+        Debug.Log(playerNumber + " shooting...");
         Shoot();
     }
 
