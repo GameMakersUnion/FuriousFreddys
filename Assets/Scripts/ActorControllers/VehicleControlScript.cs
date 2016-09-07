@@ -59,7 +59,7 @@ public class VehicleControlScript : EntityControlScript
     protected override void Update()
     {
         base.Update();
-        rb.AddForce(new Vector2(moveFactor, 0.0f));
+  
         // this is broken car is supposed to realign itself and try to return to the upright position
 
         //print(this.transform.rotation.eulerAngles.z);
