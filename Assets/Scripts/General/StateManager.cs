@@ -6,7 +6,7 @@ public class StateManager : MonoBehaviour
 {
 
     public enum gameState { SPLASH, LOBBY, GAMEPLAY, GAMEOVER, DEBUG_GAMEPLAY };
-    public gameState currentState { get; private set; } 
+    public gameState currentState { get; private set; }
     private VehicleControlScript vehicle;
     private Scene activeScene;
 
@@ -117,6 +117,8 @@ public class StateManager : MonoBehaviour
             Debug.Log("vehicle exists");
         }
     }
+
+    //Scene loading methods
 
     //called when game starts up
     public void LoadStartScene()
