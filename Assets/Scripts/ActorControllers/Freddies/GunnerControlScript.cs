@@ -60,7 +60,7 @@ public class GunnerControlScript : PlayerControlScript
 
     public override void PerformAction()
     {
-        Debug.Log(playerNumber + " shooting...");
+        //Debug.Log(playerNumber + " shooting...");
         Shoot();
     }
 
@@ -70,6 +70,10 @@ public class GunnerControlScript : PlayerControlScript
         {
             if (Time.time > nextFire)
             {
+                CurrWeapon.GetComponent<WeaponController>().Fire(this);
+                shotsFired++;
+                nextFire = Time.time + CurrWeaponScript.fireRate;
+                /*
                 if (!isReloading && ammo <= 0)
                     StartCoroutine(Reload());
 
@@ -81,7 +85,7 @@ public class GunnerControlScript : PlayerControlScript
                     ammo--;
                     Debug.Log("Ammo is " + ammo);
                 }
-
+                */
             }
 
         }

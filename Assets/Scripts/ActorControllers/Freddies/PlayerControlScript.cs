@@ -48,13 +48,16 @@ public abstract class PlayerControlScript : EntityControlScript {
     protected override void Update()
     {
         base.Update();
-        if (upButtonPressed) Move(-1);
-        if (downButtonPressed) Move(1);
+        
         if (primaryButtonPressed) PerformAction();
 		if (receiver != null) { receiver.playerNumber = playerNumber; /*Debug.Log (playerNumber);*/ } //Quick fix for mvp -- Victor
     }
 
-    
+    protected override void FixedUpdate()
+    {
+        if (upButtonPressed) Move(-1);
+        if (downButtonPressed) Move(1);
+    }
 
     protected void UpButtonPressed() { upButtonPressed = true; }
     protected void UpButtonReleased() { upButtonPressed = false; }

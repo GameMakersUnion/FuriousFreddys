@@ -37,7 +37,7 @@ public class VehicleControlScript : EntityControlScript
         if (HealthText == null) Debug.Log("HealthText has not been found");
         UpdateHealthText();
 
-        moveFactor = 500f;
+        moveFactor = 100000f;
 
         PlayerManager pm = Utils.FindComponentOn<SingletonGodController>("SingletonGodController").GetComponent<PlayerManager>();
         FreddySpawnScript fs = this.GetComponent<FreddySpawnScript>();
@@ -53,9 +53,9 @@ public class VehicleControlScript : EntityControlScript
 
         //tf.Translate(moveFactor * direction * Time.deltaTime, 0, 0);
 
-        rb.velocity = new Vector3(moveFactor * direction * Time.deltaTime, 0, 0);
+        //rb.velocity = new Vector3(moveFactor * direction * Time.deltaTime, 0, 0);
         //Debug.Log("Truck moving.");
-        //rb.AddForce(new Vector2(moveFactor * direction, 0.0f));
+        rb.AddForce(new Vector2(moveFactor * direction, 0.0f), ForceMode2D.Force);
         //Debug.Log("truck is " + this.gameObject.ToString());
         //Debug.Log("rb is " + rb.ToString());
     }

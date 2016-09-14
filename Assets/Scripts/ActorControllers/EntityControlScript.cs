@@ -7,13 +7,11 @@ public abstract class EntityControlScript : MonoBehaviour, DamageVisitable, Dama
     //protected int damage;
     public abstract int Health { get; set; }
     
-	protected virtual void Start () { 
-        
-	}
+	protected virtual void Start () { }
 	
-	protected virtual void Update () {
-	
-	}
+	protected virtual void Update () { }
+
+    protected virtual void FixedUpdate() { }
 
     public abstract void Move(int direction);
 
