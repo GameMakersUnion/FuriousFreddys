@@ -23,21 +23,8 @@ public class ZombieController : MasterZombieScript
     {
         base.Update();
 
+		Move();
 
-        /*
-         * This shit is broken. 
-         * It prevents the zombie faces from going ape shit crazy because i dont know how to code
-         */
-
-        if (!this.contact)
-        {
-            // this.rb.velocity = Vector3.zero;
-            this.rb.angularVelocity = 0;
-            //transform.Translate(Vector3.Lerp(start, destin, speed));
-           transform.position = Vector3.Lerp(start, destin, speed);
-            //print(transform.position);
-
-        }
     }
 
     protected override void OnCollisionExit2D(Collision2D col)
@@ -78,6 +65,25 @@ public class ZombieController : MasterZombieScript
 		ReceiveDamage(col);
 
     }
+
+	protected void Move()
+	{
+		/*
+		 * This shit is broken. 
+		 * It prevents the zombie faces from going ape shit crazy because i dont know how to code
+		 */
+
+		if (!this.contact)
+		{
+			// this.rb.velocity = Vector3.zero;
+			this.rb.angularVelocity = 0;
+			//transform.Translate(Vector3.Lerp(start, destin, speed));
+			transform.position = Vector3.Lerp(start, destin, speed);
+			//print(transform.position);
+
+		}
+
+	}
 
 	void ReceiveDamage(Collision2D col)
 	{

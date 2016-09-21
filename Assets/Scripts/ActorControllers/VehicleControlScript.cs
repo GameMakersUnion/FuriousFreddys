@@ -23,7 +23,6 @@ public class VehicleControlScript : EntityControlScript
 
     protected void Awake()
     {
-        print("STUFF");
         rb = this.GetComponent<Rigidbody2D>();
         gr = this.GetComponent<Gridilizer>();
 
@@ -43,65 +42,31 @@ public class VehicleControlScript : EntityControlScript
         FreddySpawnScript fs = this.GetComponent<FreddySpawnScript>();
         fs.InstantiatePlayers(pm.playerCount);
 
-        
-
     }
 
     public override void Move(int direction)
     {
+
         //shift left or right
 
         //tf.Translate(moveFactor * direction * Time.deltaTime, 0, 0);
 
         //rb.velocity = new Vector3(moveFactor * direction * Time.deltaTime, 0, 0);
-        //Debug.Log("Truck moving.");
+		if (rb == null) return;
         rb.AddForce(new Vector2(moveFactor * direction, 0.0f), ForceMode2D.Force);
-        //Debug.Log("truck is " + this.gameObject.ToString());
-        //Debug.Log("rb is " + rb.ToString());
     }
     protected override void Update()
     {
         base.Update();
-  
-        // this is broken car is supposed to realign itself and try to return to the upright position
 
-        //print(this.transform.rotation.eulerAngles.z);
-        Vector3 rotation = this.transform.rotation.eulerAngles;
+		RealignRotationToRoad();
 
-        if (rotation.z < 180)
-        {
-            transform.rotation = Quaternion.Euler((Vector3.Lerp(rotation, Vector3.zero, 0.05f)));
-        }
-        else {
-            transform.rotation = Quaternion.Euler((Vector3.Lerp(rotation, new Vector3(0, 0, 360), 0.05f)));
-
-        }
-
-
-        if (Mathf.Abs(rotation.z - 360) <  0.5 ||(rotation.z - 360) <  0.5 ) {
-            this.rb.angularVelocity = 0;
-
-        }
-
-        //if (health <= 0) Destroy(gameObject);
-
-    }
-
-    public void UpdateHealthText()
-    {
-        HealthText.text = "Truck Health: " + health;
     }
 
 	protected override void OnCollisionEnter2D(Collision2D col)
 	{
 		if (col.gameObject.GetComponent<TongueJoint>()) return;
 		if (col.gameObject.GetComponent<ProjectileController>()) return;
-
-		//if (isColliding.Contains(col.gameObject)) return;
-		//isColliding.Add(col.gameObject);
-
-		//laggy
-		//print("V OnCollisionEnter executing... col.gameObject.name: " + col.gameObject.name + ", this.gameObject.name: " + this.gameObject.name);
 
 		DamageVisitor damager = col.gameObject.GetComponent<DamageVisitor>();
 		DamageVisitable damagable = gameObject.GetComponent<DamageVisitable>();
@@ -121,6 +86,41 @@ public class VehicleControlScript : EntityControlScript
 	//	isColliding.Remove(col.gameObject);
 	//}
 
+
+	protected void RealignRotationToRoad()
+	{
+		// this is broken car is supposed to realign itself and try to return to the upright position
+
+		//print(this.transform.rotation.eulerAngles.z);
+		Vector3 rotation = this.transform.rotation.eulerAngles;
+
+		if (rotation.z < 180)
+		{
+			transform.rotation = Quaternion.Euler((Vector3.Lerp(rotation, Vector3.zero, 0.05f)));
+		}
+		else
+		{
+			transform.rotation = Quaternion.Euler((Vector3.Lerp(rotation, new Vector3(0, 0, 360), 0.05f)));
+
+		}
+
+
+		if (Mathf.Abs(rotation.z - 360) < 0.5 || (rotation.z - 360) < 0.5)
+		{
+			this.rb.angularVelocity = 0;
+
+		}
+
+		//if (health <= 0) Destroy(gameObject);
+
+	}
+
+	public void UpdateHealthText()
+	{
+		HealthText.text = "Truck Health: " + health;
+	}
+
+
 	public override void AcceptDamageFrom(DamageVisitor damager)
 	{
         //please see the version of this method in CellController
@@ -130,5 +130,7 @@ public class VehicleControlScript : EntityControlScript
 	{
 		return 0;
 	}
+
+
 
 }

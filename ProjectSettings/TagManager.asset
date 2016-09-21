@@ -21,7 +21,7 @@ TagManager:
   - UI
   - 
   - 
-  - FreddyFucker
+  - FreddyHugger
   - Freddy
   - Zombies
   - Vehicle
@@ -58,7 +58,7 @@ TagManager:
   - name: Freddies
     uniqueID: 1296096865
     locked: 0
-  - name: FreddyFucker
+  - name: FreddyHugger
     uniqueID: 1462585621
     locked: 0
   - name: Weapons

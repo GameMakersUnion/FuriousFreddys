@@ -2,7 +2,7 @@
     using System.Collections;
 
 public class VaperControlScript : MasterZombieScript {
-   public VaperHookShot vaperHookShoot;
+    public VaperHookShot vaperHookShoot;
     VaperHookShot hookShoot;
     public int tongueMinRange;
     public float speed;
@@ -30,43 +30,49 @@ public class VaperControlScript : MasterZombieScript {
     public override void Update () {
         base.Update();
 
-        float distanceTo = Vector3.Distance(base.start, base.destin);
-        //print("start: " + base.start + " destin: " + base.destin + " distanceTo: " + distanceTo + " shooting: " + this.shooting);
-      
-
-
-        if (!shooting && distanceTo > tongueMinRange)
-        {
-           /// print("Im supposed to be doing shit");
-            this.transform.position = Vector3.Lerp(start, destin, speed);
-
-        }
-        else {
-            //shoot the fucking tongue
-            transform.position = transform.position;
-            if (!shooting)
-            {
-                shootTongue(start, destin, this.gameObject);
-                
-            }
-        
-                
-        }
-        if (shooting && distanceTo > tongueMaxRange) {
-            breakTongue();
-            
-        }
-        
-
+		Move();
+		tryTongue();        
     }
 
+	void Move()
+	{
+		float distanceTo = Vector3.Distance(base.start, base.destin);
+		//print("start: " + base.start + " destin: " + base.destin + " distanceTo: " + distanceTo + " shooting: " + this.shooting);
+
+		if (!shooting && distanceTo > tongueMinRange)
+		{
+			/// print("Im supposed to be doing shit");
+			this.transform.position = Vector3.Lerp(start, destin, speed);
+		}
+	}
+
+	void tryTongue()
+	{
+		float distanceTo = Vector3.Distance(base.start, base.destin);
+		//print("start: " + base.start + " destin: " + base.destin + " distanceTo: " + distanceTo + " shooting: " + this.shooting);
+
+		if (!(!shooting && distanceTo > tongueMinRange))
+		{
+			//shoot the fucking tongue
+			transform.position = transform.position;
+			if (!shooting)
+			{
+				shootTongue(start, destin, this.gameObject);
+			}
+		}
+		if (shooting && distanceTo > tongueMaxRange || base.van == null)
+		{
+			breakTongue();
+		}
+	}
+
     void shootTongue(Vector3 s, Vector3 d, GameObject smoker ) {
-        //it shoots the tongue?
-        this.shooting = true;
-        hookShoot.BuildRope();
-        //print(this.gameObject.name + " i shoot tongue");
-       hookShoot.destination = d;
-        smoker.GetComponent<VaperControlScript>().Vpstats.hooksConnected++;
+		//it shoots the tongue?
+		this.shooting = true;
+		hookShoot.BuildRope();
+		//print(this.gameObject.name + " i shoot tongue");
+		hookShoot.destination = d;
+		smoker.GetComponent<VaperControlScript>().Vpstats.hooksConnected++;
 
     }
     void breakTongue() {

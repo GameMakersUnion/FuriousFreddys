@@ -20,7 +20,7 @@ public class GunnerControlScript : PlayerControlScript
     private float nextFire;
     private bool isReloading;
     private GameObject CurrWeapon; //THIS is used for shooting
-    public List<FreddyFuckerController> FuckersAttached = new List<FreddyFuckerController>();
+    public List<FreddyHuggerController> FuckersAttached = new List<FreddyHuggerController>();
     private int weapNum;
 
     protected override void Start()
@@ -49,7 +49,7 @@ public class GunnerControlScript : PlayerControlScript
 
     public override void Move(int direction)
     {
-        Debug.Log(playerNumber + " moves...");
+		if (CurrWeapon == null) return;
         CurrWeapon.transform.RotateAround
             (
             tf.position,
@@ -60,12 +60,13 @@ public class GunnerControlScript : PlayerControlScript
 
     public override void PerformAction()
     {
-        //Debug.Log(playerNumber + " shooting...");
         Shoot();
     }
 
     private void Shoot()
     {
+		if (CurrWeapon == null) return;
+
         if (FuckersAttached.Count == 0)
         {
             if (Time.time > nextFire)
@@ -90,7 +91,7 @@ public class GunnerControlScript : PlayerControlScript
 
         }
     }
-    public void AddToList(FreddyFuckerController f) {
+    public void AddToList(FreddyHuggerController f) {
         if (FuckersAttached.Contains(f))
         {
             return;
@@ -100,7 +101,7 @@ public class GunnerControlScript : PlayerControlScript
         }
     }
 
-    public void RemoveFromList(FreddyFuckerController f) {
+    public void RemoveFromList(FreddyHuggerController f) {
         if (FuckersAttached.Contains(f))
         {
             FuckersAttached.Remove(f);

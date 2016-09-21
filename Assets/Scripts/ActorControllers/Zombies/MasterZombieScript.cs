@@ -4,8 +4,7 @@ using System;
 
 public abstract class MasterZombieScript : EntityControlScript
 {
-    //I know i did it again... 
-    GameObject van;
+    protected GameObject van;
     protected VehicleControlScript vehicle;
     protected SpriteRenderer ZSR;
     protected SpriteRenderer VSR;
@@ -23,7 +22,7 @@ public abstract class MasterZombieScript : EntityControlScript
     protected int colcount;
 	private bool hitHappenedRecently;
     public VaperStatistics stats = new VaperStatistics();
-	//TODO: this is temporary. Ian will remove. Will phase this out, once done encapsulating it elsewhere
+
 	public override int Health
 	{
 		get { return health; }
@@ -34,32 +33,49 @@ public abstract class MasterZombieScript : EntityControlScript
     // Use this for initialization
     public virtual void Start()
     {
-        van = GameObject.FindGameObjectWithTag("Vehicle");
-        vehicle = van.GetComponent<VehicleControlScript>();
-        ZSR = this.GetComponent<SpriteRenderer>();
-        ZSR.sortingLayerName = "Zombies";
-        VSR = van.GetComponent<SpriteRenderer>();
-        zC = this.GetComponent<Collider2D>();
-        vC = van.GetComponent<Collider2D>();
-        damage = 5;
-		health = 20;
-        this.contact = false;
-        counter = 10;
-        colcount = 10;
-        rb = this.GetComponent<Rigidbody2D>();
-		hitHappenedRecently = false;
+		rb = this.GetComponent<Rigidbody2D>();
+		zC = this.GetComponent<Collider2D>();
+		ZSR = this.GetComponent<SpriteRenderer>();
+		ZSR.sortingLayerName = "Zombies";
 
+		damage = 5;
+		health = 20;
+		this.contact = false;
+		counter = 10;
+		colcount = 10;
+		hitHappenedRecently = false;
+		
+		van = GameObject.FindGameObjectWithTag("Vehicle");
+		if (van == null) return;
+        vehicle = van.GetComponent<VehicleControlScript>();
+        VSR = van.GetComponent<SpriteRenderer>();
+        vC = van.GetComponent<Collider2D>();
+        
     }
 
     public virtual void Update()
     {
-        this.start = transform.position;
-        this.destin = VSR.bounds.ClosestPoint(start);
-
+		Move();
 		ApplyCooldown();
 		RevertFace();
 		CheckDies();
     }
+
+	void Move()
+	{
+		if (VSR != null)
+		{
+			this.start = transform.position;
+			this.destin = VSR.bounds.ClosestPoint(start);
+		}
+		else
+		{
+			GameObject newTarget = new GameObject("New Target For Zombies");
+			newTarget.transform.position = Vector3.up * 3f;
+			SpriteRenderer newRenderer = newTarget.AddComponent<SpriteRenderer>();
+			VSR = newRenderer;
+		}
+	}
 
 	void ApplyCooldown()
 	{
@@ -76,13 +92,13 @@ public abstract class MasterZombieScript : EntityControlScript
 			else
 			{
 				this.counter--;
-				//print("COOLDOWNWARD @ " + counter);
 			}
 		}
 	}
 
 	void RevertFace()
 	{
+		if (ZSR == null) return;
 		if (!this.contact)
 		{
 			if (colcount == 0)
@@ -97,27 +113,11 @@ public abstract class MasterZombieScript : EntityControlScript
 	}
 
 
+
 	public override void Move(int direction)
 	{
 		//method that wouldn't make sense to implement, the signature of the parameter doesn't match what happens here... so it just gets discarded for now.
-
 	}
- 
-
-	//depreciated
-	//this manner of interaction has been depreciated by the visitor pattern
-	//also the zombie will be responsible for destroying itself when it's health hits zero, we shouldn't be invoking it's death from here.
-	//also the zombie will be responsible for updateHealth, this shouldn't be publically exposed.
-
-	//public virtual void updateHealth(int change)
-	//{
-	//	this.health += change;
-
-	//	if (this.health <= 0) {
-	//		Destroy(this.gameObject);
-
-	//	} 
-	//}
 
 
 
@@ -132,8 +132,6 @@ public abstract class MasterZombieScript : EntityControlScript
 
             this.transform.position = this.transform.position;
         }
-
-
 
 		ReceiveDamage(col);
     }
@@ -165,21 +163,6 @@ public abstract class MasterZombieScript : EntityControlScript
     }
 
 
-
-
-
-    /*
-     *every 30 or so frames damage the car
-     * this gives the zombie an attack period of approx 30 frames
-     */
-    public virtual void OnCollisionStay2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "Vehicle")
-        {
-
-        }
-    }
-
     /**
      * We don't need to see debug print lines every frame all the time.
      * Toggle on/off by selecting "ZombieController" in hierarchy and setting checkmark in inspector on the "GameControllerScript" component
@@ -202,7 +185,7 @@ public abstract class MasterZombieScript : EntityControlScript
 
         this.stats.damageTaken += damageAmount;
         //EntityControlScript entity = (EntityControlScript)damager;
-        //GunnerControlScript freddy = //entity.transform.parent.GetComponent<FreddyFuckerController>();
+        //GunnerControlScript freddy = //entity.transform.parent.GetComponent<FreddyHuggerController>();
        // freddy.stats.damageDelt += damageAmount;
         //freddy.stats.shotsConnected++;
     }

@@ -9,7 +9,7 @@ public class ZombieSpawnOnceController : MonoBehaviour {
     public float gameTime;
     public ZombieController zombieController;
     public VaperControlScript vaperControlScript;
-    public FreddyFuckerController FFController;
+    public FreddyHuggerController FFController;
     //I fucked up big time, ill need to fix this shit later.
     GameObject vehicle;
     VehicleControlScript vehicleScript;
@@ -67,7 +67,7 @@ public class ZombieSpawnOnceController : MonoBehaviour {
                  vaper.gameObject.name = "Vaper" + i;
                vaper.transform.parent = Gnmies.transform;
 
-                FreddyFuckerController ff = (FreddyFuckerController)Instantiate(FFController, spawnPos2, Quaternion.identity);
+                FreddyHuggerController ff = (FreddyHuggerController)Instantiate(FFController, spawnPos2, Quaternion.identity);
                 ff.gameObject.name = "FreddyFucker" + i;
                 ff.transform.parent = Gnmies.transform;
             }
