@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 114000010664994502}
   - 114: {fileID: 114000013747565920}
   - 114: {fileID: 114000010045176370}
+  - 114: {fileID: 114000011580998318}
   m_Layer: 0
   m_Name: SingletonGodController
   m_TagString: Untagged
@@ -48,8 +49,12 @@ MonoBehaviour:
   iHasVariable: 0
   gameControllerScript: {fileID: 0}
   vehicleControlScript: {fileID: 0}
+  vehicle: {fileID: 0}
   playerManager: {fileID: 0}
+  switchPlayer: {fileID: 0}
   stateManager: {fileID: 0}
+  levelController: {fileID: 0}
+  zombWaveController: {fileID: 0}
   analyticsManager: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
@@ -68,7 +73,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139442}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25d2f688a2249844badb455005b12942, type: 3}
   m_Name: 
@@ -100,6 +105,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a568f856b331cf847b6747e48bc460ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000011580998318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6df3ee5ac26fb649a19dd3d2dc0bba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000013070215904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,7 +134,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139442}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db9c466427d56b3459d8266d7fd83095, type: 3}
   m_Name: 
