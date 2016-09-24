@@ -106,9 +106,9 @@ public class CellController : EntityControlScript {
 
 	public override void Move(int direction) { }
 
-	public override void AcceptDamageFrom(DamageVisitor damager) 
+	public override void AcceptAffectFrom(AffectVisitor damager) 
 	{
-		int damageAmount = damager.CauseDamageTo(this);
+		int damageAmount = damager.CauseAffectTo(this);
        
 		Health -= damageAmount;
 		vehicle.Health -= damageAmount * damageMultiplyer[level];
@@ -128,7 +128,7 @@ public class CellController : EntityControlScript {
         */
     }
 
-	public override int CauseDamageTo(DamageVisitable damagable) 
+	public override int CauseAffectTo(AffectVisitable damagable) 
 	{
 		return 0;
 	}
@@ -142,16 +142,16 @@ public class CellController : EntityControlScript {
 		//if (vehicle.isColliding.Contains(col.gameObject)) return;
 		//vehicle.isColliding.Add(col.gameObject);
 
-		DamageVisitor damager = col.gameObject.GetComponent<DamageVisitor>();
-		DamageVisitable damagable = gameObject.GetComponent<DamageVisitable>();
+		AffectVisitor damager = col.gameObject.GetComponent<AffectVisitor>();
+		AffectVisitable damagable = gameObject.GetComponent<AffectVisitable>();
 
 		if (damager == null)
 		{
-			//Debug.LogWarning("Non-damager " + col.gameObject.name + " collided with damageable " + gameObject.name + ", please implement DamageVisitor method on it, or exclude from check on this damagable. ");
+			//Debug.LogWarning("Non-damager " + col.gameObject.name + " collided with damageable " + gameObject.name + ", please implement AffectVisitor method on it, or exclude from check on this damagable. ");
 			return;
 		}
 
-		damagable.AcceptDamageFrom(damager);
+		damagable.AcceptAffectFrom(damager);
 
 	}
 

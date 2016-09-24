@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class EntityControlScript : MonoBehaviour, DamageVisitable, DamageVisitor {
+public abstract class EntityControlScript : MonoBehaviour, AffectVisitable, AffectVisitor {
 
     protected int health;
     protected float moveFactor;
@@ -13,16 +13,17 @@ public abstract class EntityControlScript : MonoBehaviour, DamageVisitable, Dama
 
     protected virtual void FixedUpdate() { }
 
-    public abstract void Move(int direction);
-
-	public abstract void AcceptDamageFrom(DamageVisitor visitor);
-
-	public abstract int CauseDamageTo(DamageVisitable visitable);
-
-
 	protected abstract void OnCollisionEnter2D(Collision2D col);
 
 	protected abstract void OnCollisionExit2D(Collision2D col);
+
+	public abstract void Move(int direction);
+
+	public abstract void AcceptAffectFrom(AffectVisitor visitor);
+
+	public abstract int CauseAffectTo(AffectVisitable visitable);
+
+
 
 	public void ReportHealth()
 	{

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 // Controller for normal bullet-type projectiles
-public class ProjectileController : MonoBehaviour, DamageVisitor {
+public class ProjectileController : MonoBehaviour, AffectVisitor {
 
 	public int damage;
     public float timeAlive;
@@ -37,7 +37,7 @@ public class ProjectileController : MonoBehaviour, DamageVisitor {
 
 	}
 
-    public virtual int CauseDamageTo(DamageVisitable visitable)
+    public virtual int CauseAffectTo(AffectVisitable visitable)
 	{
 		return damage;
 	}

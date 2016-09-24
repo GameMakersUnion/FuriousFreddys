@@ -140,10 +140,10 @@ public abstract class MasterZombieScript : EntityControlScript
 	{
 		if (!col.gameObject.GetComponent<ProjectileController>()) return;
 
-		DamageVisitor damager = col.gameObject.GetComponent<DamageVisitor>();
-		DamageVisitable damagable = gameObject.GetComponent<DamageVisitable>();
+		AffectVisitor damager = col.gameObject.GetComponent<AffectVisitor>();
+		AffectVisitable damagable = gameObject.GetComponent<AffectVisitable>();
 
-		damagable.AcceptDamageFrom(damager);
+		damagable.AcceptAffectFrom(damager);
 
 	}
 
@@ -177,10 +177,10 @@ public abstract class MasterZombieScript : EntityControlScript
         }
     }
 
-	public override void AcceptDamageFrom(DamageVisitor damager)
+	public override void AcceptAffectFrom(AffectVisitor damager)
 	{
         
-		int damageAmount = damager.CauseDamageTo(this);
+		int damageAmount = damager.CauseAffectTo(this);
         health -= damageAmount;
 
         this.stats.damageTaken += damageAmount;
@@ -190,9 +190,9 @@ public abstract class MasterZombieScript : EntityControlScript
         //freddy.stats.shotsConnected++;
     }
 
-	// i hate muddying this simple pure "CauseDamageTo" with this unclean conditional, it violates clean code conventions... i have no better choice at the moment... 
+	// i hate muddying this simple pure "CauseAffectTo" with this unclean conditional, it violates clean code conventions... i have no better choice at the moment... 
 	// it's more like "AttemptCauseDamageNow"
-	public override int CauseDamageTo(DamageVisitable damagable)
+	public override int CauseAffectTo(AffectVisitable damagable)
 	{
 		int damage = (hitHappenedRecently) ? 0 : this.damage;
         if (!hitHappenedRecently)

@@ -79,6 +79,6 @@ public abstract class PlayerControlScript : EntityControlScript {
     }
 
     //do nothing
-    public override void AcceptDamageFrom(DamageVisitor damager) {}
+    public override void AcceptAffectFrom(AffectVisitor damager) {}
 
 }

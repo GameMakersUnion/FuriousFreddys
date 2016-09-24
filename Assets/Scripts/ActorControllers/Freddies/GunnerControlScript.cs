@@ -122,7 +122,7 @@ public class GunnerControlScript : PlayerControlScript
         Debug.Log("Finished reloading");
     }
 
-	public override int CauseDamageTo(DamageVisitable damagable)
+	public override int CauseAffectTo(AffectVisitable damagable)
 	{
 		return 0;
 	}

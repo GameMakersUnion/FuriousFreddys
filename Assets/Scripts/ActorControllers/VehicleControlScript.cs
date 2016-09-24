@@ -68,15 +68,15 @@ public class VehicleControlScript : EntityControlScript
 		if (col.gameObject.GetComponent<TongueJoint>()) return;
 		if (col.gameObject.GetComponent<ProjectileController>()) return;
 
-		DamageVisitor damager = col.gameObject.GetComponent<DamageVisitor>();
-		DamageVisitable damagable = gameObject.GetComponent<DamageVisitable>();
+		AffectVisitor damager = col.gameObject.GetComponent<AffectVisitor>();
+		AffectVisitable damagable = gameObject.GetComponent<AffectVisitable>();
 		if (damager == null)
 		{
-			//Debug.LogWarning("Non-damager " + col.gameObject.name + " collided with damageable " + gameObject.name + ", please implement DamageVisitor method on it, or exclude from check on this damagable. ");
+			//Debug.LogWarning("Non-damager " + col.gameObject.name + " collided with damageable " + gameObject.name + ", please implement AffectVisitor method on it, or exclude from check on this damagable. ");
 			return;
 		}
 
-		damagable.AcceptDamageFrom(damager);
+		damagable.AcceptAffectFrom(damager);
 	}
 
 	protected override void OnCollisionExit2D(Collision2D col) { } 
@@ -121,12 +121,12 @@ public class VehicleControlScript : EntityControlScript
 	}
 
 
-	public override void AcceptDamageFrom(DamageVisitor damager)
+	public override void AcceptAffectFrom(AffectVisitor damager)
 	{
         //please see the version of this method in CellController
     }
 
-    public override int CauseDamageTo(DamageVisitable damagable)
+    public override int CauseAffectTo(AffectVisitable damagable)
 	{
 		return 0;
 	}

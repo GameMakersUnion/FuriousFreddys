@@ -23,14 +23,14 @@ public class TongueJoint : EntityControlScript {
 		CheckDies();
 	}
 
-	public override void AcceptDamageFrom(DamageVisitor damager)
+	public override void AcceptAffectFrom(AffectVisitor damager)
 	{
 		print("doh");
-		int damageAmount = damager.CauseDamageTo(this);
+		int damageAmount = damager.CauseAffectTo(this);
 		health -= damageAmount;
 	}
 
-	public override int CauseDamageTo(DamageVisitable visitable)
+	public override int CauseAffectTo(AffectVisitable visitable)
 	{
 		return damage;
 	}
@@ -44,10 +44,10 @@ public class TongueJoint : EntityControlScript {
 	{
 		if (!col.gameObject.GetComponent<ProjectileController>()) return;
 
-		DamageVisitor damager = col.gameObject.GetComponent<DamageVisitor>();
-		DamageVisitable damagable = gameObject.GetComponent<DamageVisitable>();
+		AffectVisitor damager = col.gameObject.GetComponent<AffectVisitor>();
+		AffectVisitable damagable = gameObject.GetComponent<AffectVisitable>();
 
-		damagable.AcceptDamageFrom(damager);
+		damagable.AcceptAffectFrom(damager);
 	}
 
 	protected override void OnCollisionExit2D(Collision2D col)
