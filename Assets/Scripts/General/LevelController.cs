@@ -7,6 +7,8 @@ public class LevelController : MonoBehaviour {
     public bool MoveRoad;
     public bool ShowRoad;
 
+	private float ROCK_SPAWN_RANGE = 5.0f;
+
     public float ScrollSpeed { get { return scrollSpeed; } } //Limited accessibility deliberately
     private float scrollSpeed = 0.2f;  //The speed to scroll the roadSegments at
 	private bool isOnRoad = false;
@@ -29,13 +31,11 @@ public class LevelController : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		createGameBounds();
-		float cameraHeight = Camera.main.orthographicSize * 2.0f;
-		float cameraWidth = cameraHeight * Screen.width / Screen.height;
 
-		//Lists to hold GameObjects
 		if (MoveRoad)
         {
-            createRoadSegments();
+			//Lists to hold GameObjects
+			createRoadSegments();
         }
     }
 
@@ -101,26 +101,23 @@ public class LevelController : MonoBehaviour {
 		//Collider2D of the vehiclePrefab
 		colVehicle = GameObject.FindGameObjectWithTag("Vehicle").GetComponent<Collider2D>();
 
-        //Calculate srRoadSegment's scale when fit to screen
-        float cameraHeight = Camera.main.orthographicSize * 2.0f;
-        float cameraWidth = cameraHeight * Screen.width / Screen.height;
-        Sprite sRoadSegment = srRoadSegment.sprite;
-        float unitWidth = sRoadSegment.textureRect.width / sRoadSegment.pixelsPerUnit;
-        float unitHeight = sRoadSegment.textureRect.height / sRoadSegment.pixelsPerUnit;
-        srRoadSegment.transform.localScale = new Vector3(cameraWidth / unitWidth, cameraHeight / unitHeight);
-
-		float rSUnitWidth = sRoadSegment.textureRect.width / sRoadSegment.pixelsPerUnit;
-        float rSunitHeight = sRoadSegment.textureRect.height / sRoadSegment.pixelsPerUnit;
-        srRoadSegment.transform.localScale = new Vector3(cameraWidth / rSUnitWidth, cameraHeight / rSunitHeight);
-
-        //Calculate srDirtSegment's scale
-        Sprite sDirtSegment = srDirtSegment.sprite;
-        float dSUnitWidth = sDirtSegment.textureRect.width / sDirtSegment.pixelsPerUnit;
-        float dSUnitHeight = sDirtSegment.textureRect.height / sDirtSegment.pixelsPerUnit;
-        srDirtSegment.transform.localScale = new Vector3(cameraWidth / (dSUnitWidth*4), cameraHeight / (dSUnitHeight*4));
+        SetSegmentScaleToFitScreen(srRoadSegment);
+        SetSegmentScaleToFitScreen(srDirtSegment);
 
         addRoadSegmentsToList();
         //addDirtSegmentsToList();
+    }
+
+    //Set segment's scale by calculating fit to screen
+    void SetSegmentScaleToFitScreen(SpriteRenderer sr)
+    {
+        float cameraHeight = Camera.main.orthographicSize * 2.0f;
+        float cameraWidth = cameraHeight * Screen.width / Screen.height;
+        Sprite sprite = srRoadSegment.sprite;
+        float unitWidth = sprite.textureRect.width / sprite.pixelsPerUnit;
+        float unitHeight = sprite.textureRect.height / sprite.pixelsPerUnit;
+        sr.transform.localScale = new Vector3(cameraWidth / unitWidth, cameraHeight / unitHeight);
+
     }
 
     void generateRock()
@@ -129,13 +126,13 @@ public class LevelController : MonoBehaviour {
 
         if (obstacleGenChance > 0.99f)      //If the Rand number is greater than 0.99, generate a rock
         {
-            GameObject rock1 = Instantiate(rockPrefab);
-            float randX = Random.Range(-5.0f, 5.0f);        //rand Xpos offset
+            GameObject rockInstantiated = Instantiate(rockPrefab);
+            float randX = Random.Range(-ROCK_SPAWN_RANGE, ROCK_SPAWN_RANGE);        //rand Xpos offset
             Vector3 randScale = new Vector3(Random.Range(0.1f, 0.8f), Random.Range(0.1f, 0.8f), 1.0f);      //Rand scale
 
-            rock1.transform.localScale = randScale;
-            rock1.transform.position = new Vector3(rock1.transform.position.x + randX, Camera.main.orthographicSize * 2.0f, rock1.transform.position.z);
-            rocks.Add(rock1);       //Add rock1 to List of rocks
+            rockInstantiated.transform.localScale = randScale;
+            rockInstantiated.transform.position = new Vector3(rockInstantiated.transform.position.x + randX, Camera.main.orthographicSize * 2.0f, rockInstantiated.transform.position.z);
+            rocks.Add(rockInstantiated);       //Add rockInstantiated to List of rocks
         }
     }
 
@@ -197,7 +194,7 @@ public class LevelController : MonoBehaviour {
 
 		foreach (Collider2D colRoadSegment in colRoadSegments)
 		{
-			if (colVehicle.IsTouching(colRoadSegment))
+			if (colVehicle != null && colVehicle.IsTouching(colRoadSegment))
 			{
 				isOnRoad = true;
 			}
@@ -235,31 +232,31 @@ public class LevelController : MonoBehaviour {
 	void addRoadSegmentsToList()
 	{
 		//Add first segment
-		GameObject roadSegment1 = Instantiate(roadSegmentPrefab);
-		roadSegment1.transform.position = new Vector3(roadSegment1.transform.position.x, roadSegment1.transform.position.y, roadSegment1.transform.position.z);
-		roadSegments.Add(roadSegment1);
+        InstantiateSegmentOn(roadSegmentPrefab, roadSegments);
+        InstantiateSegmentOn(roadSegmentPrefab, roadSegments);
+        InstantiateSegmentOn(roadSegmentPrefab, roadSegments);
+        InstantiateSegmentOn(roadSegmentPrefab, roadSegments);
 
-		//Add second segment and offset by size of previous segment
-		GameObject roadSegment2 = Instantiate(roadSegmentPrefab);
-		roadSegment2.transform.position = new Vector3(roadSegment2.transform.position.x, srRoadSegment.bounds.extents.y * 2.0f, roadSegment2.transform.position.z);
-		roadSegments.Add(roadSegment2);
-
-		//Add third segment and offset by size of second segment
-		GameObject roadSegment3 = Instantiate(roadSegmentPrefab);
-		roadSegment3.transform.position = new Vector3(roadSegment3.transform.position.x, srRoadSegment.bounds.extents.y * 4.0f, roadSegment3.transform.position.z);
-		roadSegments.Add(roadSegment3);
-
-		//Add fourth segment and offset by size of second segment
-		GameObject roadSegment4 = Instantiate(roadSegmentPrefab);
-		roadSegment4.transform.position = new Vector3(roadSegment4.transform.position.x, srRoadSegment.bounds.extents.y * 6.0f, roadSegment4.transform.position.z);
-		roadSegments.Add(roadSegment4);
+        //InstantiateSegmentOn(dirtSegmentPrefab, dirtSegments);
+        //InstantiateSegmentOn(dirtSegmentPrefab, roadSegments);
+        //InstantiateSegmentOn(dirtSegmentPrefab, dirtSegments);
+        //InstantiateSegmentOn(dirtSegmentPrefab, dirtSegments);
 
 		//Add roadSegmentColliders to colRoadSegments
-		colRoadSegments.Add(roadSegment1.GetComponent<Collider2D>());
-		colRoadSegments.Add(roadSegment2.GetComponent<Collider2D>());
-		colRoadSegments.Add(roadSegment3.GetComponent<Collider2D>());
-		colRoadSegments.Add(roadSegment4.GetComponent<Collider2D>());
+        //colRoadSegments.Add(roadSegment1.GetComponent<Collider2D>());
+        //colRoadSegments.Add(roadSegment2.GetComponent<Collider2D>());
+        //colRoadSegments.Add(roadSegment3.GetComponent<Collider2D>());
+        //colRoadSegments.Add(roadSegment4.GetComponent<Collider2D>());
 	}
+
+    void InstantiateSegmentOn(GameObject prefab, List<GameObject> segments)
+    {
+        GameObject newSegment = Instantiate(prefab);
+        newSegment.name = prefab.name + (1 + segments.Count);
+        float segmentOffset = segments.Count * prefab.GetComponent<SpriteRenderer>().bounds.size.y;
+        newSegment.transform.position = new Vector3(prefab.transform.position.x, prefab.transform.position.y + segmentOffset, prefab.transform.position.z);
+        segments.Add(newSegment);
+    }
 
 	void addDirtSegmentsToList()
 	{
