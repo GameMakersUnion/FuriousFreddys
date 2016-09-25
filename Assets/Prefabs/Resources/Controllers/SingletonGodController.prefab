@@ -15,6 +15,7 @@ GameObject:
   - 114: {fileID: 114000013747565920}
   - 114: {fileID: 114000010045176370}
   - 114: {fileID: 114000011580998318}
+  - 114: {fileID: 114000010009367034}
   m_Layer: 0
   m_Name: SingletonGodController
   m_TagString: Untagged
@@ -67,6 +68,17 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 139442}
   m_IsPrefabParent: 1
+--- !u!114 &114000010009367034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6df3ee5ac26fb649a19dd3d2dc0bba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000010045176370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -82,6 +94,7 @@ MonoBehaviour:
   ShowRoad: 1
   roadSegmentPrefab: {fileID: 1000012595085494, guid: 8debf6437812e834eb345ea3d9c8b79a,
     type: 2}
+  dirtSegmentPrefab: {fileID: 165790, guid: 99ca7a52e0b733a40b177a3de1ceb977, type: 2}
   rockPrefab: {fileID: 165790, guid: e6c420568cdd61f4582b7850e5b1bfec, type: 2}
 --- !u!114 &114000010645859892
 MonoBehaviour:
