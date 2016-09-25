@@ -55,7 +55,7 @@ public class LevelController : MonoBehaviour {
             moveRoadSegments();
 
 			//Iterate through dirtSegments and adjust the y position by newYPos
-			moveDirtSegments();
+			//moveDirtSegments();
 
             //Generate obstacles randomly
             generateRock();
@@ -120,7 +120,7 @@ public class LevelController : MonoBehaviour {
         srDirtSegment.transform.localScale = new Vector3(cameraWidth / (dSUnitWidth*4), cameraHeight / (dSUnitHeight*4));
 
         addRoadSegmentsToList();
-        addDirtSegmentsToList();
+        //addDirtSegmentsToList();
     }
 
     void generateRock()
