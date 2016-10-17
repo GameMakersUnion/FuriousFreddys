@@ -15,7 +15,6 @@ public class StateManager : MonoBehaviour
         FindVehicleRef();
 
         currentState = gameState.SPLASH;
-        Debug.Log("curr state is " + currentState);
         SceneManager.sceneLoaded += new UnityAction<Scene, LoadSceneMode>(OnSceneLoad);
 
         DetermineScene();

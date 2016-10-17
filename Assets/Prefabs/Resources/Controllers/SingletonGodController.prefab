@@ -16,6 +16,8 @@ GameObject:
   - 114: {fileID: 114000010045176370}
   - 114: {fileID: 114000011580998318}
   - 114: {fileID: 114000010009367034}
+  - 114: {fileID: 114000013156377322}
+  - 114: {fileID: 114000010227242996}
   m_Layer: 0
   m_Name: SingletonGodController
   m_TagString: Untagged
@@ -96,6 +98,17 @@ MonoBehaviour:
     type: 2}
   dirtSegmentPrefab: {fileID: 165790, guid: 99ca7a52e0b733a40b177a3de1ceb977, type: 2}
   rockPrefab: {fileID: 165790, guid: e6c420568cdd61f4582b7850e5b1bfec, type: 2}
+--- !u!114 &114000010227242996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6df3ee5ac26fb649a19dd3d2dc0bba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000010645859892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,6 +154,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateManager: {fileID: 0}
+--- !u!114 &114000013156377322
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6df3ee5ac26fb649a19dd3d2dc0bba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000013747565920
 MonoBehaviour:
   m_ObjectHideFlags: 1

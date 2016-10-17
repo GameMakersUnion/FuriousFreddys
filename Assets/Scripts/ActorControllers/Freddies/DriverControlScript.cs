@@ -15,7 +15,6 @@ public class DriverControlScript : PlayerControlScript {
 
     public override void Move(int direction)
     {
-        Debug.Log(playerNumber + " steering... in " + direction);
         vehicle.Move(direction);
     }
 
