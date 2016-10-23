@@ -12,7 +12,7 @@ GameObject:
   - 50: {fileID: 5003616}
   - 60: {fileID: 60000013367520170}
   m_Layer: 0
-  m_Name: Rock
+  m_Name: DirtSegmentPrefab
   m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 165790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.6187613, y: -3.7738113, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.4722226, y: 3.90625, z: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}

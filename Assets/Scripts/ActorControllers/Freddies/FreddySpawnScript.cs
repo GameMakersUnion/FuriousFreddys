@@ -41,7 +41,7 @@ public class FreddySpawnScript : MonoBehaviour {
         }
         else
         {
-            PlayerManager pm = Utils.FindComponentOn<SingletonGodController>("SingletonGodController").GetComponent<PlayerManager>();
+            PlayerManager pm = UnityUtils.FindComponentOn<SingletonGodController>("SingletonGodController").GetComponent<PlayerManager>();
             InstantiatePlayers(pm.playerCount);
         }
     }

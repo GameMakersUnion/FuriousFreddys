@@ -17,7 +17,7 @@ public class LobbyManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         panels = gameObject.GetComponentsInChildren<LobbyPanel>().ToList<LobbyPanel>();
-        playerManager = Utils.FindComponentOn<PlayerManager>("SingletonGodController");
+        playerManager = UnityUtils.FindComponentOn<PlayerManager>("SingletonGodController");
 	}
 	
 	// Update is called once per frame

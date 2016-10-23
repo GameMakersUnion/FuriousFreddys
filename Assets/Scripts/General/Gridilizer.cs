@@ -109,7 +109,7 @@ public class Gridilizer : MonoBehaviour
         {
             List<Sprite> tiles = new List<Sprite>();
             string path = AssetDatabase.GetAssetPath(gridLayer);
-            path = StringUtilsExt.SubstringBetween(path, "Resources" + "/", ".");
+            path = StringUtil.SubstringBetween(path, "Resources" + "/", ".");
             Sprite[] album_sprites = Resources.LoadAll<Sprite>(path);
 
             if (album_sprites.Length == 0)
@@ -132,8 +132,8 @@ public class Gridilizer : MonoBehaviour
     //spawn new grid of gameobjects, each having a single sprite
     private GameObject SpawnGridFrom(List<Sprite> tiles, Sprite tileContainer)
     {
-        Vector2 sizeParent = Utils.GetDimensionInPX(tileContainer);
-        Vector2 size = Utils.GetDimensionInPX(tiles[0]);
+        Vector2 sizeParent = UnityUtils.GetDimensionInPX(tileContainer);
+        Vector2 size = UnityUtils.GetDimensionInPX(tiles[0]);
 
         GameObject gridContainer = new GameObject("Grid");
         gridContainer.transform.position = this.transform.position;
@@ -473,131 +473,3 @@ public static class GridUtils
     }
 }
 
-public static class Utils
-{
-    
-    /// call with grid.FindInDimensions(col.gameObject)
-    /*
-    public static bool FindInDimensions(this object[,] target, object searchTerm)
-    {
-        var rowLowerLimit = target.GetLowerBound(0);
-        var rowUpperLimit = target.GetUpperBound(0);
-
-        var colLowerLimit = target.GetLowerBound(1);
-        var colUpperLimit = target.GetUpperBound(1);
-
-        for (int row = rowLowerLimit; row < rowUpperLimit; row++)
-        {
-            for (int col = colLowerLimit; col < colUpperLimit; col++)
-            {
-                // you could do the search here...
-                if (target[row,col] == searchTerm) 
-                    return true;
-            }
-        }
-
-        return false;
-    }*/
-
-    //Generalized version
-    public static T FindComponentOn<T>(string nameGameObject) where T : Component
-    {
-        GameObject find = GameObject.Find(nameGameObject);
-        T findComponent = null;
-        if (find != null)
-        {
-            findComponent = find.GetComponent<T>();
-        }
-        return findComponent;
-    }
-
-    public static T FindComponentTagged<T>(string tagOfGameObject) where T : Component
-    {
-        GameObject find = GameObject.FindGameObjectWithTag(tagOfGameObject);
-        T findComponent = null;
-        if (find != null)
-        {
-            findComponent = find.GetComponent<T>();
-        }
-        return findComponent;
-    }
-
-    //TODO: refactor this, desire to generalize 
-    public static ZombieSpawnOnceController FindComponentOn(string nameGameObject)
-    {
-        GameObject find = GameObject.Find(nameGameObject);
-        ZombieSpawnOnceController findComponent = null;
-        if (find != null)
-        {
-            findComponent = find.GetComponent<ZombieSpawnOnceController>();
-        }
-        return findComponent;
-    }
-
-    /// <summary>
-    /// Gets or add a component. Usage example:
-    /// BoxCollider boxCollider = transform.GetOrAddComponent<BoxCollider>();
-    /// </summary>
-    static public T GetOrAddComponent<T>(this Component child) where T : Component
-    {
-        T result = child.GetComponent<T>();
-        if (result == null)
-        {
-            result = child.gameObject.AddComponent<T>();
-        }
-        return result;
-    }
-
-
-    public static Component FindAndAssignComponentTo<T>(string name) where T : Component
-    {
-        GameObject g = GameObject.Find(name);
-        if (g != null) return g.GetComponent<T>();
-        return null;
-    }
-
-    public static Vector2 GetDimensionInPX(Sprite sprite)
-    {
-        Vector2 dimension;
-
-        dimension.x = sprite.bounds.size.x;
-        dimension.y = sprite.bounds.size.y;
-
-        return dimension;
-    }
-
-    public struct Vector2Int
-    {
-        int x;
-        int y;
-
-        public Vector2Int(int x, int y)
-        {
-            this.x = x;
-            this.y = y;
-        }
-    }
-
-}
-
-public class StringUtilsExt
-{
-    /// <summary>
-    /// Gets the String that is nested in between two Strings. Only the first match is returned.
-    /// A null input String returns null. A null open/close returns null (no match). An empty("") open and close returns an empty string.
-    /// (Note copy pasted from Java and adapted in a rush, not thoroughly checked, probably some mistakes)
-    /// </summary>
-    public static string SubstringBetween(string str, string open, string close)
-    {
-        /// <pre>
-        /// str - the String containing the substring, may be null
-        /// open - the String before the substring, may be null
-        /// close - the String after the substring, may be null
-        /// </pre>
-        int pFrom = (str.IndexOf(open) == -1) ? 0 : str.IndexOf(open) + open.Length;
-        int pTo = str.LastIndexOf(close);
-
-        string result = str.Substring(pFrom, pTo - pFrom);
-        return result;
-    }
-}
