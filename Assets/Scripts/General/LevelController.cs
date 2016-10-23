@@ -43,7 +43,7 @@ public class LevelController : MonoBehaviour {
 
         GetSprites("segments");
 
-        roadSegmentsNew = UnityUtil.createGameObjects(roadSegmentsResources);
+        roadSegmentsNew = UnityUtils.createGameObjects(roadSegmentsResources);
 
         SetSegmentProperties(roadSegmentsNew);
 
@@ -251,7 +251,7 @@ public class LevelController : MonoBehaviour {
                 side1.Add(point);
                 //GameObject go = new GameObject(segment.name + " " +  side1.Count + " " + point);
                 //go.transform.position = SpatialUtil.V2toV3(point);
-                GameObject got = UnityUtil.AddTextToCanvas(point.ToString());
+                GameObject got = UnityUtils.AddTextToCanvas(point.ToString());
                 got.transform.parent = segment.transform;
                 got.transform.position = SpatialUtil.V2toV3(point);
                 SetSegmentRotation(got);
@@ -485,169 +485,4 @@ public class LevelController : MonoBehaviour {
 		dirtSegments.Add(dirtSegment3);
 	}
 
-}
-
-public static class CSharpUtil
-{
-    public static string print(bool[,] arr){
-
-        string result = "";
-
-        int rowLength = arr.GetLength(0);
-        int colLength = arr.GetLength(1);
-
-        for (int i = 0; i < rowLength; i++)
-        {
-            for (int j = 0; j < colLength; j++)
-            {
-                result += (j > 0 && j < colLength ) ? ", " : "";
-                result += arr[i, j];
-            }
-            result += System.Environment.NewLine;
-        }
-        MonoBehaviour.print(result);
-        return result;
-    }
-
-    public static string print(string[] arr)
-    {
-        string result = "";
-        int count = 0;
-
-        foreach (var item in arr)
-        {
-            count++;
-            result += (count > 0 && count < arr.Length) ? ", " : "";
-            result += (item.ToString());
-        }
-        MonoBehaviour.print(result);
-        return result;
-    }
-
-    public static string print(Vector2[] arr)
-    {
-        string result = "";
-        int count = 0;
-
-        foreach (var item in arr)
-        {
-            result += (count > 0 && count < arr.Length) ? ", " : "";
-            result += item;
-            count++;
-        }
-        MonoBehaviour.print(result);
-        return result;
-    }
-
-    public static string print(List<Vector2> list)
-    {
-        string result = print(list.ToArray());
-        return result;
-    }
-
-}
-
-public static class UnityUtil
-{
-    public static GameObject createGameObject(string name)
-    {
-        GameObject go = new GameObject(name);
-        go.name = name;
-        return go;
-    }
-
-    public static GameObject createGameObject(Sprite sprite)
-    {
-        GameObject go = createGameObject(sprite.name);
-        SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
-        sr.sprite = sprite;
-        return go;
-    }
-
-    public static List<GameObject> createGameObjects(Sprite[] sprites)
-    {
-        List<GameObject> gos = new List<GameObject>();
-        foreach (Sprite sprite in sprites)
-        {
-            gos.Add(createGameObject(sprite));
-        }
-        return gos;
-    }
-
-    public static GameObject createGameObjectOfSprite(Sprite sprite)
-    {
-        GameObject go = new GameObject(sprite.name);
-        go.name = sprite.name;
-        SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
-        sr.sprite = sprite;
-        return go;
-
-    }
-
-    //temp hack, TODO: replace body with much better generic version later.
-    public static GameObject FindCanvas()
-    {
-        return GameObject.Find("GameCanvas");
-    }
-
-    public static GameObject AddTextToCanvas(string textString)
-    {
-        //GameObject canvas = FindCanvas();
-
-        GameObject textGameObject = new GameObject(textString);
-        //textGameObject.transform.parent = canvas.transform;
-
-        TextMesh text = textGameObject.AddComponent<TextMesh>();
-        text.text = textString;
-
-        //Font ArialFont = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
-        //text.font = ArialFont;
-        //text.material = ArialFont.material;
-
-        text.offsetZ -= 1;
-
-        return textGameObject;
-    }
-
-
-
-    //public static bool IsCanvasPresent()
-    //{
-
-    //}
-
-    //public static bool IsEventSystemPresent()
-    //{
-
-    //}
-
-    //public static bool AddOrFindUISystem()
-    //{
-
-    //}
-
-    //private static List GetObjectsInLayer(int layer, GameObject root = null)
-    //{
-    //    var result = new List();
-    //    foreach (Transform t in root.transform.GetComponentsInChildren(typeof(GameObject), true))
-    //    {
-    //        if (t.gameObject.layer == layer)
-    //        {
-    //            result.Add(t.gameObject);
-    //        }
-    //    }
-    //    return result;
-    //}
-
-
-
-
-}
-
-public static class SpatialUtil
-{
-    public static Vector3 V2toV3(Vector2 v2)
-    {
-        return new Vector3(v2.x, v2.y, 0);
-    }
 }

@@ -38,7 +38,7 @@ public class VehicleControlScript : EntityControlScript
 
         moveFactor = 100000f;
 
-        PlayerManager pm = Utils.FindComponentOn<SingletonGodController>("SingletonGodController").GetComponent<PlayerManager>();
+        PlayerManager pm = UnityUtils.FindComponentOn<SingletonGodController>("SingletonGodController").GetComponent<PlayerManager>();
         FreddySpawnScript fs = this.GetComponent<FreddySpawnScript>();
         fs.InstantiatePlayers(pm.playerCount);
 

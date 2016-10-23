@@ -68,7 +68,7 @@ public class SingletonGodController : MonoBehaviour {
             instance = this;
             DontDestroyOnLoad(gameObject);
 
-            gameControllerScript = Utils.FindComponentOn("ZombieController");
+            gameControllerScript = UnityUtils.FindComponentOn("ZombieController");
 
             playerManager = gameObject.GetComponent<PlayerManager>();
             

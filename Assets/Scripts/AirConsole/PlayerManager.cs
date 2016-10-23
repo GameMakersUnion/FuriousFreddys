@@ -103,7 +103,7 @@ public class PlayerManager: MonoBehaviour
         if (!stateManager)//If for some reason we didn't find the state manager
         {
             //Please locate statemanager
-            stateManager = Utils.FindComponentOn<StateManager>("StateManager");
+            stateManager = UnityUtils.FindComponentOn<StateManager>("StateManager");
         }
         //Change to Gameplay State
         stateManager.LoadGameplayScene();
